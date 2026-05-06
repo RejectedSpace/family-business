@@ -2,16 +2,18 @@ extends CharacterBody3D
 
 # 83 Hu = 24 m
 
+@onready var camera = $Camera3D
+@onready var playerAnimator = $Bagman/AnimationPlayer
+
+var air_jumps: int
+var crouched: bool
+var running: bool
+
 const SPEED = 120
 const BACKWARD_MULTIPLIER = 0.9
 const POSTURE_MULTIPLIER = 0.6
 const JUMP_VELOCITY = 85
 const MAX_AIR_JUMPS = 1
-var air_jumps: int
-var crouched: bool
-var running: bool
-@onready var camera = $Camera3D
-@onready var playerAnimator = $Bagman/AnimationPlayer
 
 func _physics_process(delta: float) -> void:
 	handle_gravity(delta)

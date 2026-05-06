@@ -1,14 +1,16 @@
 extends CharacterBody3D
 
-@onready var agent = $NavigationAgent3D
-
-const SPEED = 90
-const EPSILON = 0.75
 enum {
 	IDLE,
 	ACTIVE
 }
+
+@onready var agent = $NavigationAgent3D
+
 var state = ACTIVE
+
+const SPEED = 90
+const EPSILON = 0.75
 
 
 func _physics_process(delta: float) -> void:

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cn8ufnfxrqmw7"]
+
+[ext_resource type="Script" uid="uid://d4f5uo8mpyy1j" path="res://door.gd" id="1_cw7iv"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_sl6of"]
+vertices = PackedVector3Array(-10, 2.5, -3, -10, 2.5, 3, 10, 2.5, 3, 10, 2.5, -3)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+agent_height = 24.0
+agent_radius = 0.0
+filter_baking_aabb = AABB(0, 0, 0, 20, 4, 4)
+filter_baking_aabb_offset = Vector3(-10, 0, -2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw0xy"]
+albedo_color = Color(0.50534403, 0.5053441, 0.50534403, 1)
+
+[node name="DoorSouth" type="Node3D" unique_id=733808563]
+script = ExtResource("1_cw7iv")
+direction = "South"
+metadata/_custom_type_script = "uid://d4f5uo8mpyy1j"
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1977830933]
+visible = false
+navigation_mesh = SubResource("NavigationMesh_sl6of")
+enabled = false
+
+[node name="CSGBox" type="CSGBox3D" parent="NavigationRegion3D" unique_id=920089112]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, 0)
+use_collision = true
+collision_layer = 3
+size = Vector3(24, 2, 4)
+material = SubResource("StandardMaterial3D_uw0xy")
+
+[node name="Blocker" type="CSGBox3D" parent="." unique_id=916441167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 1)
+use_collision = true
+collision_layer = 3
+size = Vector3(24, 38, 2)

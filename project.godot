@@ -61,7 +61,7 @@ shift={
 
 [navigation]
 
-3d/default_edge_connection_margin=2.0
+3d/default_edge_connection_margin=3.0
 
 [physics]
 

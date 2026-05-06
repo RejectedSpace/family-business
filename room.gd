@@ -8,6 +8,7 @@ class_name Room
 @onready var nav = $NavigationRegion3D
 
 func _ready() -> void:
+	assert(size.x != 0 and size.y != 0 and size.z != 0, "Room size can't be zero")
 	if nav.navigation_mesh.get_reference_count() > 1:
 		nav.navigation_mesh = nav.navigation_mesh.duplicate()
 

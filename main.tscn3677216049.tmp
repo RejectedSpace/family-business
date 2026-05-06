@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://b3vultmp88md5" path="res://enemy.tscn" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cvpt4fbg30e4t" path="res://four_way.tscn" id="5_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bnsafy2cbheew" path="res://sewer.tscn" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://d1af3mmwmds55" path="res://sewer_flipped.tscn" id="6_7mycd"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h2yge"]
 
@@ -51,11 +50,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -320, 0, -320)
 [node name="FourWay" parent="Rooms" unique_id=367034818 instance=ExtResource("5_7mycd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
-[node name="SewerFlipped" parent="Rooms" unique_id=479717420 instance=ExtResource("6_7mycd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -255, 0, 0)
-
 [node name="Timer" type="Timer" parent="." unique_id=94325407]
-wait_time = 0.1
+wait_time = 5.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://dukfnixm8oxen"]
+
+[ext_resource type="Script" uid="uid://dyamqr7l8n42c" path="res://room.gd" id="1_b8rn1"]
+[ext_resource type="PackedScene" uid="uid://bkvysi3d2k1pi" path="res://door_north.tscn" id="2_o077q"]
+[ext_resource type="PackedScene" uid="uid://b42cjc8kn1ngy" path="res://door_west.tscn" id="3_hbcap"]
+[ext_resource type="PackedScene" uid="uid://cn8ufnfxrqmw7" path="res://door_south.tscn" id="4_6orrn"]
+[ext_resource type="PackedScene" uid="uid://dmpp8uyvyu0xi" path="res://door_east.tscn" id="5_y1108"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_4dyrd"]
+vertices = PackedVector3Array(4, 2.5, 4, 4, 2.5, 60, 124, 2.5, 60, 124, 2.5, 4)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+agent_height = 24.0
+agent_radius = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rgnug"]
+albedo_color = Color(0.34117648, 0.34509805, 0.34509805, 1)
+
+[node name="LongFourWay" type="Node3D" unique_id=333191372]
+script = ExtResource("1_b8rn1")
+size = Vector3(2, 1, 1)
+metadata/_custom_type_script = "uid://dyamqr7l8n42c"
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1182987700]
+navigation_mesh = SubResource("NavigationMesh_4dyrd")
+
+[node name="Walkable" type="CSGCombiner3D" parent="NavigationRegion3D" unique_id=1589768937]
+layers = 2
+use_collision = true
+collision_layer = 3
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/Walkable" unique_id=1362232515]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 1, 32)
+size = Vector3(124, 2, 60)
+material = SubResource("StandardMaterial3D_rgnug")
+
+[node name="NonWalkable" type="CSGCombiner3D" parent="." unique_id=934010340]
+use_collision = true
+collision_layer = 3
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="NonWalkable" unique_id=1444780429]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 64, 32)
+size = Vector3(128, 2, 64)
+
+[node name="CSGPolygon3D3" type="CSGPolygon3D" parent="NonWalkable" unique_id=1511523427]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 128, 0, 32)
+polygon = PackedVector2Array(-32, 0, -32, 64, 32, 64, 32, 0, 12, 0, 12, 38, -12, 38, -12, 0)
+depth = 2.0
+
+[node name="CSGPolygon3D5" type="CSGPolygon3D" parent="NonWalkable" unique_id=336045375]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 32)
+polygon = PackedVector2Array(-32, 0, -32, 64, 32, 64, 32, 0, 12, 0, 12, 38, -12, 38, -12, 0)
+depth = 2.0
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="NonWalkable" unique_id=1644660710]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 64, 0, 0)
+polygon = PackedVector2Array(-64, 0, -64, 64, 64, 64, 64, 0, 12, 0, 12, 38, -12, 38, -12, 0)
+depth = 2.0
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="NonWalkable" unique_id=1362875333]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 64, 0, 62)
+polygon = PackedVector2Array(-64, 0, -64, 64, 64, 64, 64, 0, 12, 0, 12, 38, -12, 38, -12, 0)
+depth = 2.0
+
+[node name="DoorPoints" type="Node3D" parent="." unique_id=1243334676]
+
+[node name="d0" parent="DoorPoints" unique_id=634711979 instance=ExtResource("2_o077q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 64)
+
+[node name="s1" parent="DoorPoints" unique_id=1699334675 instance=ExtResource("3_hbcap")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 32)
+
+[node name="d2" parent="DoorPoints" unique_id=733808563 instance=ExtResource("4_6orrn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 0)
+
+[node name="s3" parent="DoorPoints" unique_id=959934092 instance=ExtResource("5_y1108")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=42639981]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 51, 30)
+light_energy = 10.0
