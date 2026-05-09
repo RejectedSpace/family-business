@@ -2,18 +2,18 @@ extends CharacterBody3D
 
 # 83 Hu = 24 m
 
-@onready var camera = $Camera3D
-@onready var playerAnimator = $Bagman/AnimationPlayer
+@onready var camera: Camera3D = $Camera3D
+@onready var playerAnimator: AnimationPlayer = $Bagman/AnimationPlayer
 
 var air_jumps: int
 var crouched: bool
 var running: bool
 
-const SPEED = 120
-const BACKWARD_MULTIPLIER = 0.9
-const POSTURE_MULTIPLIER = 0.6
-const JUMP_VELOCITY = 85
-const MAX_AIR_JUMPS = 1
+const SPEED: float = 120
+const BACKWARD_MULTIPLIER: float = 0.9
+const POSTURE_MULTIPLIER: float = 0.6
+const JUMP_VELOCITY: float = 85
+const MAX_AIR_JUMPS: int = 1
 
 func _physics_process(delta: float) -> void:
 	handle_gravity(delta)
@@ -69,9 +69,9 @@ func handle_sprint() -> void:
 		running = false
 
 func handle_movement() -> void:
-	var input_dir = Input.get_vector("a", "d", "w", "s")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var move_speed = SPEED
+	var input_dir: Vector2 = Input.get_vector("a", "d", "w", "s")
+	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var move_speed: float = SPEED
 	
 	if input_dir.y >= 0:
 		move_speed *= BACKWARD_MULTIPLIER

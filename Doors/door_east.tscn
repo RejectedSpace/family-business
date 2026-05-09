@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmpp8uyvyu0xi"]
 
-[ext_resource type="Script" uid="uid://d4f5uo8mpyy1j" path="res://door.gd" id="1_c2txb"]
+[ext_resource type="Script" uid="uid://d4f5uo8mpyy1j" path="res://Doors/door.gd" id="1_c2txb"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_pkg53"]
 vertices = PackedVector3Array(-3, 2.5, -10, -3, 2.5, 10, 3, 2.5, 10, 3, 2.5, -10)
@@ -13,6 +13,9 @@ filter_baking_aabb_offset = Vector3(-2, 0, -10)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_guyjh"]
 albedo_color = Color(0.50534403, 0.5053441, 0.50534403, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2txb"]
+albedo_color = Color(0, 1, 1, 1)
+
 [node name="DoorEast" type="Node3D" unique_id=959934092]
 script = ExtResource("1_c2txb")
 direction = "East"
@@ -21,7 +24,6 @@ metadata/_custom_type_script = "uid://d4f5uo8mpyy1j"
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=486383468]
 visible = false
 navigation_mesh = SubResource("NavigationMesh_pkg53")
-enabled = false
 
 [node name="CSGBox" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1315780362]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, 0)
@@ -35,3 +37,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 19, 0)
 use_collision = true
 collision_layer = 3
 size = Vector3(2, 38, 24)
+material = SubResource("StandardMaterial3D_c2txb")

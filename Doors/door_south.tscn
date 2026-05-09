@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cn8ufnfxrqmw7"]
 
-[ext_resource type="Script" uid="uid://d4f5uo8mpyy1j" path="res://door.gd" id="1_cw7iv"]
+[ext_resource type="Script" uid="uid://d4f5uo8mpyy1j" path="res://Doors/door.gd" id="1_cw7iv"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_sl6of"]
 vertices = PackedVector3Array(-10, 2.5, -3, -10, 2.5, 3, 10, 2.5, 3, 10, 2.5, -3)
@@ -12,6 +12,9 @@ filter_baking_aabb_offset = Vector3(-10, 0, -2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw0xy"]
 albedo_color = Color(0.50534403, 0.5053441, 0.50534403, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cw7iv"]
+albedo_color = Color(1, 1, 0, 1)
 
 [node name="DoorSouth" type="Node3D" unique_id=733808563]
 script = ExtResource("1_cw7iv")
@@ -35,3 +38,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 1)
 use_collision = true
 collision_layer = 3
 size = Vector3(24, 38, 2)
+material = SubResource("StandardMaterial3D_cw7iv")

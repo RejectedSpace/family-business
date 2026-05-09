@@ -4,8 +4,8 @@ class_name Room
 
 @export var size: Vector3
 
-@onready var door_points = $DoorPoints
-@onready var nav = $NavigationRegion3D
+@onready var door_points: Node3D = $DoorPoints
+@onready var nav: NavigationRegion3D = $NavigationRegion3D
 
 func _ready() -> void:
 	assert(size.x != 0 and size.y != 0 and size.z != 0, "Room size can't be zero")
@@ -15,8 +15,8 @@ func _ready() -> void:
 func get_door_points() -> Array[Node]:
 	return door_points.get_children()
 
-func get_single_door_points() -> Array:
-	var single_points = []
+func get_single_door_points() -> Array[Door]:
+	var single_points: Array[Door] = []
 	
 	for point in get_door_points():
 		if(point.name.begins_with("s")):
@@ -24,8 +24,8 @@ func get_single_door_points() -> Array:
 	
 	return single_points
 
-func get_double_door_points() -> Array:
-	var double_points = []
+func get_double_door_points() -> Array[Door]:
+	var double_points: Array[Door] = []
 	
 	for point in get_door_points():
 		if(point.name.begins_with("d")):

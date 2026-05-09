@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://cvpt4fbg30e4t"]
 
-[ext_resource type="Script" uid="uid://dyamqr7l8n42c" path="res://room.gd" id="1_xu3fx"]
-[ext_resource type="PackedScene" uid="uid://bkvysi3d2k1pi" path="res://door_north.tscn" id="2_kbjfu"]
-[ext_resource type="PackedScene" uid="uid://b42cjc8kn1ngy" path="res://door_west.tscn" id="3_2ex17"]
-[ext_resource type="PackedScene" uid="uid://cn8ufnfxrqmw7" path="res://door_south.tscn" id="4_6lox6"]
-[ext_resource type="PackedScene" uid="uid://dmpp8uyvyu0xi" path="res://door_east.tscn" id="5_aglt4"]
+[ext_resource type="Script" uid="uid://dyamqr7l8n42c" path="res://Rooms/room.gd" id="1_58jcg"]
+[ext_resource type="PackedScene" uid="uid://bkvysi3d2k1pi" path="res://Doors/door_north.tscn" id="2_fkahk"]
+[ext_resource type="PackedScene" uid="uid://b42cjc8kn1ngy" path="res://Doors/door_west.tscn" id="3_exxqn"]
+[ext_resource type="PackedScene" uid="uid://cn8ufnfxrqmw7" path="res://Doors/door_south.tscn" id="4_0wl17"]
+[ext_resource type="PackedScene" uid="uid://dmpp8uyvyu0xi" path="res://Doors/door_east.tscn" id="5_2anm4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_kbjfu"]
 vertices = PackedVector3Array(4, 2.5, 4, 4, 2.5, 60, 60, 2.5, 60, 60, 2.5, 4)
@@ -16,7 +16,7 @@ agent_radius = 2.0
 albedo_color = Color(0.34117648, 0.34509805, 0.34509805, 1)
 
 [node name="FourWay" type="Node3D" unique_id=367034818]
-script = ExtResource("1_xu3fx")
+script = ExtResource("1_58jcg")
 size = Vector3(1, 1, 1)
 metadata/_custom_type_script = "uid://dyamqr7l8n42c"
 
@@ -63,16 +63,16 @@ depth = 2.0
 
 [node name="DoorPoints" type="Node3D" parent="." unique_id=1371982744]
 
-[node name="s0" parent="DoorPoints" unique_id=95177182 instance=ExtResource("2_kbjfu")]
+[node name="s0" parent="DoorPoints" unique_id=95177182 instance=ExtResource("2_fkahk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 64)
 
-[node name="s1" parent="DoorPoints" unique_id=1699334675 instance=ExtResource("3_2ex17")]
+[node name="s1" parent="DoorPoints" unique_id=1699334675 instance=ExtResource("3_exxqn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 32)
 
-[node name="s2" parent="DoorPoints" unique_id=733808563 instance=ExtResource("4_6lox6")]
+[node name="s2" parent="DoorPoints" unique_id=733808563 instance=ExtResource("4_0wl17")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 0)
 
-[node name="s3" parent="DoorPoints" unique_id=959934092 instance=ExtResource("5_aglt4")]
+[node name="s3" parent="DoorPoints" unique_id=959934092 instance=ExtResource("5_2anm4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=354463920]
