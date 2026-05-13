@@ -11,7 +11,7 @@
 script = ExtResource("1_c7s6e")
 
 [node name="MainRoom" parent="." unique_id=1486356749 instance=ExtResource("2_iw27f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -320, 0, -320)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192, 0, -320)
 
 [node name="Rooms" type="Node3D" parent="." unique_id=184935504]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -320, 0, -320)

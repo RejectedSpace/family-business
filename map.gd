@@ -43,16 +43,15 @@ func connect_room(room_origin: Vector3, room_rotation: float, door: Door, room_c
 		var new_room_rotation: float = door.get_direction() - d.get_direction() + room_rotation + PI
 		new_room_rotation = snap_rotation(new_room_rotation)
 		
-		var d_origin: Vector3 = rotate_vector(d.find_map_origin(), new_room_rotation)
+		var d_origin: Vector3 = rotate_vector(d.get_map_origin(), new_room_rotation)
 		var new_room_origin: Vector3 = door_origin - d_origin + room_origin
 		if map_malloc(room_candidate, new_room_origin, new_room_rotation):
 			
 			var new_room: Room = room_candidate.duplicate()
-			
-			new_room.rotate_y(new_room_rotation)
 			new_room.position = map_to_game_coords(new_room_origin, new_room_rotation)
+			new_room.rotation.y = new_room_rotation
 			
-			return [new_room, d.name]
+			return [new_room, d.get_index()]
 	
 	return []
 
@@ -86,7 +85,7 @@ func expand_map() -> void:
 		
 		if door.is_enabled():
 			continue
-			
+		
 		var connected_door: Door = lookup_door(door)
 		if connected_door != null:
 			door.set_enabled(true)
@@ -95,7 +94,7 @@ func expand_map() -> void:
 			continue
 		
 		register_door(door)
-		var new_origin: Vector3 = rotate_vector(door.find_map_origin(1, true), room.rotation.y)
+		var new_origin: Vector3 = rotate_vector(door.get_map_origin(1, true), room.rotation.y)
 		
 		room_stash.shuffle()
 		
@@ -103,7 +102,7 @@ func expand_map() -> void:
 			var new_room_info: Array = connect_room(origin, room.rotation.y, door, r, new_origin)
 			if not new_room_info.is_empty():
 				var new_room: Room = new_room_info[0]
-				var new_door_index: int = new_room_info[1].substr(1).to_int()
+				var new_door_index: int = new_room_info[1]
 				
 				room_queue.append(new_room)
 				add_child(new_room)
