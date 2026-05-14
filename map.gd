@@ -36,7 +36,7 @@ func generate(time: float = 0.0) -> void:
 		timer.start(time)
 
 func connect_room(room_origin: Vector3, room_rotation: float, door: Door, room_candidate: Room, door_origin: Vector3):
-	var doors: Array[Door] = room_candidate.get_single_door_points() if door.is_single() else room_candidate.get_double_door_points()
+	var doors: Array[Door] = room_candidate.get_single_doors() if door.is_single() else room_candidate.get_double_doors()
 	
 	doors.shuffle()
 	for d: Door in doors:
@@ -81,7 +81,7 @@ func expand_map() -> void:
 	var room: Room = room_queue.get(0)
 	var origin: Vector3 = game_to_map_coords(room.position, room.rotation.y)
 	
-	for door: Door in room.get_door_points():
+	for door: Door in room.get_doors():
 		
 		if door.is_enabled():
 			continue
@@ -107,7 +107,7 @@ func expand_map() -> void:
 				room_queue.append(new_room)
 				add_child(new_room)
 				
-				var new_door: Door = new_room.get_door_points()[new_door_index]
+				var new_door: Door = new_room.get_doors()[new_door_index]
 				
 				door.set_enabled(true)
 				new_door.set_enabled(true)

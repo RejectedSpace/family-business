@@ -113,4 +113,11 @@ simplify_path = true
 simplify_epsilon = 1.0
 debug_enabled = true
 
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=308171644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.051607, 0)
+target_position = Vector3(100, 0, 0)
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1097274989]
+one_shot = true
+
 [editable path="Infected"]

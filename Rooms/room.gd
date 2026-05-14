@@ -12,22 +12,22 @@ func _ready() -> void:
 	if nav.navigation_mesh.get_reference_count() > 1:
 		nav.navigation_mesh = nav.navigation_mesh.duplicate()
 
-func get_door_points() -> Array[Node]:
+func get_doors() -> Array:
 	return door_points.get_children()
 
-func get_single_door_points() -> Array[Door]:
+func get_single_doors() -> Array[Door]:
 	var single_points: Array[Door] = []
 	
-	for point in get_door_points():
+	for point: Door in get_doors():
 		if(point.name.begins_with("s")):
 			single_points.append(point)
 	
 	return single_points
 
-func get_double_door_points() -> Array[Door]:
+func get_double_doors() -> Array[Door]:
 	var double_points: Array[Door] = []
 	
-	for point in get_door_points():
+	for point: Door in get_doors():
 		if(point.name.begins_with("d")):
 			double_points.append(point)
 	

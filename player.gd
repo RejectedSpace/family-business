@@ -8,6 +8,7 @@ extends CharacterBody3D
 var air_jumps: int
 var crouched: bool
 var running: bool
+var health: float = 100.0
 
 const SPEED: float = 120
 const BACKWARD_MULTIPLIER: float = 0.9
@@ -16,11 +17,11 @@ const JUMP_VELOCITY: float = 85
 const MAX_AIR_JUMPS: int = 1
 
 func _physics_process(delta: float) -> void:
-	handle_gravity(delta)
+	apply_gravity(delta)
 	handle_input(delta)
 	handle_movement()
 
-func handle_gravity(delta: float) -> void:
+func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -67,6 +68,14 @@ func handle_sprint() -> void:
 		running = true
 	if Input.is_action_just_released("shift"):
 		running = false
+
+func hurt(damage: float) -> void:
+	health -= damage
+	if health <= 0:
+		game_over()
+
+func game_over() -> void:
+	get_tree().quit()
 
 func handle_movement() -> void:
 	var input_dir: Vector2 = Input.get_vector("a", "d", "w", "s")
