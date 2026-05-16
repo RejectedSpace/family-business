@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://d3njrv8mlryaa"]
+
+[ext_resource type="Script" uid="uid://d12si82i4i2ia" path="res://Guns/gun.gd" id="1_fyf7a"]
+[ext_resource type="PackedScene" uid="uid://d15cl2cd3hxj7" path="res://Guns/Lupara.glb" id="2_h4xx3"]
+
+[node name="Lupara" type="Node3D" unique_id=1637088801]
+script = ExtResource("1_fyf7a")
+metadata/_custom_type_script = "uid://d12si82i4i2ia"
+
+[node name="Lupara" parent="." unique_id=2054195679 instance=ExtResource("2_h4xx3")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Hitscan" type="Node3D" parent="." unique_id=624661413]
+
+[node name="RayCast3D" type="RayCast3D" parent="Hitscan" unique_id=1027379789]
+target_position = Vector3(0, 0, -100)
+collision_mask = 4
+
+[node name="RayCast3D2" type="RayCast3D" parent="Hitscan" unique_id=1582368797]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99619466, -0.08715574, 0, 0.08715573, 0.9961947, 0, 0, 0)
+target_position = Vector3(0, 0, -100)
+collision_mask = 4
+
+[node name="RayCast3D3" type="RayCast3D" parent="Hitscan" unique_id=295151510]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99619466, 0.08715574, 0, -0.08715573, 0.9961947, 0, 0, 0)
+target_position = Vector3(0, 0, -100)
+collision_mask = 4
+
+[node name="RayCast3D4" type="RayCast3D" parent="Hitscan" unique_id=1315726075]
+transform = Transform3D(0.9961947, 0, -0.08715574, 0, 1, 0, 0.08715574, 0, 0.9961947, 0, 0, 0)
+target_position = Vector3(0, 0, -100)
+collision_mask = 4
+
+[node name="RayCast3D5" type="RayCast3D" parent="Hitscan" unique_id=983603564]
+transform = Transform3D(0.9961947, -0.0075961226, -0.08682408, 0, 0.9961947, -0.08715574, 0.08715574, 0.08682408, 0.9924039, 0, 0, 0)
+target_position = Vector3(0, 0, -100)
+collision_mask = 4
+
+[node name="RayCast3D6" type="RayCast3D" parent="Hitscan" unique_id=1962442547]
+transform = Transform3D(0.9961947, 0.0075961226, -0.08682408, 0, 0.9961947, 0.08715574, 0.08715574, -0.08682408, 0.9924039, 0, 0, 0)
+target_position = Vector3(0, 0, -100)
+collision_mask = 4
+
+[node name="RayCast3D7" type="RayCast3D" parent="Hitscan" unique_id=975553948]
+transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, 0, 0, 0)
+target_position = Vector3(0, 0, -100)
+collision_mask = 4
+
+[node name="RayCast3D8" type="RayCast3D" parent="Hitscan" unique_id=1031764575]
+transform = Transform3D(0.9961947, 0.0075961226, 0.08682408, 0, 0.9961947, -0.08715574, -0.08715574, 0.08682408, 0.9924039, 0, 0, 0)
+target_position = Vector3(0, 0, -100)
+collision_mask = 4
+
+[node name="RayCast3D9" type="RayCast3D" parent="Hitscan" unique_id=1364879557]
+transform = Transform3D(0.9961947, -0.0075961226, 0.08682408, 0, 0.9961947, 0.08715574, -0.08715574, -0.08682408, 0.9924039, 0, 0, 0)
+target_position = Vector3(0, 0, -100)
+collision_mask = 4

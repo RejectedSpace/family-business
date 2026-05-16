@@ -1,4 +1,4 @@
-extends CharacterBody3D
+extends Entity
 
 enum {
 	IDLE,
@@ -12,9 +12,16 @@ enum {
 var state: int = IDLE
 var player: Node3D
 
-const SPEED: float = 90
+const SPEED: float = 60
 const EPSILON: float = 0.75
 
+func _ready() -> void:
+	Global.enemies += 1
+
+func die() -> void:
+	Global.enemies -= 1
+	dead = true
+	queue_free()
 
 func _physics_process(delta: float) -> void:
 	
@@ -50,6 +57,7 @@ func _physics_process(delta: float) -> void:
 func attack() -> void:
 	if player:
 		player.hurt(10)
+		print(player.health)
 	attack_timer.start()
 
 func handle_gravity(delta: float) -> void:

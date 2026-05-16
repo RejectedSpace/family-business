@@ -1,14 +1,17 @@
-extends CharacterBody3D
+extends Entity
 
 # 83 Hu = 24 m
 
 @onready var camera: Camera3D = $Camera3D
 @onready var playerAnimator: AnimationPlayer = $Bagman/AnimationPlayer
+@onready var viewport: SubViewport = $Camera3D/SubViewportContainer/SubViewport
+@onready var view_model_camera: Camera3D = $Camera3D/SubViewportContainer/SubViewport/ViewModel
+@onready var gun: Gun = $Lupara
+@onready var hitscan: Node3D = gun.get_hitscan()
 
 var air_jumps: int
 var crouched: bool
 var running: bool
-var health: float = 100.0
 
 const SPEED: float = 120
 const BACKWARD_MULTIPLIER: float = 0.9
@@ -16,7 +19,14 @@ const POSTURE_MULTIPLIER: float = 0.6
 const JUMP_VELOCITY: float = 85
 const MAX_AIR_JUMPS: int = 1
 
+func _ready() -> void:
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	viewport.size = DisplayServer.window_get_size()
+	
+	hitscan.global_transform = camera.global_transform
+
 func _physics_process(delta: float) -> void:
+	view_model_camera.global_transform = camera.global_transform
 	apply_gravity(delta)
 	handle_input(delta)
 	handle_movement()
@@ -25,11 +35,25 @@ func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
+func shoot() -> void:
+	var hitscan = gun.get_hitscan().duplicate()
+	add_child(hitscan)
+	hitscan.global_transform = camera.global_transform
+	
+	for ray: RayCast3D in hitscan.get_children():
+		ray.force_raycast_update()
+		var hit = ray.get_collider()
+		if hit is Entity:
+			hit.hurt(gun.get_damage())
+	
+	remove_child(hitscan)
+
 func handle_input(delta: float) -> void:
 	handle_jump()
 	handle_pause()
 	handle_crouch()
 	handle_sprint()
+	handle_shoot()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -39,6 +63,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		camera.rotate_x(-event.relative.y*0.01)
 		camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+		
+		view_model_camera.sway(Vector2(-event.relative.x, event.relative.y))
 
 func handle_jump() -> void:
 	if is_on_floor():
@@ -49,7 +75,10 @@ func handle_jump() -> void:
 		elif air_jumps > 0:
 			air_jumps -= 1
 			velocity.y = JUMP_VELOCITY
-		
+
+func handle_shoot() -> void:
+	if Input.is_action_just_pressed("mb1"):
+		shoot()
 
 func handle_pause() -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -69,12 +98,8 @@ func handle_sprint() -> void:
 	if Input.is_action_just_released("shift"):
 		running = false
 
-func hurt(damage: float) -> void:
-	health -= damage
-	if health <= 0:
-		game_over()
-
-func game_over() -> void:
+#Override
+func die() -> void:
 	get_tree().quit()
 
 func handle_movement() -> void:

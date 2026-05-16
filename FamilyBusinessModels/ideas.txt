@@ -1,0 +1,24 @@
+Killing mafia guys and giving money back to Don
+
+Make rooms in Blender (a bunch) then tile them randomly
+in Godot
+
+Currency can be found, retrieved from enemies, or earned
+by finding super big valuable thing
+
+Every few floors there's a quota check
+
+Every one and a while there's a shop floor
+
+Plan:
+Enemy AI PRIORITY
+  Nav Mesh
+
+Try Nav Mesh with procedural generation
+
+Get guns
+
+Make currency
+
+Make elevator
+

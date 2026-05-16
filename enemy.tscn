@@ -8,6 +8,7 @@ radius = 2.0
 height = 24.0
 
 [node name="Enemy" type="CharacterBody3D" unique_id=1627701688 groups=["enemies"]]
+collision_layer = 4
 script = ExtResource("1_4gyqm")
 
 [node name="Infected" parent="." unique_id=1585776328 instance=ExtResource("2_qi2p4")]
@@ -111,7 +112,6 @@ shape = SubResource("CapsuleShape3D_iifgy")
 target_desired_distance = 5.0
 simplify_path = true
 simplify_epsilon = 1.0
-debug_enabled = true
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=308171644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23.051607, 0)

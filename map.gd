@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var MAPSIZE: Vector3 = Vector3(10, 3, 20)
+
 @onready var room_stash: Array = $Rooms.get_children()
 @onready var timer: Timer = $Timer
 @onready var main_room: Room = $MainRoom
@@ -8,7 +10,9 @@ var map_memory: Array = []
 var room_queue: Array[Room] = []
 var door_dict: Dictionary = {}
 
-const MAPSIZE: Vector3 = Vector3(10, 3, 20)
+var enemies: int = 0
+
+var enemy: PackedScene = preload("res://enemy.tscn")
 
 func generate(time: float = 0.0) -> void:
 	for x: int in range(0, MAPSIZE.x):
@@ -34,6 +38,15 @@ func generate(time: float = 0.0) -> void:
 			expand_map()
 	else:
 		timer.start(time)
+	
+	Global.enemies -= 1
+
+func spawn_enemy(pos: Vector3) -> void:
+	if randi() % 20 != 21:
+		return
+	var new_enemy = enemy.instantiate()
+	add_child(new_enemy)
+	new_enemy.global_position = pos
 
 func connect_room(room_origin: Vector3, room_rotation: float, door: Door, room_candidate: Room, door_origin: Vector3):
 	var doors: Array[Door] = room_candidate.get_single_doors() if door.is_single() else room_candidate.get_double_doors()
@@ -90,6 +103,9 @@ func expand_map() -> void:
 		if connected_door != null:
 			door.set_enabled(true)
 			connected_door.set_enabled(true)
+			
+			spawn_enemy(door.global_position)
+			
 			register_door(door)
 			continue
 		
@@ -111,6 +127,8 @@ func expand_map() -> void:
 				
 				door.set_enabled(true)
 				new_door.set_enabled(true)
+				
+				spawn_enemy(door.global_position)
 				
 				break
 	
