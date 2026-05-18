@@ -42,7 +42,7 @@ func generate(time: float = 0.0) -> void:
 	Global.enemies -= 1
 
 func spawn_enemy(pos: Vector3) -> void:
-	if randi() % 20 != 21:
+	if randi() % 5 != 6:
 		return
 	var new_enemy = enemy.instantiate()
 	add_child(new_enemy)

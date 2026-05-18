@@ -1,7 +1,12 @@
 extends Node2D
 
+@onready var loading_bar = $LoadingBar
+
 func _ready() -> void:
 	ResourceLoader.load_threaded_request(Global.next_scene)
+	loading_bar.scale.x = DisplayServer.window_get_size().x / 825
+	loading_bar.scale.y = DisplayServer.window_get_size().y / 250
+	loading_bar.position = DisplayServer.window_get_size() / 2
 
 func _process(delta: float) -> void:
 	var progress = []

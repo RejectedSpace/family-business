@@ -26,10 +26,10 @@ func _ready() -> void:
 	hitscan.global_transform = camera.global_transform
 
 func _physics_process(delta: float) -> void:
-	view_model_camera.global_transform = camera.global_transform
 	apply_gravity(delta)
 	handle_input(delta)
 	handle_movement()
+	view_model_camera.global_transform = camera.global_transform
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
@@ -47,6 +47,13 @@ func shoot() -> void:
 			hit.hurt(gun.get_damage())
 	
 	remove_child(hitscan)
+	
+	view_model_camera.play("Fire")
+	gun.shoot()
+
+func reload() -> void:
+	view_model_camera.play("Reload")
+	gun.reload()
 
 func handle_input(delta: float) -> void:
 	handle_jump()
@@ -54,6 +61,9 @@ func handle_input(delta: float) -> void:
 	handle_crouch()
 	handle_sprint()
 	handle_shoot()
+	handle_reload()
+	if Input.is_action_just_pressed("ctrl"):
+		view_model_camera.play("Holster")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -76,10 +86,6 @@ func handle_jump() -> void:
 			air_jumps -= 1
 			velocity.y = JUMP_VELOCITY
 
-func handle_shoot() -> void:
-	if Input.is_action_just_pressed("mb1"):
-		shoot()
-
 func handle_pause() -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
@@ -97,6 +103,14 @@ func handle_sprint() -> void:
 		running = true
 	if Input.is_action_just_released("shift"):
 		running = false
+
+func handle_shoot() -> void:
+	if Input.is_action_pressed("mb1") and not gun.clip_empty() and not view_model_camera.is_busy():
+		shoot()
+
+func handle_reload() -> void:
+	if Input.is_action_just_pressed("r") and not gun.clip_full() and not gun.no_ammo() and not view_model_camera.is_busy():
+		reload()
 
 #Override
 func die() -> void:
