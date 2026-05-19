@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b8c4ixv328xlt"]
+
+[ext_resource type="Script" uid="uid://cnori3vb3iai0" path="res://Systems/Loading/loading_scene.gd" id="1_ksl4j"]
+[ext_resource type="PackedScene" uid="uid://buw7122truyjv" path="res://Rooms/elevator.tscn" id="1_v6geo"]
+[ext_resource type="PackedScene" uid="uid://by8d5o8fki6ok" path="res://Systems/Loading/loading_screen.tscn" id="2_2tcpc"]
+
+[node name="LoadingScene" type="Node3D" unique_id=519064367]
+script = ExtResource("1_ksl4j")
+
+[node name="Elevator" parent="." unique_id=904618005 instance=ExtResource("1_v6geo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, -64)
+
+[node name="LoadingScreen" parent="." unique_id=2066597213 instance=ExtResource("2_2tcpc")]

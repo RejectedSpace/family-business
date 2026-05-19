@@ -38,7 +38,7 @@ use_collision = true
 collision_layer = 3
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="NonWalkable" unique_id=1444780429]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 64, 32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 63, 32)
 size = Vector3(128, 2, 64)
 
 [node name="CSGPolygon3D3" type="CSGPolygon3D" parent="NonWalkable" unique_id=1511523427]

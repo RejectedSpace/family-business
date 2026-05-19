@@ -1,0 +1,206 @@
+[gd_scene format=3 uid="uid://buw7122truyjv"]
+
+[ext_resource type="Script" uid="uid://dlb2fhg4dtm0q" path="res://Rooms/elevator.gd" id="1_c53wp"]
+[ext_resource type="PackedScene" uid="uid://dqvu6fvgqyh0d" path="res://Systems/Interaction/button.tscn" id="2_c53wp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c53wp"]
+albedo_color = Color(0.34117648, 0.34509805, 0.34509805, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_c53wp"]
+data = PackedVector3Array(-8, -18, 1, -8, -18, -1, -8, 18, -1, 8, -18, -1, -8, -18, -1, -8, -18, 1, -8, 18, -1, -8, -18, -1, 8, -18, -1, -8, 18, -1, -8, 18, 1, -8, -18, 1, -8, -18, 1, -8, 18, 1, 8, 18, 1, 8, 18, 1, -8, 18, 1, -8, 18, -1, -8, -18, 1, 8, -18, 1, 8, -18, -1, 8, 18, 1, 8, -18, 1, -8, -18, 1, 8, -18, -1, 8, -18, 1, 8, 18, 1, 8, -18, -1, 8, 18, -1, -8, 18, -1, -8, 18, -1, 8, 18, -1, 8, 18, 1, 8, 18, 1, 8, 18, -1, 8, -18, -1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cqcfi"]
+albedo_color = Color(0.5882353, 0.5882353, 0.5882353, 1)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_cqcfi"]
+data = PackedVector3Array(-8, -18, 1, -8, -18, -1, -8, 18, -1, 8, -18, -1, -8, -18, -1, -8, -18, 1, -8, 18, -1, -8, -18, -1, 8, -18, -1, -8, 18, -1, -8, 18, 1, -8, -18, 1, -8, -18, 1, -8, 18, 1, 8, 18, 1, 8, 18, 1, -8, 18, 1, -8, 18, -1, -8, -18, 1, 8, -18, 1, 8, -18, -1, 8, 18, 1, 8, -18, 1, -8, -18, 1, 8, -18, -1, 8, -18, 1, 8, 18, 1, 8, -18, -1, 8, 18, -1, -8, 18, -1, -8, 18, -1, 8, 18, -1, 8, 18, 1, 8, 18, 1, 8, 18, -1, 8, -18, -1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k53yf"]
+albedo_color = Color(0.5882353, 0.5882353, 0.5882353, 1)
+
+[sub_resource type="Animation" id="Animation_k53yf"]
+resource_name = "Close"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorRCollision:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(3.3333333, 0.3),
+"update": 0,
+"values": [Vector3(-20, 0, 0), Vector3(-8, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorLCollision:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(3.3333333, 0.3),
+"update": 0,
+"values": [Vector3(20, 0, 0), Vector3(8, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_eh37f"]
+resource_name = "Open"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorRCollision:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector3(-8, 0, 0), Vector3(-20, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorLCollision:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(0.3, 1),
+"update": 0,
+"values": [Vector3(8, 0, 0), Vector3(20, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jkumy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DoorRCollision:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-8, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DoorLCollision:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(8, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_30s0j"]
+_data = {
+&"Close": SubResource("Animation_k53yf"),
+&"Open": SubResource("Animation_eh37f"),
+&"RESET": SubResource("Animation_jkumy")
+}
+
+[node name="Elevator" type="Node3D" unique_id=1449266849]
+script = ExtResource("1_c53wp")
+
+[node name="Walkable" type="CSGCombiner3D" parent="." unique_id=252498531]
+layers = 2
+use_collision = true
+collision_layer = 3
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Walkable" unique_id=782508709]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 1, 32)
+size = Vector3(124, 2, 60)
+material = SubResource("StandardMaterial3D_c53wp")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Walkable" unique_id=1420160536]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 1, 63)
+size = Vector3(28, 2, 2)
+material = SubResource("StandardMaterial3D_c53wp")
+
+[node name="NonWalkable" type="CSGCombiner3D" parent="." unique_id=1119404514]
+use_collision = true
+collision_layer = 3
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="NonWalkable" unique_id=906515764]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 45, 32)
+size = Vector3(128, 2, 64)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="NonWalkable" unique_id=1858781604]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 23, 1)
+size = Vector3(128, 46, 2)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="NonWalkable" unique_id=693075679]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 23, 32)
+size = Vector3(2, 46, 64)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="NonWalkable" unique_id=1349376222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 127, 23, 32)
+size = Vector3(2, 46, 64)
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="NonWalkable" unique_id=239605376]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 64, 0, 62)
+polygon = PackedVector2Array(-64, 0, -64, 46, 64, 46, 64, 0, 14, 0, 14, 28, -14, 28, -14, 0)
+depth = 2.0
+
+[node name="Button" parent="." unique_id=1086304943 instance=ExtResource("2_c53wp")]
+transform = Transform3D(7.5, 0, 0, 0, -3.278354e-07, -7.5, 0, 7.5, -3.278354e-07, 64, 18, 3)
+
+[node name="ElevatorDoors" type="AnimatableBody3D" parent="." unique_id=1572490368]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 20, 64)
+collision_layer = 3
+
+[node name="DoorRCollision" type="CollisionShape3D" parent="ElevatorDoors" unique_id=1690669647]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_c53wp")
+
+[node name="DoorR" type="CSGBox3D" parent="ElevatorDoors/DoorRCollision" unique_id=718409540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+use_collision = true
+size = Vector3(16, 26, 2)
+material = SubResource("StandardMaterial3D_cqcfi")
+
+[node name="DoorLCollision" type="CollisionShape3D" parent="ElevatorDoors" unique_id=1883346468]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_cqcfi")
+
+[node name="DoorL" type="CSGBox3D" parent="ElevatorDoors/DoorLCollision" unique_id=1805605902]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
+use_collision = true
+size = Vector3(16, 26, 2)
+material = SubResource("StandardMaterial3D_k53yf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ElevatorDoors" unique_id=408212618]
+libraries/ = SubResource("AnimationLibrary_30s0j")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=194151567]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 39, 32)
+layers = 65
+light_energy = 10.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
+omni_range = 64.0
+omni_attenuation = 0.8
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1642148922]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 96, 39, 32)
+layers = 65
+light_energy = 10.0
+shadow_enabled = true
+shadow_reverse_cull_face = true
+distance_fade_begin = 64.0
+distance_fade_shadow = 64.0
+distance_fade_length = 100.0
+omni_range = 64.0
+omni_attenuation = 0.8
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="animation_finished" from="ElevatorDoors/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

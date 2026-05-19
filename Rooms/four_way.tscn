@@ -43,7 +43,7 @@ polygon = PackedVector2Array(-32, 0, -32, 64, 32, 64, 32, 0, 12, 0, 12, 38, -12,
 depth = 2.0
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="NonWalkable" unique_id=2015207632]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 64, 32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 63, 32)
 size = Vector3(64, 2, 64)
 
 [node name="CSGPolygon3D3" type="CSGPolygon3D" parent="NonWalkable" unique_id=494805389]

@@ -6,12 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://dmpp8uyvyu0xi" path="res://Doors/door_east.tscn" id="4_1oo4e"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_8007g"]
-vertices = PackedVector3Array(4, 2.5, 4, 4, 2.5, 124, 124, 2.5, 124, 124, 2.5, 4)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+vertices = PackedVector3Array(74.5, 2.5, 3.25, 74, 2.5, 2, 54, 2.5, 2, 53.5, 2.5, 3.25, 124, 2.5, 124, 124, 2.5, 4, 75.75, 2.5, 4, 52.25, 2.5, 4, 4, 2.5, 124, 4, 2.5, 4)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(6, 5, 4), PackedInt32Array(0, 6, 3), PackedInt32Array(3, 6, 7), PackedInt32Array(7, 6, 4), PackedInt32Array(7, 4, 8), PackedInt32Array(8, 9, 7)]
 agent_height = 24.0
 agent_radius = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bdfba"]
+albedo_color = Color(0.34117648, 0.34509805, 0.34509805, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_823qn"]
 albedo_color = Color(0.34117648, 0.34509805, 0.34509805, 1)
 
 [node name="MainRoom" type="Node3D" unique_id=1486356749]
@@ -32,12 +35,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 1, 64)
 size = Vector3(124, 2, 124)
 material = SubResource("StandardMaterial3D_bdfba")
 
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/Walkable" unique_id=297758847]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 1, 1)
+size = Vector3(24, 2, 2)
+material = SubResource("StandardMaterial3D_823qn")
+
 [node name="NonWalkable" type="CSGCombiner3D" parent="." unique_id=342455650]
 use_collision = true
 collision_layer = 3
 
 [node name="CSGBox3D6" type="CSGBox3D" parent="NonWalkable" unique_id=180707551]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 64, 64)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 63, 64)
 size = Vector3(128, 2, 128)
 
 [node name="CSGPolygon3D3" type="CSGPolygon3D" parent="NonWalkable" unique_id=300873152]
@@ -55,9 +63,10 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0
 polygon = PackedVector2Array(-64, 0, -64, 64, 64, 64, 64, 0, 12, 0, 12, 38, -12, 38, -12, 0)
 depth = 2.0
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="NonWalkable" unique_id=1609063345]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 32, 1)
-size = Vector3(128, 64, 2)
+[node name="CSGPolygon3D6" type="CSGPolygon3D" parent="NonWalkable" unique_id=1731638904]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 2)
+polygon = PackedVector2Array(-64, 0, -64, 64, 64, 64, 64, 0, 12, 0, 12, 28, -12, 28, -12, 0)
+depth = 2.0
 
 [node name="DoorPoints" type="Node3D" parent="." unique_id=973326147]
 
