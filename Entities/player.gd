@@ -6,6 +6,7 @@ extends Entity
 @onready var playerAnimator: AnimationPlayer = $Bagman/AnimationPlayer
 @onready var viewport: SubViewport = $Camera3D/SubViewportContainer/SubViewport
 @onready var view_model_camera: Camera3D = $Camera3D/SubViewportContainer/SubViewport/ViewModel
+@onready var hud: Node2D = $PlayerHUD
 @onready var gun: Gun = $Lupara
 @onready var hitscan: Node3D = gun.get_hitscan()
 
@@ -24,6 +25,12 @@ func _ready() -> void:
 	viewport.size = DisplayServer.window_get_size()
 	
 	hitscan.global_transform = camera.global_transform
+	
+	load_data(Global.player_data)
+	
+	hud.update_health(health)
+	hud.update_clip(gun.get_clip())
+	hud.update_reserve(gun.get_ammo())
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
@@ -50,10 +57,10 @@ func shoot() -> void:
 	
 	view_model_camera.play("Fire")
 	gun.shoot()
+	hud.update_clip(gun.get_clip())
 
 func reload() -> void:
 	view_model_camera.play("Reload")
-	gun.reload()
 
 func handle_input(delta: float) -> void:
 	handle_jump()
@@ -113,6 +120,11 @@ func handle_reload() -> void:
 		reload()
 
 #Override
+func hurt(damage: float) -> void:
+	super.hurt(damage)
+	hud.update_health(health)
+
+#Override
 func die() -> void:
 	get_tree().quit()
 
@@ -140,3 +152,27 @@ func handle_movement() -> void:
 	else:
 		playerAnimator.play("RESET")
 	move_and_slide()
+
+func get_data() -> Array:
+	return [global_position, rotation, velocity, air_jumps, gun.get_clip(), gun.get_ammo()]
+
+func load_data(data: Array) -> void:
+	if data.is_empty():
+		return
+	
+	global_position = data[0]
+	rotation = data[1]
+	velocity = data[2]
+	air_jumps = data[3]
+	gun.clip = data[4]
+	gun.ammo = data[5]
+	
+	hud.update_health(health)
+	hud.update_clip(gun.get_clip())
+	hud.update_reserve(gun.get_ammo())
+
+
+func _on_view_model_reload_finished() -> void:
+	gun.reload()
+	hud.update_clip(gun.get_clip())
+	hud.update_reserve(gun.get_ammo())

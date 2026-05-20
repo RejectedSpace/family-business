@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bijco851t8bfq" path="res://Entities/Bagman.glb" id="2_onrkg"]
 [ext_resource type="PackedScene" uid="uid://d3njrv8mlryaa" path="res://Guns/lupara.tscn" id="3_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://ctpbuawalq55t" path="res://Systems/Interaction/player_interactor.tscn" id="3_kee72"]
+[ext_resource type="PackedScene" uid="uid://d27koothypfp5" path="res://Systems/HUD/player_hud.tscn" id="6_prmdv"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prmdv"]
 size = Vector3(19, 11, 21)
@@ -393,6 +394,10 @@ libraries/ = SubResource("AnimationLibrary_sweqy")
 libraries/ = SubResource("AnimationLibrary_jlcve")
 playback_auto_capture_transition_type = 6
 playback_default_blend_time = 0.1
+
+[node name="PlayerHUD" parent="." unique_id=907861099 instance=ExtResource("6_prmdv")]
+
+[connection signal="reload_finished" from="Camera3D/SubViewportContainer/SubViewport/ViewModel" to="." method="_on_view_model_reload_finished"]
 
 [editable path="Camera3D/PlayerInteractor"]
 [editable path="Bagman"]

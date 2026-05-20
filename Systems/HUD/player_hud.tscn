@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://d27koothypfp5"]
+
+[ext_resource type="Script" uid="uid://dimkvyud5u8ra" path="res://Systems/HUD/player_hud.gd" id="1_tvw2b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5sskr"]
+font_size = 10
+
+[node name="PlayerHUD" type="Node2D" unique_id=907861099]
+script = ExtResource("1_tvw2b")
+
+[node name="Health" type="MarginContainer" parent="." unique_id=480550682]
+offset_top = 700.0
+offset_right = 40.0
+offset_bottom = 725.0
+scale = Vector2(4, 4)
+
+[node name="Panel" type="Panel" parent="Health" unique_id=178084247]
+layout_mode = 2
+
+[node name="HP" type="Label" parent="Health/Panel" unique_id=174717522]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -11.5
+offset_right = 14.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "100"
+horizontal_alignment = 1
+
+[node name="Ammo" type="MarginContainer" parent="." unique_id=1267057201]
+offset_left = 1120.0
+offset_top = 700.0
+offset_right = 1160.0
+offset_bottom = 725.0
+scale = Vector2(4, 4)
+
+[node name="Panel" type="Panel" parent="Ammo" unique_id=1552435566]
+layout_mode = 2
+
+[node name="Clip" type="Label" parent="Ammo/Panel" unique_id=489247398]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_right = 10.0
+offset_bottom = 11.5
+grow_vertical = 2
+text = "2"
+
+[node name="Reserve" type="Label" parent="Ammo/Panel" unique_id=2016012890]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -19.0
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 0
+grow_vertical = 2
+text = "16"
+label_settings = SubResource("LabelSettings_5sskr")
+
+[node name="Enemies" type="MarginContainer" parent="." unique_id=929940798]
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 27.0
+scale = Vector2(4, 4)
+
+[node name="Panel" type="Panel" parent="Enemies" unique_id=1933297038]
+layout_mode = 2
+
+[node name="Enemies" type="Label" parent="Enemies/Panel" unique_id=1299378473]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -11.5
+offset_right = 14.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5"
+horizontal_alignment = 1

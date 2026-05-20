@@ -8,12 +8,16 @@ enum {
 @onready var agent: NavigationAgent3D = $NavigationAgent3D
 @onready var animator: AnimationPlayer = $Infected/AnimationPlayer
 @onready var attack_timer: Timer = $AttackTimer
+@onready var ray_cast: RayCast3D = $RayCast3D
 
 var state: int = IDLE
 var player: Node3D
 
 const SPEED: float = 60
 const EPSILON: float = 0.75
+const SIGHT_DISTANCE: float = 100.0
+const FOV: float = 190.0
+const SMOOTHING_FACTOR = 0.2
 
 func _ready() -> void:
 	Global.enemies += 1
@@ -24,17 +28,20 @@ func die() -> void:
 	queue_free()
 
 func _physics_process(delta: float) -> void:
+	if player:
+		looking()
 	
-	update_target_location()
+	if ray_cast.get_collider() == player:
+		update_target_location()
 	
 	var current_pos: Vector3 = global_transform.origin
 	var next_pos: Vector3 = agent.get_next_path_position()
 	var distance: Vector3 = next_pos - current_pos
 	
-	if agent.is_target_reached() and state == ACTIVE:
+	if agent.is_target_reached() and state == ACTIVE and global_position.distance_to(player.global_position) <= 5:
 		attack()
 	
-	if not attack_timer.is_stopped() or agent.get_final_position().is_equal_approx(global_transform.origin):
+	if not attack_timer.is_stopped() or agent.get_target_position().is_zero_approx() or agent.is_target_reached():
 		state = IDLE
 	else:
 		state = ACTIVE
@@ -53,6 +60,18 @@ func _physics_process(delta: float) -> void:
 		animator.play("ArmatureAction")
 	else:
 		animator.play("ArmatureAction_001")
+
+func looking() -> void:
+	if not player:
+		return
+ 
+	var to_player = (player.global_transform.origin - global_transform.origin).normalized()
+	var forward = global_transform.basis.x
+	var angle_deg = rad_to_deg(acos(clamp(forward.dot(to_player), -1.0, 1.0)))
+	var squared_distance = global_transform.origin.distance_squared_to(player.global_transform.origin)
+	if angle_deg > FOV * 0.5 and squared_distance > 600:
+		return
+	ray_cast.look_at(ray_cast.global_transform.origin + to_player, Vector3.UP)
 
 func attack() -> void:
 	if player:
@@ -84,4 +103,3 @@ func update_target_location() -> void:
 
 func update_target(target: Node3D) -> void:
 	player = target
-	agent.set_target_position(target.global_transform.origin)

@@ -36,6 +36,10 @@ func sway(amount: Vector2) -> void:
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Holster":
 		play("Deploy")
+	if anim_name == "Reload":
+		reload_finished.emit()
 
 func _on_flash_timer_timeout() -> void:
 	flash.visible = false
+
+signal reload_finished

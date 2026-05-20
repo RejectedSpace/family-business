@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://briy5pits1eav"]
+
+[ext_resource type="PackedScene" uid="uid://dukfnixm8oxen" path="res://Rooms/long_four_way.tscn" id="1_37kl0"]
+[ext_resource type="Script" uid="uid://b0r0d7mciwiw1" path="res://test.gd" id="1_ppyta"]
+[ext_resource type="PackedScene" uid="uid://deimi6535r30q" path="res://Entities/player.tscn" id="2_6uqi0"]
+[ext_resource type="PackedScene" uid="uid://b3vultmp88md5" path="res://Entities/enemy.tscn" id="3_ppyta"]
+
+[node name="Test" type="Node3D" unique_id=375594630]
+script = ExtResource("1_ppyta")
+
+[node name="LongFourWay" parent="." unique_id=333191372 instance=ExtResource("1_37kl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128, 0, 0)
+
+[node name="LongFourWay2" parent="." unique_id=191110077 instance=ExtResource("1_37kl0")]
+
+[node name="LongFourWay3" parent="." unique_id=1161672386 instance=ExtResource("1_37kl0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128.03032, 0, 0)
+
+[node name="s3" parent="LongFourWay3/DoorPoints" parent_id_path=PackedInt32Array(1161672386, 1243334676) index="3" unique_id=959934092]
+visible = false
+
+[node name="Player" parent="." unique_id=1819948495 instance=ExtResource("2_6uqi0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -115.458725, 8.888222, 35.2186)
+
+[node name="Hitscan" parent="Player/Lupara" parent_id_path=PackedInt32Array(1819948495, 1637088801) index="1" unique_id=624661413]
+visible = false
+
+[node name="Enemy" parent="." unique_id=1627701688 instance=ExtResource("3_ppyta")]
+transform = Transform3D(-0.9999335, 0, -0.011536255, 0, 1, 0, 0.011536255, 0, -0.9999335, 233.34367, 7.7026443, 20.732683)
+
+[editable path="LongFourWay"]
+[editable path="LongFourWay2"]
+[editable path="LongFourWay3"]
+[editable path="Player"]
+[editable path="Player/Camera3D/PlayerInteractor"]
+[editable path="Player/Bagman"]
+[editable path="Player/Lupara"]
+[editable path="Player/Lupara/Lupara"]

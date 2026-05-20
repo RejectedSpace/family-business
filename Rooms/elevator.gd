@@ -14,11 +14,11 @@ func _on_button_pressed() -> void:
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "Close":
-		change_scene.emit()
-	if anim_name == "Open":
-		button.activate()
+		closed.emit()
+	#if anim_name == "Open":
+		#button.activate()
 
 func activate() -> void:
 	button.activate()
 
-signal change_scene
+signal closed

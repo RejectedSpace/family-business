@@ -65,7 +65,7 @@ depth = 2.0
 
 [node name="CSGPolygon3D6" type="CSGPolygon3D" parent="NonWalkable" unique_id=1731638904]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 2)
-polygon = PackedVector2Array(-64, 0, -64, 64, 64, 64, 64, 0, 12, 0, 12, 28, -12, 28, -12, 0)
+polygon = PackedVector2Array(-64, 0, -64, 64, 64, 64, 64, 0, 14, 0, 14, 28, -14, 28, -14, 0)
 depth = 2.0
 
 [node name="DoorPoints" type="Node3D" parent="." unique_id=973326147]

@@ -11,3 +11,5 @@ script = ExtResource("1_ksl4j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, -64)
 
 [node name="LoadingScreen" parent="." unique_id=2066597213 instance=ExtResource("2_2tcpc")]
+
+[connection signal="closed" from="Elevator" to="." method="_on_elevator_closed"]

@@ -6,6 +6,7 @@ extends StaticBody3D
 var active = false
 
 func _ready() -> void:
+	Global.button = self
 	if not active:
 		animator.play("Inactive")
 		set_active(false)

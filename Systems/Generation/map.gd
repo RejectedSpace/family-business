@@ -38,15 +38,15 @@ func generate(time: float = 0.0) -> void:
 			expand_map()
 	else:
 		timer.start(time)
-	
-	Global.enemies -= 1
 
-func spawn_enemy(pos: Vector3) -> void:
-	if randi() % 5 != 6:
+func spawn_enemy(door: Door) -> void:
+	if randi() % 2 != 0:
 		return
 	var new_enemy = enemy.instantiate()
 	add_child(new_enemy)
-	new_enemy.global_position = pos
+	new_enemy.global_position = door.global_position
+	new_enemy.rotation = door.rotation
+	new_enemy.rotate_y(PI / 2)
 
 func connect_room(room_origin: Vector3, room_rotation: float, door: Door, room_candidate: Room, door_origin: Vector3):
 	var doors: Array[Door] = room_candidate.get_single_doors() if door.is_single() else room_candidate.get_double_doors()
@@ -104,7 +104,7 @@ func expand_map() -> void:
 			door.set_enabled(true)
 			connected_door.set_enabled(true)
 			
-			spawn_enemy(door.global_position)
+			spawn_enemy(door)
 			
 			register_door(door)
 			continue
@@ -128,7 +128,7 @@ func expand_map() -> void:
 				door.set_enabled(true)
 				new_door.set_enabled(true)
 				
-				spawn_enemy(door.global_position)
+				spawn_enemy(door)
 				
 				break
 	

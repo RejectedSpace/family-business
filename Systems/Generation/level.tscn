@@ -32,7 +32,7 @@ script = ExtResource("1_f2txt")
 transform = Transform3D(-0.9881267, 0, -0.15364122, 0, 1, 0, 0.15364122, 0, -0.9881267, 19.669388, 2.3550453, -44.982872)
 
 [node name="Map" parent="." unique_id=391048862 instance=ExtResource("3_1ainy")]
-MAPSIZE = Vector3(10, 2, 10)
+MAPSIZE = Vector3(4, 1, 4)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1062874103]
 transform = Transform3D(-0.8754825, 0.21296343, -0.43379375, 0, 0.8976593, 0.44069013, 0.48324984, 0.38581648, -0.78588504, 10.879099, 50.94408, 5.2747383)
@@ -49,4 +49,4 @@ environment = SubResource("Environment_i2t4f")
 [node name="Elevator" parent="." unique_id=904618005 instance=ExtResource("4_weuog")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, -64)
 
-[connection signal="change_scene" from="Elevator" to="." method="_on_elevator_change_scene"]
+[connection signal="closed" from="Elevator" to="." method="_on_elevator_closed"]
