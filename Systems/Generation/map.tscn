@@ -4,8 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://4shafjh2xo0f" path="res://Rooms/main_room.tscn" id="2_iw27f"]
 [ext_resource type="PackedScene" uid="uid://bnsafy2cbheew" path="res://Rooms/sewer.tscn" id="2_urblq"]
 [ext_resource type="PackedScene" uid="uid://cvpt4fbg30e4t" path="res://Rooms/four_way.tscn" id="3_iw27f"]
-[ext_resource type="PackedScene" uid="uid://d1af3mmwmds55" path="res://Rooms/sewer_flipped.tscn" id="4_71pa8"]
-[ext_resource type="PackedScene" uid="uid://dukfnixm8oxen" path="res://Rooms/long_four_way.tscn" id="5_05x41"]
+[ext_resource type="PackedScene" uid="uid://d1af3mmwmds55" path="res://Rooms/sewer_reverse.tscn" id="4_71pa8"]
+[ext_resource type="PackedScene" uid="uid://dukfnixm8oxen" path="res://Rooms/four_way_long.tscn" id="5_05x41"]
+[ext_resource type="PackedScene" uid="uid://cechu1umtyn20" path="res://Rooms/two_way_long_inverse.tscn" id="7_hkut0"]
 
 [node name="Map" type="Node3D" unique_id=391048862]
 script = ExtResource("1_c7s6e")
@@ -19,14 +20,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -320, 0, -320)
 [node name="FourWay" parent="Rooms" unique_id=367034818 instance=ExtResource("3_iw27f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -128)
 
-[node name="LongFourWay" parent="Rooms" unique_id=333191372 instance=ExtResource("5_05x41")]
+[node name="FourWayLong" parent="Rooms" unique_id=333191372 instance=ExtResource("5_05x41")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -256)
 
 [node name="Sewer" parent="Rooms" unique_id=1124936596 instance=ExtResource("2_urblq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -256, 0, 0)
 
-[node name="SewerFlipped" parent="Rooms" unique_id=479717420 instance=ExtResource("4_71pa8")]
+[node name="SewerReverse" parent="Rooms" unique_id=479717420 instance=ExtResource("4_71pa8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -512, 0, 0)
+
+[node name="TwoWayLongInverse" parent="Rooms" unique_id=1292292194 instance=ExtResource("7_hkut0")]
 
 [node name="Timer" type="Timer" parent="." unique_id=1682729931]
 wait_time = 0.1

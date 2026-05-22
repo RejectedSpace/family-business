@@ -15,4 +15,5 @@ func _process(delta: float) -> void:
 func _on_elevator_closed() -> void:
 	Global.next_scene = "res://Systems/Generation/level.tscn"
 	Global.player_data = player.get_data()
+	Global.level_count += 1
 	get_tree().change_scene_to_packed(Global.loading_scene)

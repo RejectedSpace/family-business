@@ -9,15 +9,18 @@ extends Entity
 @onready var hud: Node2D = $PlayerHUD
 @onready var gun: Gun = $Lupara
 @onready var hitscan: Node3D = gun.get_hitscan()
+@onready var step_sound: AudioStreamPlayer3D = $StepSound
+@onready var step_timer: Timer = $StepTimer
 
 var air_jumps: int
 var crouched: bool
 var running: bool
 
-const SPEED: float = 120
+const SPEED: float = 120.0
+const STEP_FREQUENCY: float = 40.0
 const BACKWARD_MULTIPLIER: float = 0.9
 const POSTURE_MULTIPLIER: float = 0.6
-const JUMP_VELOCITY: float = 85
+const JUMP_VELOCITY: float = 85.0
 const MAX_AIR_JUMPS: int = 1
 
 func _ready() -> void:
@@ -36,6 +39,7 @@ func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	handle_input(delta)
 	handle_movement()
+	handle_step_sound()
 	view_model_camera.global_transform = camera.global_transform
 
 func apply_gravity(delta: float) -> void:
@@ -153,6 +157,21 @@ func handle_movement() -> void:
 		playerAnimator.play("RESET")
 	move_and_slide()
 
+func handle_step_sound() -> void:
+	if not is_on_floor():
+		step_timer.stop()
+		return
+	var speed = get_real_velocity().length()
+	if is_zero_approx(speed):
+		if not step_timer.is_stopped():
+			step_timer.timeout.emit()
+		step_timer.stop()
+		return
+	var time_to_step = STEP_FREQUENCY / speed
+	step_sound.set_volume_db(2 / time_to_step)
+	if step_timer.is_stopped() or time_to_step < step_timer.get_time_left():
+		step_timer.start(time_to_step)
+
 func get_data() -> Array:
 	return [global_position, rotation, velocity, air_jumps, gun.get_clip(), gun.get_ammo()]
 
@@ -176,3 +195,7 @@ func _on_view_model_reload_finished() -> void:
 	gun.reload()
 	hud.update_clip(gun.get_clip())
 	hud.update_reserve(gun.get_ammo())
+
+
+func _on_step_timer_timeout() -> void:
+	step_sound.play()

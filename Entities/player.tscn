@@ -6,6 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://d3njrv8mlryaa" path="res://Guns/lupara.tscn" id="3_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://ctpbuawalq55t" path="res://Systems/Interaction/player_interactor.tscn" id="3_kee72"]
 [ext_resource type="PackedScene" uid="uid://d27koothypfp5" path="res://Systems/HUD/player_hud.tscn" id="6_prmdv"]
+[ext_resource type="AudioStream" uid="uid://bj242j0gfw4ln" path="res://Sounds/Step/step-wood-0.mp3" id="7_eyssl"]
+[ext_resource type="AudioStream" uid="uid://gs5aj5gxaa6y" path="res://Sounds/Step/step-wood-1.mp3" id="8_pg4qw"]
+[ext_resource type="AudioStream" uid="uid://dvxaick0ng15n" path="res://Sounds/Step/step-wood-2.mp3" id="9_25cb4"]
+[ext_resource type="AudioStream" uid="uid://butw4u8fui1we" path="res://Sounds/Step/step-wood-3.mp3" id="10_uck12"]
+[ext_resource type="AudioStream" uid="uid://cfitkhknue7b3" path="res://Sounds/Step/step-wood-4.mp3" id="11_mat3c"]
+[ext_resource type="AudioStream" uid="uid://ccaieqjl6nqg7" path="res://Sounds/Step/step-wood-5.mp3" id="12_ffc7a"]
+[ext_resource type="AudioStream" uid="uid://bxdfh752llrk8" path="res://Sounds/Step/step-wood-6.mp3" id="13_irn06"]
+[ext_resource type="AudioStream" uid="uid://cd3bl50bobyy" path="res://Sounds/Step/step-wood-7.mp3" id="14_v3fwn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_prmdv"]
 size = Vector3(19, 11, 21)
@@ -166,6 +174,18 @@ _data = {
 &"Uncrouch": SubResource("Animation_j25qi")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_f8jwp"]
+random_pitch = 1.122462
+streams_count = 8
+stream_0/stream = ExtResource("7_eyssl")
+stream_1/stream = ExtResource("8_pg4qw")
+stream_2/stream = ExtResource("9_25cb4")
+stream_3/stream = ExtResource("10_uck12")
+stream_4/stream = ExtResource("11_mat3c")
+stream_5/stream = ExtResource("12_ffc7a")
+stream_6/stream = ExtResource("13_irn06")
+stream_7/stream = ExtResource("14_v3fwn")
+
 [node name="Player" type="CharacterBody3D" unique_id=1819948495]
 collision_mask = 2
 script = ExtResource("1_2j1hn")
@@ -190,8 +210,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 0)
 [node name="Flashlight" type="SpotLight3D" parent="Camera3D" unique_id=806704682]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0.32598758)
 layers = 97
-light_energy = 100.0
-spot_range = 100.0
+light_energy = 10.0
+spot_range = 400.0
 spot_angle = 40.0
 spot_angle_attenuation = 3.8637452
 
@@ -201,6 +221,9 @@ player = NodePath("../..")
 [node name="CollisionShape3D" parent="Camera3D/PlayerInteractor" index="0" unique_id=1818044400]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -10)
 shape = SubResource("BoxShape3D_prmdv")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Camera3D" unique_id=1929422585]
+current = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=591646248]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
@@ -397,7 +420,16 @@ playback_default_blend_time = 0.1
 
 [node name="PlayerHUD" parent="." unique_id=907861099 instance=ExtResource("6_prmdv")]
 
+[node name="StepSound" type="AudioStreamPlayer3D" parent="." unique_id=1482591663]
+stream = SubResource("AudioStreamRandomizer_f8jwp")
+max_polyphony = 2
+bus = &"Sounds"
+
+[node name="StepTimer" type="Timer" parent="." unique_id=1780314310]
+one_shot = true
+
 [connection signal="reload_finished" from="Camera3D/SubViewportContainer/SubViewport/ViewModel" to="." method="_on_view_model_reload_finished"]
+[connection signal="timeout" from="StepTimer" to="." method="_on_step_timer_timeout"]
 
 [editable path="Camera3D/PlayerInteractor"]
 [editable path="Bagman"]

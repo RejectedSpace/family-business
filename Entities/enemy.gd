@@ -7,8 +7,16 @@ enum {
 
 @onready var agent: NavigationAgent3D = $NavigationAgent3D
 @onready var animator: AnimationPlayer = $Infected/AnimationPlayer
-@onready var attack_timer: Timer = $AttackTimer
 @onready var ray_cast: RayCast3D = $RayCast3D
+@onready var groan_sound: AudioStreamPlayer3D = $GroanSound
+@onready var scream_sound: AudioStreamPlayer3D = $ScreamSound
+@onready var chase_sound: AudioStreamPlayer3D = $ChaseSound
+@onready var step_sound: AudioStreamPlayer3D = $StepSound
+@onready var groan_timer: Timer = $GroanTimer
+@onready var chase_timer: Timer = $ChaseTimer
+@onready var attack_timer: Timer = $AttackTimer
+@onready var step_timer: Timer = $StepTimer
+@onready var hunt_timer: Timer = $HuntTimer
 
 var state: int = IDLE
 var player: Node3D
@@ -21,6 +29,8 @@ const SMOOTHING_FACTOR = 0.2
 
 func _ready() -> void:
 	Global.enemies += 1
+	
+	step_sound.set_volume_db(5)
 
 func die() -> void:
 	Global.enemies -= 1
@@ -42,8 +52,15 @@ func _physics_process(delta: float) -> void:
 		attack()
 	
 	if not attack_timer.is_stopped() or agent.get_target_position().is_zero_approx() or agent.is_target_reached():
+		if not step_timer.is_stopped():
+			step_timer.timeout.emit()
+			step_timer.stop()
 		state = IDLE
 	else:
+		if state == IDLE:
+			chase_sound.play()
+			step_timer.start()
+			randomize_timer(chase_timer)
 		state = ACTIVE
 	
 	if state == ACTIVE:
@@ -69,14 +86,13 @@ func looking() -> void:
 	var forward = global_transform.basis.x
 	var angle_deg = rad_to_deg(acos(clamp(forward.dot(to_player), -1.0, 1.0)))
 	var squared_distance = global_transform.origin.distance_squared_to(player.global_transform.origin)
-	if angle_deg > FOV * 0.5 and squared_distance > 600:
+	if angle_deg > FOV * 0.5 and squared_distance > 200 and hunt_timer.is_stopped():
 		return
 	ray_cast.look_at(ray_cast.global_transform.origin + to_player, Vector3.UP)
 
 func attack() -> void:
 	if player:
 		player.hurt(10)
-		print(player.health)
 	attack_timer.start()
 
 func handle_gravity(delta: float) -> void:
@@ -100,6 +116,34 @@ func idle(delta: float) -> void:
 func update_target_location() -> void:
 	if player:
 		agent.set_target_position(player.global_transform.origin)
+		print('gotcha')
+		hunt_timer.start()
 
 func update_target(target: Node3D) -> void:
 	player = target
+
+func randomize_timer(timer: Timer) -> void:
+	var rand_val = randf() + 0.5
+	timer.start(timer.get_wait_time() * rand_val)
+
+func _on_groan_timer_timeout() -> void:
+	if state == IDLE:
+		groan_sound.play()
+	else:
+		randomize_timer(groan_timer)
+
+func _on_groan_sound_finished() -> void:
+	randomize_timer(groan_timer)
+
+func _on_chase_timer_timeout() -> void:
+	if state == ACTIVE:
+		chase_sound.play()
+	else:
+		randomize_timer(chase_timer)
+
+func _on_chase_sound_finished() -> void:
+	randomize_timer(chase_timer)
+
+func _on_step_timer_timeout() -> void:
+	step_sound.play()
+	step_timer.start()

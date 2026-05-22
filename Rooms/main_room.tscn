@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b42cjc8kn1ngy" path="res://Doors/door_west.tscn" id="3_t3c8w"]
 [ext_resource type="PackedScene" uid="uid://dmpp8uyvyu0xi" path="res://Doors/door_east.tscn" id="4_1oo4e"]
 [ext_resource type="Texture2D" uid="uid://dscewq4snxmbm" path="res://Textures/GreenWallpaper.png" id="4_ivsvi"]
+[ext_resource type="PackedScene" uid="uid://c4wb736g5j5pb" path="res://hallway_lamp.tscn" id="9_fhf75"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_8007g"]
 vertices = PackedVector3Array(74.5, 2.5, 3.25, 74, 2.5, 2, 54, 2.5, 2, 53.5, 2.5, 3.25, 124, 2.5, 124, 124, 2.5, 4, 75.75, 2.5, 4, 52.25, 2.5, 4, 4, 2.5, 124, 4, 2.5, 4)
@@ -167,7 +168,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 64)
 [node name="d2" parent="DoorPoints" unique_id=959934092 instance=ExtResource("4_1oo4e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 64)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=946415532]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 51, 30)
-layers = 1023
-light_energy = 10.0
+[node name="HallwayLamp" parent="." unique_id=1556418243 instance=ExtResource("9_fhf75")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 26, 44, 2)
+
+[node name="HallwayLamp2" parent="." unique_id=109293232 instance=ExtResource("9_fhf75")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 102, 44, 2)
+
+[node name="HallwayLamp3" parent="." unique_id=1199820891 instance=ExtResource("9_fhf75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 44, 27)
+
+[node name="HallwayLamp4" parent="." unique_id=71415952 instance=ExtResource("9_fhf75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 44, 64)
+
+[node name="HallwayLamp5" parent="." unique_id=1361570552 instance=ExtResource("9_fhf75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 44, 64)
+
+[node name="HallwayLamp6" parent="." unique_id=1135958346 instance=ExtResource("9_fhf75")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 44, 101)
+
+[node name="HallwayLamp7" parent="." unique_id=1507104537 instance=ExtResource("9_fhf75")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 27, 44, 126)
+
+[node name="HallwayLamp8" parent="." unique_id=1095716176 instance=ExtResource("9_fhf75")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 64, 44, 126)
+
+[node name="HallwayLamp9" parent="." unique_id=885045833 instance=ExtResource("9_fhf75")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 101, 44, 126)
+
+[node name="HallwayLamp10" parent="." unique_id=1923620404 instance=ExtResource("9_fhf75")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 126, 44, 101)
+
+[node name="HallwayLamp11" parent="." unique_id=1488016033 instance=ExtResource("9_fhf75")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 126, 44, 64)
+
+[node name="HallwayLamp12" parent="." unique_id=638677968 instance=ExtResource("9_fhf75")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 126, 44, 27)

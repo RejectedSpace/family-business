@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://briy5pits1eav"]
 
-[ext_resource type="PackedScene" uid="uid://dukfnixm8oxen" path="res://Rooms/long_four_way.tscn" id="1_37kl0"]
+[ext_resource type="PackedScene" uid="uid://dukfnixm8oxen" path="res://Rooms/four_way_long.tscn" id="1_37kl0"]
 [ext_resource type="Script" uid="uid://b0r0d7mciwiw1" path="res://test.gd" id="1_ppyta"]
 [ext_resource type="PackedScene" uid="uid://deimi6535r30q" path="res://Entities/player.tscn" id="2_6uqi0"]
 [ext_resource type="PackedScene" uid="uid://b3vultmp88md5" path="res://Entities/enemy.tscn" id="3_ppyta"]

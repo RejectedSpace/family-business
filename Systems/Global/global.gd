@@ -7,6 +7,7 @@ var button
 
 var old_count: int = 0
 var enemies: int = 0
+var level_count: int = 0
 
 func _process(delta: float) -> void:
 	if old_count != enemies and enemies == 0 and button:

@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dscewq4snxmbm" path="res://Textures/GreenWallpaper.png" id="3_u7org"]
 [ext_resource type="PackedScene" uid="uid://cn8ufnfxrqmw7" path="res://Doors/door_south.tscn" id="4_0wl17"]
 [ext_resource type="PackedScene" uid="uid://dmpp8uyvyu0xi" path="res://Doors/door_east.tscn" id="5_2anm4"]
+[ext_resource type="PackedScene" uid="uid://c4wb736g5j5pb" path="res://hallway_lamp.tscn" id="10_u7org"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_kbjfu"]
 vertices = PackedVector3Array(4, 2.5, 4, 4, 2.5, 60, 60, 2.5, 60, 60, 2.5, 4)
@@ -148,7 +149,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 0)
 [node name="s3" parent="DoorPoints" unique_id=959934092 instance=ExtResource("5_2anm4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=354463920]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 37, 51, 30)
-layers = 1023
-light_energy = 10.0
+[node name="HallwayLamp" parent="." unique_id=1556418243 instance=ExtResource("10_u7org")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 44, 32)
+
+[node name="HallwayLamp2" parent="." unique_id=98451267 instance=ExtResource("10_u7org")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 32, 44, 2)
+
+[node name="HallwayLamp3" parent="." unique_id=1815298363 instance=ExtResource("10_u7org")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 62, 44, 32)
+
+[node name="HallwayLamp4" parent="." unique_id=1779380864 instance=ExtResource("10_u7org")]
+transform = Transform3D(5.9604645e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 5.9604645e-08, 32, 44, 62)

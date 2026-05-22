@@ -7,7 +7,10 @@ extends Node3D
 var open = false
 
 func _ready() -> void:
-	elevator_animator.play("Rise")
+	if Global.level_count > 0:
+		elevator_animator.play("Rise")
+	else:
+		activate()
 
 func _on_button_pressed() -> void:
 	open = not open
