@@ -48,117 +48,117 @@ texture = ExtResource("1_gokl7")
 
 [node name="Rig" type="Node3D" parent="." unique_id=132144506]
 
-[node name="LuparaViewModel" parent="Rig" unique_id=595270807 instance=ExtResource("3_hgbsr")]
+[node name="LuparaViewModel" parent="Rig" unique_id=2063934367 instance=ExtResource("3_hgbsr")]
 
-[node name="Arms" parent="Rig/LuparaViewModel" index="0" unique_id=1403793166]
+[node name="Arms" parent="Rig/LuparaViewModel" index="0" unique_id=1702089853]
 transform = Transform3D(-1.25, 0, 0, 0, -1.25, 0, 0, 0, -1.2500002, 1.5569179, -2.3940437, -2.4738126)
 
-[node name="Cube_002" parent="Rig/LuparaViewModel/Arms" index="0" unique_id=1753048023]
+[node name="Cube_002" parent="Rig/LuparaViewModel/Arms" index="0" unique_id=39456848]
 layers = 64
 
-[node name="Cube_004" parent="Rig/LuparaViewModel/Arms" index="1" unique_id=1252233389]
+[node name="Cube_004" parent="Rig/LuparaViewModel/Arms" index="1" unique_id=528255553]
 layers = 64
 
-[node name="Cube_005" parent="Rig/LuparaViewModel/Arms" index="2" unique_id=990941516]
+[node name="Cube_005" parent="Rig/LuparaViewModel/Arms" index="2" unique_id=315567052]
 layers = 64
 
-[node name="Cube_006" parent="Rig/LuparaViewModel/Arms" index="3" unique_id=1659825941]
+[node name="Cube_006" parent="Rig/LuparaViewModel/Arms" index="3" unique_id=805711672]
 layers = 64
 
-[node name="Cube_007" parent="Rig/LuparaViewModel/Arms" index="4" unique_id=1978855317]
+[node name="Cube_007" parent="Rig/LuparaViewModel/Arms" index="4" unique_id=994403662]
 layers = 64
 
-[node name="Cube_008" parent="Rig/LuparaViewModel/Arms" index="5" unique_id=262757936]
+[node name="Cube_008" parent="Rig/LuparaViewModel/Arms" index="5" unique_id=1022656307]
 layers = 64
 
-[node name="Bone_008" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(595270807, 1992557152) index="0" unique_id=1569315581]
+[node name="Bone_008" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(2063934367, 1809068819) index="0" unique_id=2143642082]
 transform = Transform3D(-0.92609763, 0.35310477, -0.13289218, -0.3009081, -0.4788056, 0.8247419, 0.22759068, 0.80377966, 0.54967296, -0.4749078, -0.42204386, 1.1225159)
 
-[node name="Thumb_R" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_008" index="0" unique_id=118602634]
+[node name="Thumb_R" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_008" index="0" unique_id=2038761295]
 layers = 64
 
-[node name="Bone_009" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(595270807, 1992557152) index="1" unique_id=874286004]
+[node name="Bone_009" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(2063934367, 1809068819) index="1" unique_id=853482227]
 transform = Transform3D(-0.950806, 0.26391903, -0.16221842, -0.23124613, -0.25621435, 0.93855155, 0.20613877, 0.9298928, 0.3046405, -0.3318174, -0.058690578, 1.0298951)
 
-[node name="Finger_R" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_009" index="0" unique_id=404912640]
+[node name="Finger_R" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_009" index="0" unique_id=668062677]
 layers = 64
 
-[node name="Bone_007" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(595270807, 1992557152) index="2" unique_id=1569320719]
+[node name="Bone_007" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(2063934367, 1809068819) index="2" unique_id=1664432030]
 transform = Transform3D(-0.9289265, 0.26346043, -0.26016232, -0.31831664, -0.20933357, 0.9245831, 0.18913019, 0.9416836, 0.2783194, -0.43126547, -0.15927863, 0.37904966)
 
-[node name="Palm_R" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_007" index="0" unique_id=1204971934]
+[node name="Palm_R" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_007" index="0" unique_id=980041623]
 layers = 64
 
-[node name="Bone_006" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(595270807, 1992557152) index="3" unique_id=765234787]
+[node name="Bone_006" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(2063934367, 1809068819) index="3" unique_id=933756587]
 transform = Transform3D(0.02578117, -0.09610714, -0.99503744, -0.7359588, -0.67545027, 0.04617078, -0.6765355, 0.7311159, -0.08814484, -0.1881677, 1.5492357, -1.470268)
 
-[node name="Elbow_R" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_006" index="0" unique_id=816067825]
+[node name="Elbow_R" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_006" index="0" unique_id=2102262925]
 layers = 64
 
-[node name="Forearm_R" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_006" index="1" unique_id=767560020]
+[node name="Forearm_R" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_006" index="1" unique_id=1343124966]
 layers = 64
 
-[node name="Bone_005" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(595270807, 1992557152) index="4" unique_id=1097501078]
+[node name="Bone_005" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(2063934367, 1809068819) index="4" unique_id=106903364]
 transform = Transform3D(-0.014131784, -0.09746455, -0.99513906, -0.76575017, 0.64103997, -0.051909644, 0.642983, 0.7612941, -0.08369258, 0.026325388, 0.13848044, -3.145669)
 
-[node name="Bicep_R" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_005" index="0" unique_id=398084987]
+[node name="Bicep_R" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_005" index="0" unique_id=938653827]
 layers = 64
 
-[node name="Shoulder_R" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_005" index="1" unique_id=1443070665]
+[node name="Shoulder_R" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_005" index="1" unique_id=21933800]
 layers = 64
 
-[node name="Bone_016" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(595270807, 1992557152) index="5" unique_id=477815578]
+[node name="Bone_016" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(2063934367, 1809068819) index="5" unique_id=432986033]
 transform = Transform3D(0.95957536, -0.28052345, 0.022842161, -0.029867068, -0.18219222, -0.98280936, 0.27986252, 0.9423973, -0.18320543, 0.38942707, -0.7142284, 4.405575)
 
-[node name="Thumb_L" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_016" index="0" unique_id=986405245]
+[node name="Thumb_L" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_016" index="0" unique_id=993076452]
 layers = 64
 
-[node name="Bone_017" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(595270807, 1992557152) index="6" unique_id=1673200189]
+[node name="Bone_017" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(2063934367, 1809068819) index="6" unique_id=936112757]
 transform = Transform3D(0.88345534, -0.45297426, 0.119669944, 0.016473562, -0.22523293, -0.97416574, 0.4682254, 0.86260325, -0.19152102, 0.15164909, -0.4445173, 4.2272577)
 
-[node name="Fingers_L" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_017" index="0" unique_id=1612401112]
+[node name="Fingers_L" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_017" index="0" unique_id=434115850]
 layers = 64
 
-[node name="Bone_012" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(595270807, 1992557152) index="7" unique_id=79388967]
+[node name="Bone_012" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(2063934367, 1809068819) index="7" unique_id=428874965]
 transform = Transform3D(0.9304614, -0.34408984, 0.12587191, 0.07518312, -0.1569261, -0.98474467, 0.358593, 0.9257301, -0.120143846, 0.39576828, -0.5920037, 3.6253738)
 
-[node name="Palm_L" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_012" index="0" unique_id=61105604]
+[node name="Palm_L" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_012" index="0" unique_id=150689406]
 layers = 64
 
-[node name="Bone_011" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(595270807, 1992557152) index="8" unique_id=1475204589]
+[node name="Bone_011" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(2063934367, 1809068819) index="8" unique_id=1064795112]
 transform = Transform3D(0.16972457, -0.4639757, -0.8694367, -0.96455216, -0.25910872, -0.050018743, -0.20207107, 0.8471066, -0.49150565, 1.5693697, 0.0633975, 1.4826641)
 
-[node name="Elbow_L" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_011" index="0" unique_id=1731123871]
+[node name="Elbow_L" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_011" index="0" unique_id=1223775954]
 layers = 64
 
-[node name="Forearm_L" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_011" index="1" unique_id=658435950]
+[node name="Forearm_L" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_011" index="1" unique_id=1246528594]
 layers = 64
 
-[node name="Bone_010" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(595270807, 1992557152) index="9" unique_id=88219371]
+[node name="Bone_010" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(2063934367, 1809068819) index="9" unique_id=1430129391]
 transform = Transform3D(-0.014131427, 0.09746536, -0.99513865, -0.9892527, 0.14349018, 0.028101414, 0.14553156, 0.9848406, 0.094390154, 1.354875, -0.25238574, -0.6847036)
 
-[node name="Bicep_L" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_010" index="0" unique_id=520686545]
+[node name="Bicep_L" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_010" index="0" unique_id=132507856]
 layers = 64
 
-[node name="Shoulder_L" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_010" index="1" unique_id=2112114207]
+[node name="Shoulder_L" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_010" index="1" unique_id=994013968]
 layers = 64
 
-[node name="Bone" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(595270807, 1992557152) index="10" unique_id=1511732870]
+[node name="Bone" parent="Rig/LuparaViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(2063934367, 1809068819) index="10" unique_id=1017841460]
 transform = Transform3D(1.7881703e-07, -4.929067e-10, 1, 0.99998766, -0.0049983077, -1.7881345e-07, 0.0049983077, 0.99998766, -4.819751e-10, -0.018954037, -1.0246185, 2.3826222)
 
-[node name="Cube_009" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone" index="0" unique_id=1515898114]
+[node name="Cube_009" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone" index="0" unique_id=356994999]
 layers = 64
 
-[node name="Cube_010" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone" index="1" unique_id=1058207161]
+[node name="Cube_010" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone" index="1" unique_id=1476657116]
 layers = 64
 
-[node name="Cube" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_001" parent_id_path=PackedInt32Array(595270807, 300842470) index="0" unique_id=556083153]
+[node name="Cube" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_001" parent_id_path=PackedInt32Array(2063934367, 192798986) index="0" unique_id=441648552]
 layers = 64
 
-[node name="Cube_001" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_001" parent_id_path=PackedInt32Array(595270807, 300842470) index="1" unique_id=267324597]
+[node name="Cube_001" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_001" parent_id_path=PackedInt32Array(2063934367, 192798986) index="1" unique_id=427830650]
 layers = 64
 
-[node name="Cube_003" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_001" parent_id_path=PackedInt32Array(595270807, 300842470) index="2" unique_id=752765792]
+[node name="Cube_003" parent="Rig/LuparaViewModel/Arms/Skeleton3D/Bone_001" parent_id_path=PackedInt32Array(2063934367, 192798986) index="2" unique_id=1969822385]
 layers = 64
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Rig/LuparaViewModel/Arms" index="7" unique_id=418983050]

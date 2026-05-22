@@ -5,7 +5,7 @@ class_name Door
 @export var direction: String
 
 @onready var nav: NavigationRegion3D = $NavigationRegion3D
-@onready var blocker: CSGBox3D = $Blocker
+@onready var blockers: Node3D = $Blockers
 
 var single: bool
 
@@ -30,8 +30,9 @@ func set_enabled(value: bool) -> void:
 	nav.set_enabled(value)
 	nav.set_visible(value)
 	nav.set_use_edge_connections(value)
-	blocker.set_use_collision(not value)
-	blocker.set_visible(not value)
+	for blocker: CSGBox3D in blockers.get_children():
+		blocker.set_use_collision(not value)
+		blocker.set_visible(not value)
 
 func is_enabled() -> bool:
 	return nav.is_enabled()

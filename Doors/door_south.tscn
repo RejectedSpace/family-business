@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://cn8ufnfxrqmw7"]
 
 [ext_resource type="Script" uid="uid://d4f5uo8mpyy1j" path="res://Doors/door.gd" id="1_cw7iv"]
+[ext_resource type="Texture2D" uid="uid://ceosh4qac20yn" path="res://Textures/Wood.png" id="2_vu2lr"]
+[ext_resource type="Texture2D" uid="uid://dscewq4snxmbm" path="res://Textures/GreenWallpaper.png" id="3_e1pdk"]
+[ext_resource type="Texture2D" uid="uid://bjigiwstyi3ff" path="res://Textures/WoodPanel.png" id="3_ulmn6"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_sl6of"]
 vertices = PackedVector3Array(-10, 2.5, 0, -10, 2.5, 4, 10, 2.5, 4, 10, 2.5, 0)
@@ -10,8 +13,24 @@ agent_radius = 0.0
 filter_baking_aabb = AABB(0, 0, 0, 20, 4, 4)
 filter_baking_aabb_offset = Vector3(-10, 0, 0)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ulmn6"]
+albedo_texture = ExtResource("2_vu2lr")
+uv1_scale = Vector3(0.031, 0.375, 1)
+texture_filter = 0
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw0xy"]
 albedo_color = Color(0.50534403, 0.5053441, 0.50534403, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ertnn"]
+albedo_texture = ExtResource("3_e1pdk")
+uv1_scale = Vector3(0.375, 0.281, 1)
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e1pdk"]
+albedo_texture = ExtResource("3_ulmn6")
+uv1_scale = Vector3(0.375, 0.313, 1)
+uv1_triplanar_sharpness = 0.19614604
+texture_filter = 0
 
 [node name="DoorSouth" type="Node3D" unique_id=733808563]
 script = ExtResource("1_cw7iv")
@@ -29,7 +48,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1
 use_collision = true
 collision_layer = 3
 size = Vector3(24, 2, 2)
-material = SubResource("StandardMaterial3D_uw0xy")
+material = SubResource("StandardMaterial3D_ulmn6")
 
 [node name="CSGBox2" type="CSGBox3D" parent="NavigationRegion3D" unique_id=1558161035]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 1, 3)
@@ -39,8 +58,19 @@ collision_layer = 3
 size = Vector3(24, 2, 2)
 material = SubResource("StandardMaterial3D_uw0xy")
 
-[node name="Blocker" type="CSGBox3D" parent="." unique_id=916441167]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 1)
+[node name="Blockers" type="Node3D" parent="." unique_id=442099591]
+transform = Transform3D(-4.371138e-08, 0, 1, 0, 1, 0, -1, 0, -4.371138e-08, 0, 0, 0)
+
+[node name="CSGBox" type="CSGBox3D" parent="Blockers" unique_id=1618918710]
+transform = Transform3D(-4.3711374e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711374e-08, -1, 29, 1.4210855e-14)
 use_collision = true
 collision_layer = 3
-size = Vector3(24, 38, 2)
+size = Vector3(24, 18, 2)
+material = SubResource("StandardMaterial3D_ertnn")
+
+[node name="CSGBox2" type="CSGBox3D" parent="Blockers" unique_id=1720822682]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 10, 1.4210855e-14)
+use_collision = true
+collision_layer = 3
+size = Vector3(24, 20, 2)
+material = SubResource("StandardMaterial3D_e1pdk")

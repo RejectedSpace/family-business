@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://dmpp8uyvyu0xi"]
 
 [ext_resource type="Script" uid="uid://d4f5uo8mpyy1j" path="res://Doors/door.gd" id="1_c2txb"]
+[ext_resource type="Texture2D" uid="uid://ceosh4qac20yn" path="res://Textures/Wood.png" id="2_d84oa"]
+[ext_resource type="Texture2D" uid="uid://dscewq4snxmbm" path="res://Textures/GreenWallpaper.png" id="3_fm552"]
+[ext_resource type="Texture2D" uid="uid://bjigiwstyi3ff" path="res://Textures/WoodPanel.png" id="3_pkobq"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_pkg53"]
 vertices = PackedVector3Array(0, 2.5, -10, 0, 2.5, 10, 4, 2.5, 10, 4, 2.5, -10)
@@ -11,7 +14,20 @@ filter_baking_aabb = AABB(0, 0, 0, 4, 4, 20)
 filter_baking_aabb_offset = Vector3(0, 0, -10)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_guyjh"]
-albedo_color = Color(0.50534403, 0.5053441, 0.50534403, 1)
+albedo_texture = ExtResource("2_d84oa")
+uv1_scale = Vector3(0.375, 0.031, 1)
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fm552"]
+albedo_texture = ExtResource("3_fm552")
+uv1_scale = Vector3(0.375, 0.281, 1)
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pkobq"]
+albedo_texture = ExtResource("3_pkobq")
+uv1_scale = Vector3(0.375, 0.313, 1)
+uv1_triplanar_sharpness = 0.19614604
+texture_filter = 0
 
 [node name="DoorEast" type="Node3D" unique_id=959934092]
 script = ExtResource("1_c2txb")
@@ -39,8 +55,19 @@ collision_layer = 3
 size = Vector3(2, 2, 24)
 material = SubResource("StandardMaterial3D_guyjh")
 
-[node name="Blocker" type="CSGBox3D" parent="." unique_id=1405926083]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 19, 0)
+[node name="Blockers" type="Node3D" parent="." unique_id=2047891067]
+transform = Transform3D(-1, 0, 8.7422784e-08, 0, 1, 0, -8.7422784e-08, 0, -1, 0, 0, 0)
+
+[node name="CSGBox" type="CSGBox3D" parent="Blockers" unique_id=1342703023]
+transform = Transform3D(-4.3711374e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711374e-08, -1, 29, 1.4210855e-14)
 use_collision = true
 collision_layer = 3
-size = Vector3(2, 38, 24)
+size = Vector3(24, 18, 2)
+material = SubResource("StandardMaterial3D_fm552")
+
+[node name="CSGBox2" type="CSGBox3D" parent="Blockers" unique_id=1169161242]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 10, 1.4210855e-14)
+use_collision = true
+collision_layer = 3
+size = Vector3(24, 20, 2)
+material = SubResource("StandardMaterial3D_pkobq")

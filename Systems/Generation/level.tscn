@@ -6,17 +6,17 @@
 [ext_resource type="PackedScene" uid="uid://buw7122truyjv" path="res://Rooms/elevator.tscn" id="4_weuog"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_km5ld"]
-sky_top_color = Color(0.18825269, 0.12081846, 0.113721214, 1)
-sky_horizon_color = Color(0.07061573, 0.07298324, 0.077723645, 1)
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
 ground_bottom_color = Color(0, 0, 0, 1)
 ground_horizon_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Sky" id="Sky_h2yge"]
+[sub_resource type="Sky" id="Sky_weuog"]
 sky_material = SubResource("ProceduralSkyMaterial_km5ld")
 
 [sub_resource type="Environment" id="Environment_i2t4f"]
 background_mode = 2
-sky = SubResource("Sky_h2yge")
+sky = SubResource("Sky_weuog")
 tonemap_mode = 3
 volumetric_fog_albedo = Color(0.65834, 0.65834, 0.65834, 1)
 volumetric_fog_emission = Color(0, 0, 0.137255, 1)
