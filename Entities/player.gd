@@ -11,6 +11,7 @@ extends Entity
 @onready var hitscan: Node3D = gun.get_hitscan()
 @onready var step_sound: AudioStreamPlayer3D = $StepSound
 @onready var step_timer: Timer = $StepTimer
+@onready var floor_cast: RayCast3D = $FloorCast
 
 var air_jumps: int
 var crouched: bool
@@ -172,6 +173,12 @@ func handle_step_sound() -> void:
 	if step_timer.is_stopped() or time_to_step < step_timer.get_time_left():
 		step_timer.start(time_to_step)
 
+func get_floor_position() -> Vector3:
+	if not floor_cast.is_colliding():
+		return global_position
+	
+	return floor_cast.get_collision_point()
+
 func get_data() -> Array:
 	return [global_position, rotation, velocity, air_jumps, gun.get_clip(), gun.get_ammo()]
 
@@ -190,12 +197,10 @@ func load_data(data: Array) -> void:
 	hud.update_clip(gun.get_clip())
 	hud.update_reserve(gun.get_ammo())
 
-
 func _on_view_model_reload_finished() -> void:
 	gun.reload()
 	hud.update_clip(gun.get_clip())
 	hud.update_reserve(gun.get_ammo())
-
 
 func _on_step_timer_timeout() -> void:
 	step_sound.play()
