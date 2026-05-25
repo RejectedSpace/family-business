@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://d15cl2cd3hxj7"
-path="res://.godot/imported/Lupara.glb-66e3dd74d38eff868d97e0ad524fb292.scn"
+uid="uid://b84ryqm1rnoxd"
+path="res://.godot/imported/Tommy.glb-43092152fcf87971aa09c4f08461abf3.scn"
 
 [deps]
 
-source_file="res://Guns/Lupara.glb"
-dest_files=["res://.godot/imported/Lupara.glb-66e3dd74d38eff868d97e0ad524fb292.scn"]
+source_file="res://Blender/Tommy.glb"
+dest_files=["res://.godot/imported/Tommy.glb-43092152fcf87971aa09c4f08461abf3.scn"]
 
 [params]
 

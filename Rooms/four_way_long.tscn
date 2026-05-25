@@ -156,18 +156,18 @@ transform = Transform3D(-2.8212997e-07, 0, -1, 0, 1, 0, 1, 0, -2.8212997e-07, 12
 size = Vector3(20, 20, 2)
 material = SubResource("StandardMaterial3D_agr1y")
 
-[node name="DoorPoints" type="Node3D" parent="." unique_id=1243334676]
+[node name="Doors" type="Node3D" parent="." unique_id=1243334676]
 
-[node name="d0" parent="DoorPoints" unique_id=634711979 instance=ExtResource("6_6fwi7")]
+[node name="d0" parent="Doors" unique_id=634711979 instance=ExtResource("6_6fwi7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 64)
 
-[node name="s1" parent="DoorPoints" unique_id=1699334675 instance=ExtResource("7_haq2h")]
+[node name="s1" parent="Doors" unique_id=1699334675 instance=ExtResource("7_haq2h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 128, 0, 32)
 
-[node name="d2" parent="DoorPoints" unique_id=733808563 instance=ExtResource("8_r8ib5")]
+[node name="d2" parent="Doors" unique_id=733808563 instance=ExtResource("8_r8ib5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 0)
 
-[node name="s3" parent="DoorPoints" unique_id=959934092 instance=ExtResource("9_4e6wj")]
+[node name="s3" parent="Doors" unique_id=959934092 instance=ExtResource("9_4e6wj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
 
 [node name="HallwayLamp" parent="." unique_id=1556418243 instance=ExtResource("10_rwhvl")]
@@ -193,3 +193,14 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 126,
 
 [node name="HallwayLamp4" parent="." unique_id=863054036 instance=ExtResource("10_rwhvl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 44, 32)
+
+[node name="SpawnPoints" type="Node3D" parent="." unique_id=1306923894]
+
+[node name="Node3D" type="Node3D" parent="SpawnPoints" unique_id=1065722285]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 20)
+
+[node name="Node3D2" type="Node3D" parent="SpawnPoints" unique_id=1357004283]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 65, 0, 47)
+
+[node name="Node3D3" type="Node3D" parent="SpawnPoints" unique_id=1967245077]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100, 0, 31)

@@ -204,33 +204,59 @@ transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, 191,
 size = Vector3(128, 64, 2)
 material = SubResource("StandardMaterial3D_y22ke")
 
-[node name="DoorPoints" type="Node3D" parent="." unique_id=115751391]
+[node name="Doors" type="Node3D" parent="." unique_id=115751391]
 
-[node name="s0" parent="DoorPoints" unique_id=634711979 instance=ExtResource("7_qsrhp")]
+[node name="s0" parent="Doors" unique_id=634711979 instance=ExtResource("7_qsrhp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 64, 128)
 
-[node name="CSGBox" parent="DoorPoints/s0/NavigationRegion3D" parent_id_path=PackedInt32Array(634711979, 1830558208) index="0" unique_id=1630717178]
+[node name="CSGBox" parent="Doors/s0/NavigationRegion3D" parent_id_path=PackedInt32Array(634711979, 1830558208) index="0" unique_id=1630717178]
 material = SubResource("StandardMaterial3D_unvd1")
 
-[node name="CSGBox" parent="DoorPoints/s0/Blockers" parent_id_path=PackedInt32Array(634711979, 899444716) index="0" unique_id=41891368]
+[node name="CSGBox" parent="Doors/s0/Blockers" parent_id_path=PackedInt32Array(634711979, 899444716) index="0" unique_id=41891368]
 material = SubResource("StandardMaterial3D_ow77i")
 
-[node name="CSGBox2" parent="DoorPoints/s0/Blockers" parent_id_path=PackedInt32Array(634711979, 899444716) index="1" unique_id=953981034]
+[node name="CSGBox2" parent="Doors/s0/Blockers" parent_id_path=PackedInt32Array(634711979, 899444716) index="1" unique_id=953981034]
 material = SubResource("StandardMaterial3D_5e1c4")
 
-[node name="d1" parent="DoorPoints" unique_id=1699334675 instance=ExtResource("8_ipmc5")]
+[node name="d1" parent="Doors" unique_id=1699334675 instance=ExtResource("8_ipmc5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192, 0, 64)
 
-[node name="CSGBox" parent="DoorPoints/d1/NavigationRegion3D" parent_id_path=PackedInt32Array(1699334675, 934988275) index="0" unique_id=2131014203]
+[node name="CSGBox" parent="Doors/d1/NavigationRegion3D" parent_id_path=PackedInt32Array(1699334675, 934988275) index="0" unique_id=2131014203]
 material = SubResource("StandardMaterial3D_doigp")
 
-[node name="CSGBox" parent="DoorPoints/d1/Blockers" parent_id_path=PackedInt32Array(1699334675, 707465975) index="0" unique_id=564556482]
+[node name="CSGBox" parent="Doors/d1/Blockers" parent_id_path=PackedInt32Array(1699334675, 707465975) index="0" unique_id=564556482]
 transform = Transform3D(-4.3711374e-08, 0, -1, 0, 1, 0, 1, 0, -4.3711374e-08, -1, 29, 0)
 material = SubResource("StandardMaterial3D_ghqth")
 
-[node name="CSGBox2" parent="DoorPoints/d1/Blockers" parent_id_path=PackedInt32Array(1699334675, 707465975) index="1" unique_id=190430518]
+[node name="CSGBox2" parent="Doors/d1/Blockers" parent_id_path=PackedInt32Array(1699334675, 707465975) index="1" unique_id=190430518]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1, 10, 0)
 material = SubResource("StandardMaterial3D_msnqo")
 
-[editable path="DoorPoints/s0"]
-[editable path="DoorPoints/d1"]
+[node name="SpawnPoints" type="Node3D" parent="." unique_id=936043355]
+
+[node name="Node3D" type="Node3D" parent="SpawnPoints" unique_id=97169006]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 40, 65)
+
+[node name="Node3D2" type="Node3D" parent="SpawnPoints" unique_id=606736250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 40, 115)
+
+[node name="Node3D3" type="Node3D" parent="SpawnPoints" unique_id=1436122597]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 40, 15)
+
+[node name="Node3D4" type="Node3D" parent="SpawnPoints" unique_id=280773357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90, 0, 62)
+
+[node name="Node3D5" type="Node3D" parent="SpawnPoints" unique_id=1022965992]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155, 0, 62)
+
+[node name="Node3D6" type="Node3D" parent="SpawnPoints" unique_id=1033186236]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155, 4, 22)
+
+[node name="Node3D7" type="Node3D" parent="SpawnPoints" unique_id=266131315]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 154, 4, 109)
+
+[node name="Node3D8" type="Node3D" parent="SpawnPoints" unique_id=1446684600]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 87, 4, 104)
+
+[editable path="Doors/s0"]
+[editable path="Doors/d1"]

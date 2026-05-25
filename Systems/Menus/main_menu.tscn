@@ -2,6 +2,14 @@
 
 [ext_resource type="Script" uid="uid://cd07i3t2tbbf5" path="res://Systems/Menus/main_menu.gd" id="1_06t4h"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_pd4dc"]
+font_size = 100
+font_color = Color(0.677051, 0, 0, 1)
+outline_size = 10
+outline_color = Color(1, 0.7470902, 0.68577677, 1)
+shadow_size = 20
+shadow_color = Color(0.2205058, 0.62253803, 0.40572113, 1)
+
 [node name="MainMenu" type="Control" unique_id=609678654]
 layout_mode = 3
 anchors_preset = 15
@@ -28,5 +36,48 @@ offset_bottom = 781.0
 text = "Quit
 "
 
+[node name="Label" type="Label" parent="." unique_id=1799659642]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 22.0
+offset_right = 1241.0
+offset_bottom = 159.0
+text = "Family Business"
+label_settings = SubResource("LabelSettings_pd4dc")
+horizontal_alignment = 1
+
+[node name="Solo" type="Button" parent="." unique_id=1548817434]
+visible = false
+layout_mode = 0
+offset_left = 334.0
+offset_top = 248.0
+offset_right = 946.0
+offset_bottom = 384.0
+text = "Solo
+"
+
+[node name="Coop" type="Button" parent="." unique_id=594592563]
+visible = false
+layout_mode = 0
+offset_left = 335.0
+offset_top = 403.0
+offset_right = 947.0
+offset_bottom = 539.0
+text = "Co-op
+"
+
+[node name="Back" type="Button" parent="." unique_id=1178423021]
+visible = false
+layout_mode = 0
+offset_left = 339.0
+offset_top = 566.0
+offset_right = 951.0
+offset_bottom = 702.0
+text = "Back
+"
+
 [connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Solo" to="." method="_on_solo_pressed"]
+[connection signal="pressed" from="Coop" to="." method="_on_coop_pressed"]
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

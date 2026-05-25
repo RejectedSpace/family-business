@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://dijua0lxogsvc"]
+
+[ext_resource type="PackedScene" uid="uid://deimi6535r30q" path="res://Entities/player.tscn" id="1_slogv"]
+[ext_resource type="Script" uid="uid://ceph38xek5bwd" path="res://Systems/Generation/level_coop.gd" id="1_yvpkw"]
+[ext_resource type="PackedScene" uid="uid://dk2v2lnuturo3" path="res://Systems/Generation/map.tscn" id="2_yvpkw"]
+[ext_resource type="PackedScene" uid="uid://buw7122truyjv" path="res://Rooms/elevator.tscn" id="3_hw0ev"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i8jls"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_weuog"]
+sky_material = SubResource("ProceduralSkyMaterial_i8jls")
+
+[sub_resource type="Environment" id="Environment_wpbb7"]
+background_mode = 2
+sky = SubResource("Sky_weuog")
+tonemap_mode = 3
+volumetric_fog_albedo = Color(0.65834, 0.65834, 0.65834, 1)
+volumetric_fog_emission = Color(0, 0, 0.137255, 1)
+volumetric_fog_emission_energy = 0.01
+volumetric_fog_anisotropy = -0.3
+volumetric_fog_length = 32.0
+adjustment_brightness = 1.3
+
+[node name="LevelCoop" type="Node3D" unique_id=924355944]
+script = ExtResource("1_yvpkw")
+
+[node name="GridContainer" type="GridContainer" parent="." unique_id=2131622874]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="GridContainer" unique_id=641045619]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer" unique_id=1578589766]
+handle_input_locally = false
+size = Vector2i(638, 800)
+render_target_update_mode = 4
+
+[node name="Player" parent="GridContainer/SubViewportContainer/SubViewport" unique_id=1819948495 instance=ExtResource("1_slogv")]
+transform = Transform3D(-0.9881267, 0, -0.15364122, 0, 1, 0, 0.15364122, 0, -0.9881267, 19.669388, 2.3550453, -44.982872)
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="GridContainer" unique_id=334383242]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer2" unique_id=242073848]
+handle_input_locally = false
+size = Vector2i(638, 800)
+render_target_update_mode = 4
+
+[node name="Player2" parent="GridContainer/SubViewportContainer2/SubViewport" unique_id=1474016302 instance=ExtResource("1_slogv")]
+transform = Transform3D(-0.9881267, 0, -0.15364122, 0, 1, 0, 0.15364122, 0, -0.9881267, -10.748806, 2.3550453, -44.982872)
+player_id = 2
+
+[node name="Map" parent="." unique_id=391048862 instance=ExtResource("2_yvpkw")]
+MAPSIZE = Vector3(4, 2, 4)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=889444528]
+transform = Transform3D(0.78296643, -0.56954813, 0.25015646, -0.022501806, 0.37594527, 0.9263685, -0.62165666, -0.7309445, 0.28153676, 0, 245.41177, -152.27765)
+visible = false
+layers = 1023
+light_energy = 0.899
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1974962697]
+environment = SubResource("Environment_wpbb7")
+
+[node name="Elevator" parent="." unique_id=1449266849 instance=ExtResource("3_hw0ev")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, -64)

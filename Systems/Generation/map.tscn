@@ -10,6 +10,7 @@
 
 [node name="Map" type="Node3D" unique_id=391048862]
 script = ExtResource("1_c7s6e")
+MAPSIZE = null
 
 [node name="MainRoom" parent="." unique_id=1486356749 instance=ExtResource("2_iw27f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -192, 0, -320)

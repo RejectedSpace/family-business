@@ -1,13 +1,18 @@
 [gd_scene format=3 uid="uid://d3njrv8mlryaa"]
 
 [ext_resource type="Script" uid="uid://d12si82i4i2ia" path="res://Guns/gun.gd" id="1_fyf7a"]
-[ext_resource type="PackedScene" uid="uid://d15cl2cd3hxj7" path="res://Guns/Lupara.glb" id="2_h4xx3"]
+[ext_resource type="PackedScene" uid="uid://ce55xu7iwgn14" path="res://lupara_view_model.tscn" id="2_qyqfa"]
+[ext_resource type="PackedScene" uid="uid://iujedy4uimmx" path="res://Blender/Lupara.glb" id="3_qyqfa"]
 
 [node name="Lupara" type="Node3D" unique_id=1637088801]
 script = ExtResource("1_fyf7a")
+full_clip_replace = true
+price = 500
+view_model = ExtResource("2_qyqfa")
+rarity = 2
 metadata/_custom_type_script = "uid://d12si82i4i2ia"
 
-[node name="Lupara" parent="." unique_id=2054195679 instance=ExtResource("2_h4xx3")]
+[node name="Lupara" parent="." unique_id=395541190 instance=ExtResource("3_qyqfa")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
 
 [node name="Hitscan" type="Node3D" parent="." unique_id=624661413]

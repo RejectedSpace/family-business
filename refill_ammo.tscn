@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://m3j70n20op5f"]
+
+[ext_resource type="Script" uid="uid://cqjg0yev66g6f" path="res://modifier.gd" id="1_1xbnq"]
+[ext_resource type="Texture2D" uid="uid://d17rujbinydw2" path="res://Textures/ammo_refill.png" id="2_pngqt"]
+
+[node name="Refill Ammo" type="Node3D" unique_id=116595608]
+script = ExtResource("1_1xbnq")
+modifier_function_name = "refill_ammo"
+val = 1.0
+price = 75
+metadata/_custom_type_script = "uid://cqjg0yev66g6f"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1216623344]
+texture_filter = 0
+texture = ExtResource("2_pngqt")

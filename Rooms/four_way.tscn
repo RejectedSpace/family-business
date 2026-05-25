@@ -135,18 +135,18 @@ transform = Transform3D(-2.1855695e-07, 0, -1, 0, 1, 0, 1, 0, -2.1855695e-07, 63
 size = Vector3(20, 20, 2)
 material = SubResource("StandardMaterial3D_u7org")
 
-[node name="DoorPoints" type="Node3D" parent="." unique_id=1371982744]
+[node name="Doors" type="Node3D" parent="." unique_id=1371982744]
 
-[node name="s0" parent="DoorPoints" unique_id=95177182 instance=ExtResource("2_fkahk")]
+[node name="s0" parent="Doors" unique_id=95177182 instance=ExtResource("2_fkahk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 64)
 
-[node name="s1" parent="DoorPoints" unique_id=1699334675 instance=ExtResource("3_exxqn")]
+[node name="s1" parent="Doors" unique_id=1699334675 instance=ExtResource("3_exxqn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 64, 0, 32)
 
-[node name="s2" parent="DoorPoints" unique_id=733808563 instance=ExtResource("4_0wl17")]
+[node name="s2" parent="Doors" unique_id=733808563 instance=ExtResource("4_0wl17")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 0)
 
-[node name="s3" parent="DoorPoints" unique_id=959934092 instance=ExtResource("5_2anm4")]
+[node name="s3" parent="Doors" unique_id=959934092 instance=ExtResource("5_2anm4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 32)
 
 [node name="HallwayLamp" parent="." unique_id=1556418243 instance=ExtResource("10_u7org")]
@@ -160,3 +160,8 @@ transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 62, 
 
 [node name="HallwayLamp4" parent="." unique_id=1779380864 instance=ExtResource("10_u7org")]
 transform = Transform3D(5.9604645e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 5.9604645e-08, 32, 44, 62)
+
+[node name="SpawnPoints" type="Node3D" parent="." unique_id=1909194831]
+
+[node name="Node3D" type="Node3D" parent="SpawnPoints" unique_id=1056250951]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32, 0, 32)

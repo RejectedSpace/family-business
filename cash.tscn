@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://11basyw16ss8"]
+
+[ext_resource type="PackedScene" uid="uid://cglc74scavpfi" path="res://Blender/Cash.glb" id="1_8fn75"]
+[ext_resource type="Script" uid="uid://cpgsadlmtp7l2" path="res://cash.gd" id="1_y7c11"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y7c11"]
+size = Vector3(9.397388, 2, 4.031006)
+
+[node name="Cash" type="RigidBody3D" unique_id=246661384]
+collision_layer = 0
+collision_mask = 3
+can_sleep = false
+contact_monitor = true
+max_contacts_reported = 4
+script = ExtResource("1_y7c11")
+
+[node name="Cash" parent="." unique_id=502513358 instance=ExtResource("1_8fn75")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0.9789082, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1331750485]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.6120415e-05, 1.0019413, 0.011352539)
+shape = SubResource("BoxShape3D_y7c11")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

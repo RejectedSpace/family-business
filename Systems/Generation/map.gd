@@ -13,6 +13,7 @@ var door_dict: Dictionary = {}
 var enemies: int = 0
 
 var enemy: PackedScene = preload("res://Entities/enemy.tscn")
+var cash: PackedScene = preload("res://cash.tscn")
 
 func generate(time: float = 0.0) -> void:
 	for x: int in range(0, MAPSIZE.x):
@@ -39,14 +40,25 @@ func generate(time: float = 0.0) -> void:
 	else:
 		timer.start(time)
 
-func spawn_enemy(door: Door) -> void:
+func spawn_enemy(pos: Vector3) -> void:
 	if randi() % 2 != 0:
+		spawn_money(pos)
 		return
 	var new_enemy = enemy.instantiate()
 	add_child(new_enemy)
-	new_enemy.global_position = door.global_position
-	new_enemy.rotation = door.rotation
-	new_enemy.rotate_y(PI / 2)
+	new_enemy.global_position = pos
+	var rot = randf_range(-PI, PI)
+	new_enemy.rotate_y(rot)
+
+func spawn_money(pos: Vector3) -> void:
+	if randi() % 4 != 0:
+		return
+	var new_cash = preload("res://cash.tscn").instantiate()
+	new_cash.position = pos
+	new_cash.position.y += 1
+	add_child(new_cash)
+	var rot = randf_range(-PI, PI)
+	new_cash.rotate_y(rot)
 
 func connect_room(room_origin: Vector3, room_rotation: float, door: Door, room_candidate: Room, door_origin: Vector3):
 	var doors: Array[Door] = room_candidate.get_single_doors() if door.is_single() else room_candidate.get_double_doors()
@@ -104,8 +116,6 @@ func expand_map() -> void:
 			door.set_enabled(true)
 			connected_door.set_enabled(true)
 			
-			spawn_enemy(door)
-			
 			register_door(door)
 			continue
 		
@@ -128,7 +138,8 @@ func expand_map() -> void:
 				door.set_enabled(true)
 				new_door.set_enabled(true)
 				
-				spawn_enemy(door)
+				for spawn_point: Node3D in new_room.get_spawn_points():
+					spawn_enemy(spawn_point.global_position)
 				
 				break
 	

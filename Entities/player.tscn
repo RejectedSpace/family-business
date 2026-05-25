@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bijco851t8bfq" path="res://Entities/Bagman.glb" id="2_onrkg"]
 [ext_resource type="PackedScene" uid="uid://d3njrv8mlryaa" path="res://Guns/lupara.tscn" id="3_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://ctpbuawalq55t" path="res://Systems/Interaction/player_interactor.tscn" id="3_kee72"]
+[ext_resource type="PackedScene" uid="uid://0j8i8ku5ff6d" path="res://Guns/tommy.tscn" id="4_pg4qw"]
+[ext_resource type="PackedScene" uid="uid://difrg7sym4kqa" path="res://colt.tscn" id="5_25cb4"]
 [ext_resource type="PackedScene" uid="uid://d27koothypfp5" path="res://Systems/HUD/player_hud.tscn" id="6_prmdv"]
 [ext_resource type="AudioStream" uid="uid://bj242j0gfw4ln" path="res://Sounds/Step/step-wood-0.mp3" id="7_eyssl"]
 [ext_resource type="AudioStream" uid="uid://gs5aj5gxaa6y" path="res://Sounds/Step/step-wood-1.mp3" id="8_pg4qw"]
@@ -193,186 +195,225 @@ script = ExtResource("1_2j1hn")
 [node name="Bagman" parent="." unique_id=515851968 instance=ExtResource("2_onrkg")]
 transform = Transform3D(-5.4639237e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.4639237e-08, 0, 0, 0)
 
-[node name="Armature" parent="Bagman" index="0" unique_id=1813551830]
+[node name="Armature" parent="Bagman" index="0" unique_id=1993261782]
 transform = Transform3D(1, 0, -3.5527137e-15, 0, 1, 0, -3.5527137e-15, 0, -1, -0.37528256, 7.739778, -0.009216548)
 
-[node name="Bone_004" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="0" unique_id=1752740382]
+[node name="Bone_004" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="0" unique_id=1962056949]
 transform = Transform3D(0.99307746, 0.11746073, 4.2027636e-07, -0.11746073, 0.99307746, -4.266029e-08, -4.2237792e-07, -7.001013e-09, 1, 0.100097224, 6.178545, -4.2063846e-08)
 
-[node name="Head" parent="Bagman/Armature/Skeleton3D/Bone_004" index="0" unique_id=872312056]
+[node name="Head" parent="Bagman/Armature/Skeleton3D/Bone_004" index="0" unique_id=1264703638]
 layers = 32
 
-[node name="Bone_003" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="1" unique_id=1889247087]
+[node name="Bone_003" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="1" unique_id=998489819]
 transform = Transform3D(0.91137075, 0.41158628, 3.4141402e-07, -0.41158628, 0.91137064, -1.4772483e-07, -3.7195628e-07, -5.889234e-09, 1, -0.1000974, 5.7352567, -3.9007418e-08)
 
-[node name="Neck" parent="Bagman/Armature/Skeleton3D/Bone_003" index="0" unique_id=1756929534]
+[node name="Neck" parent="Bagman/Armature/Skeleton3D/Bone_003" index="0" unique_id=1676627364]
 layers = 32
 
-[node name="Bone_008" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="2" unique_id=1530407162]
+[node name="Bone_008" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="2" unique_id=440260157]
 transform = Transform3D(0.99020386, 0.13961957, -0.0012000017, 0.13272202, -0.94388413, -0.30243567, -0.043358613, 0.29931375, -0.9531688, 0.31900832, -0.16508156, -1.5096067)
 
-[node name="Thumb_R" parent="Bagman/Armature/Skeleton3D/Bone_008" index="0" unique_id=506355404]
+[node name="Thumb_R" parent="Bagman/Armature/Skeleton3D/Bone_008" index="0" unique_id=971778374]
 layers = 32
 
-[node name="Bone_009" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="3" unique_id=2083978579]
+[node name="Bone_009" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="3" unique_id=1364349674]
 transform = Transform3D(0.9992945, 0.037538555, 3.1292439e-07, 0.03651903, -0.9721503, -0.23149452, -0.008689657, 0.23133127, -0.9728358, 0.050306283, -0.16504723, -1.8077312)
 
-[node name="Finger_R" parent="Bagman/Armature/Skeleton3D/Bone_009" index="0" unique_id=1068619010]
+[node name="Finger_R" parent="Bagman/Armature/Skeleton3D/Bone_009" index="0" unique_id=164391878]
 layers = 32
 
-[node name="Bone_007" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="4" unique_id=1739023025]
+[node name="Bone_007" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="4" unique_id=1736169227]
 transform = Transform3D(0.98802024, 0.14715119, 0.04648888, 0.15430616, -0.9461046, -0.28473786, 0.0020838482, 0.2885004, -0.9574773, -0.050891876, 0.49057508, -1.7483166)
 
-[node name="Palm_R" parent="Bagman/Armature/Skeleton3D/Bone_007" index="0" unique_id=2062845579]
+[node name="Palm_R" parent="Bagman/Armature/Skeleton3D/Bone_007" index="0" unique_id=1260511044]
 layers = 32
 
-[node name="Bone_006" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="5" unique_id=1694959300]
+[node name="Bone_006" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="5" unique_id=1522669887]
 transform = Transform3D(0.9658476, 0.25910807, 2.0506911e-07, 0.25782236, -0.9610549, 0.09950388, 0.025782483, -0.096105635, -0.995037, -0.7062919, 2.9215128, -1.5052222)
 
-[node name="Elbow_R" parent="Bagman/Armature/Skeleton3D/Bone_006" index="0" unique_id=1914268880]
+[node name="Elbow_R" parent="Bagman/Armature/Skeleton3D/Bone_006" index="0" unique_id=1951657984]
 layers = 32
 
-[node name="Forearm_R" parent="Bagman/Armature/Skeleton3D/Bone_006" index="1" unique_id=1674923759]
+[node name="Forearm_R" parent="Bagman/Armature/Skeleton3D/Bone_006" index="1" unique_id=1693923473]
 layers = 32
 
-[node name="Bone_005" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="6" unique_id=1856123567]
+[node name="Bone_005" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="6" unique_id=2099732542]
 transform = Transform3D(0.98965114, -0.1434903, 2.855268e-07, -0.14279267, -0.9848405, 0.09848422, -0.014131244, -0.097465135, -0.99513847, -0.39050853, 5.0888796, -1.2907277)
 
-[node name="Bicep_R" parent="Bagman/Armature/Skeleton3D/Bone_005" index="0" unique_id=924697607]
+[node name="Bicep_R" parent="Bagman/Armature/Skeleton3D/Bone_005" index="0" unique_id=1883133481]
 layers = 32
 
-[node name="Shoulder_R" parent="Bagman/Armature/Skeleton3D/Bone_005" index="1" unique_id=272348768]
+[node name="Shoulder_R" parent="Bagman/Armature/Skeleton3D/Bone_005" index="1" unique_id=1136632446]
 transform = Transform3D(0.31704754, -0.045745477, 0.004527131, -0.04596895, -0.3155062, 0.031224184, 8.6613e-08, 0.03155066, 0.3188053, 0.03575325, -0.002670288, -0.042807102)
 layers = 32
 
-[node name="Bone_016" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="7" unique_id=2111953598]
+[node name="Bone_016" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="7" unique_id=854096181]
 transform = Transform3D(0.9862234, 0.1396195, -0.08870606, 0.15963206, -0.9438845, 0.28913674, -0.04335915, -0.29931387, -0.95316905, 0.3190068, -0.16507888, 1.5256723)
 
-[node name="Thumb_L" parent="Bagman/Armature/Skeleton3D/Bone_016" index="0" unique_id=900676858]
+[node name="Thumb_L" parent="Bagman/Armature/Skeleton3D/Bone_016" index="0" unique_id=162915865]
 layers = 32
 
-[node name="Bone_017" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="8" unique_id=1355481508]
+[node name="Bone_017" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="8" unique_id=1948602588]
 transform = Transform3D(0.99913526, 0.037538476, -0.01785146, 0.040648427, -0.97215074, 0.2308055, -0.008690201, -0.23133165, -0.97283626, 0.050304696, -0.16504413, 1.8237972)
 
-[node name="Fingers_L" parent="Bagman/Armature/Skeleton3D/Bone_017" index="0" unique_id=747059077]
+[node name="Fingers_L" parent="Bagman/Armature/Skeleton3D/Bone_017" index="0" unique_id=1741091626]
 layers = 32
 
-[node name="Bone_012" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="9" unique_id=93585602]
+[node name="Bone_012" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="9" unique_id=2134693380]
 transform = Transform3D(0.9882134, 0.1471511, -0.042188372, 0.15306534, -0.94610476, 0.28540698, 0.0020833537, -0.28850067, -0.9574775, -0.05089301, 0.49057627, 1.7643819)
 
-[node name="Palm_L" parent="Bagman/Armature/Skeleton3D/Bone_012" index="0" unique_id=1687168086]
+[node name="Palm_L" parent="Bagman/Armature/Skeleton3D/Bone_012" index="0" unique_id=193830066]
 layers = 32
 
-[node name="Bone_011" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="10" unique_id=115128263]
+[node name="Bone_011" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="10" unique_id=322502924]
 transform = Transform3D(0.9645519, 0.25910795, 0.050018158, 0.26262924, -0.96105516, -0.08601869, 0.025782108, 0.0961058, -0.99503726, -0.70629203, 2.9215126, 1.5212876)
 
-[node name="Elbow_L" parent="Bagman/Armature/Skeleton3D/Bone_011" index="0" unique_id=1324031829]
+[node name="Elbow_L" parent="Bagman/Armature/Skeleton3D/Bone_011" index="0" unique_id=1950834010]
 layers = 32
 
-[node name="Forearm_L" parent="Bagman/Armature/Skeleton3D/Bone_011" index="1" unique_id=1958535846]
+[node name="Forearm_L" parent="Bagman/Armature/Skeleton3D/Bone_011" index="1" unique_id=622431027]
 layers = 32
 
-[node name="Bone_010" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="11" unique_id=1997334855]
+[node name="Bone_010" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="11" unique_id=169462750]
 transform = Transform3D(0.9892522, -0.14349036, -0.028101701, -0.14553167, -0.98484063, -0.09438994, -0.014131645, 0.097465195, -0.99513865, -0.39050853, 5.0888796, 1.3067927)
 
-[node name="Bicep_L" parent="Bagman/Armature/Skeleton3D/Bone_010" index="0" unique_id=1584121594]
+[node name="Bicep_L" parent="Bagman/Armature/Skeleton3D/Bone_010" index="0" unique_id=625652098]
 layers = 32
 
-[node name="Shoulder_L" parent="Bagman/Armature/Skeleton3D/Bone_010" index="1" unique_id=1769958503]
+[node name="Shoulder_L" parent="Bagman/Armature/Skeleton3D/Bone_010" index="1" unique_id=1682976533]
 layers = 32
 
-[node name="Bone_002" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="12" unique_id=410151374]
+[node name="Bone_002" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="12" unique_id=2016239804]
 transform = Transform3D(0.9982386, -0.059326835, 2.2593638e-07, 0.05932684, 0.99823856, 2.0308892e-08, -2.2674325e-07, -6.869031e-09, 1, 0.064348236, 2.9682794, -2.0040169e-08)
 
-[node name="Chest" parent="Bagman/Armature/Skeleton3D/Bone_002" index="0" unique_id=1725401781]
+[node name="Chest" parent="Bagman/Armature/Skeleton3D/Bone_002" index="0" unique_id=1515190937]
 layers = 32
 
-[node name="Bone_001" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="13" unique_id=1562357497]
+[node name="Bone_001" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="13" unique_id=131265006]
 transform = Transform3D(1, 3.7252843e-09, 2.3769698e-07, -3.7252916e-09, 1, 6.846328e-09, -2.3769697e-07, -6.8463297e-09, 1, 0.06434824, 1.4453694, -9.596897e-09)
 
-[node name="Waist" parent="Bagman/Armature/Skeleton3D/Bone_001" index="0" unique_id=1112285310]
+[node name="Waist" parent="Bagman/Armature/Skeleton3D/Bone_001" index="0" unique_id=277321291]
 layers = 32
 
-[node name="Bone_015" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="14" unique_id=1229196713]
+[node name="Bone_015" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="14" unique_id=1269976676]
 transform = Transform3D(0.4739138, 0.8805703, 0.0013445397, 0.8804915, -0.47384986, -0.014165825, -0.011836914, 0.0078972485, -0.99989885, -0.32745466, -6.7966065, -0.7488558)
 
-[node name="Foot_R" parent="Bagman/Armature/Skeleton3D/Bone_015" index="0" unique_id=530195162]
+[node name="Foot_R" parent="Bagman/Armature/Skeleton3D/Bone_015" index="0" unique_id=1666736101]
 layers = 32
 
-[node name="Bone_014" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="15" unique_id=1414376570]
+[node name="Bone_014" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="15" unique_id=1310698632]
 transform = Transform3D(0.99709034, -0.07623064, -2.8806398e-05, -0.07622473, -0.99701744, 0.012073732, -0.00094910804, -0.01203639, -0.99992734, -0.055762064, -3.2431493, -0.70595706)
 
-[node name="Calf_R" parent="Bagman/Armature/Skeleton3D/Bone_014" index="0" unique_id=752302274]
+[node name="Calf_R" parent="Bagman/Armature/Skeleton3D/Bone_014" index="0" unique_id=908344040]
 layers = 32
 
-[node name="Knee_R" parent="Bagman/Armature/Skeleton3D/Bone_014" index="1" unique_id=2015292957]
+[node name="Knee_R" parent="Bagman/Armature/Skeleton3D/Bone_014" index="1" unique_id=79142234]
 layers = 32
 
-[node name="Bone_013" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="16" unique_id=1790199173]
+[node name="Bone_013" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="16" unique_id=1090316475]
 transform = Transform3D(0.9999115, -0.01331192, 2.0423556e-07, -0.013307072, -0.9995464, 0.027011395, -0.0003593695, -0.027008995, -0.99963546, -0.012863155, -0.022019796, -0.6189181)
 
-[node name="Thigh_R" parent="Bagman/Armature/Skeleton3D/Bone_013" index="0" unique_id=1693995390]
+[node name="Thigh_R" parent="Bagman/Armature/Skeleton3D/Bone_013" index="0" unique_id=1471802360]
 layers = 32
 
-[node name="Bone_020" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="17" unique_id=1147815213]
+[node name="Bone_020" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="17" unique_id=1131077764]
 transform = Transform3D(0.47374916, 0.8805703, -0.012563396, 0.88058025, -0.4738498, -0.0066823205, -0.011837407, -0.00789734, -0.9998988, -0.3274548, -6.796607, 0.7649211)
 
-[node name="Foot_L" parent="Bagman/Armature/Skeleton3D/Bone_020" index="0" unique_id=1687567096]
+[node name="Foot_L" parent="Bagman/Armature/Skeleton3D/Bone_020" index="0" unique_id=1045221414]
 layers = 32
 
-[node name="Bone_019" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="18" unique_id=588259613]
+[node name="Bone_019" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="18" unique_id=1770699663]
 transform = Transform3D(0.9970886, -0.07623069, -0.001864648, -0.076247565, -0.9970175, -0.011929028, -0.00094972947, 0.012036462, -0.9999272, -0.05576199, -3.2431502, 0.7220221)
 
-[node name="Calf_L" parent="Bagman/Armature/Skeleton3D/Bone_019" index="0" unique_id=1297142721]
+[node name="Calf_L" parent="Bagman/Armature/Skeleton3D/Bone_019" index="0" unique_id=238567191]
 layers = 32
 
-[node name="Knee_L" parent="Bagman/Armature/Skeleton3D/Bone_019" index="1" unique_id=1256653764]
+[node name="Knee_L" parent="Bagman/Armature/Skeleton3D/Bone_019" index="1" unique_id=500676932]
 layers = 32
 
-[node name="Bone_018" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="19" unique_id=225500262]
+[node name="Bone_018" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="19" unique_id=1120624313]
 transform = Transform3D(0.99991137, -0.013311909, -0.00071980915, -0.013326494, -0.9995465, -0.027001802, -0.00036003737, 0.02700899, -0.99963534, -0.012863155, -0.022019796, 0.63498306)
 
-[node name="Thigh_L" parent="Bagman/Armature/Skeleton3D/Bone_018" index="0" unique_id=239258705]
+[node name="Thigh_L" parent="Bagman/Armature/Skeleton3D/Bone_018" index="0" unique_id=1710503993]
 layers = 32
 
-[node name="Bone" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 852992433) index="20" unique_id=533718696]
+[node name="Bone" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(515851968, 2078202012) index="20" unique_id=758727164]
 transform = Transform3D(0.9990641, 0.043254085, 3.692445e-07, -0.043254085, 0.9990641, -9.095869e-09, -3.6929237e-07, -6.8839774e-09, 1, 0.0071498076, 0.12422449, -5.8638205e-11)
 
-[node name="Hip" parent="Bagman/Armature/Skeleton3D/Bone" index="0" unique_id=438124854]
+[node name="Hip" parent="Bagman/Armature/Skeleton3D/Bone" index="0" unique_id=1470409767]
 layers = 32
 
-[node name="Lupara" parent="." unique_id=1637088801 instance=ExtResource("3_i3pqv")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.3472149, 14.566803, -4.0096064)
+[node name="LuparaBase" parent="." unique_id=1637088801 instance=ExtResource("3_i3pqv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3472149, 14.566803, -4.0096064)
+visible = false
 
-[node name="Cube_005" parent="Lupara/Lupara/Armature/Skeleton3D/Bone_001" parent_id_path=PackedInt32Array(1637088801, 2054195679, 1572545275) index="0" unique_id=1442902996]
+[node name="Lupara" parent="LuparaBase" index="0" unique_id=395541190]
+transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0, 0, 0)
+
+[node name="Cube_009" parent="LuparaBase/Lupara" index="0" unique_id=1994077245]
 layers = 32
 
-[node name="Cube" parent="Lupara/Lupara/Armature/Skeleton3D/Bone_002" parent_id_path=PackedInt32Array(1637088801, 2054195679, 879649150) index="0" unique_id=1820171777]
+[node name="Cube_010" parent="LuparaBase/Lupara" index="1" unique_id=665752943]
 layers = 32
 
-[node name="Cube_001" parent="Lupara/Lupara/Armature/Skeleton3D/Bone_002" parent_id_path=PackedInt32Array(1637088801, 2054195679, 879649150) index="1" unique_id=2018503490]
+[node name="Cube_011" parent="LuparaBase/Lupara" index="2" unique_id=1743432673]
 layers = 32
 
-[node name="Cube_003" parent="Lupara/Lupara/Armature/Skeleton3D/Bone_002" parent_id_path=PackedInt32Array(1637088801, 2054195679, 879649150) index="2" unique_id=1827418128]
+[node name="Cube_012" parent="LuparaBase/Lupara" index="3" unique_id=86319655]
 layers = 32
 
-[node name="Cube_006" parent="Lupara/Lupara/Armature/Skeleton3D/Bone_003" parent_id_path=PackedInt32Array(1637088801, 2054195679, 153034824) index="0" unique_id=448745148]
+[node name="Cube_013" parent="LuparaBase/Lupara" index="4" unique_id=44002387]
 layers = 32
 
-[node name="Cube_002" parent="Lupara/Lupara/Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1637088801, 2054195679, 728173214) index="0" unique_id=1352667568]
+[node name="Cube_014" parent="LuparaBase/Lupara" index="5" unique_id=1451220722]
 layers = 32
 
-[node name="Cube_004" parent="Lupara/Lupara/Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1637088801, 2054195679, 728173214) index="1" unique_id=945702623]
+[node name="Cube_015" parent="LuparaBase/Lupara" index="6" unique_id=1414293159]
 layers = 32
 
-[node name="Cube_007" parent="Lupara/Lupara/Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1637088801, 2054195679, 728173214) index="2" unique_id=785924100]
+[node name="Cube_016" parent="LuparaBase/Lupara" index="7" unique_id=2038044707]
 layers = 32
 
-[node name="Cube_008" parent="Lupara/Lupara/Armature/Skeleton3D/Bone" parent_id_path=PackedInt32Array(1637088801, 2054195679, 728173214) index="3" unique_id=2114302553]
+[node name="Cube_017" parent="LuparaBase/Lupara" index="8" unique_id=378193523]
 layers = 32
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Lupara" unique_id=2027855847]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LuparaBase" unique_id=2027855847]
 libraries/ = SubResource("AnimationLibrary_sweqy")
+
+[node name="TommyBase" parent="." unique_id=2137234930 instance=ExtResource("4_pg4qw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3419609, 14.949556, -2.5228882)
+visible = false
+
+[node name="Cube" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="0" unique_id=676687181]
+layers = 32
+
+[node name="Cube_001" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="1" unique_id=1202491158]
+layers = 32
+
+[node name="Cube_002" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="2" unique_id=1784004415]
+layers = 32
+
+[node name="Cube_003" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="3" unique_id=44307779]
+layers = 32
+
+[node name="ColtBase" parent="." unique_id=1795829639 instance=ExtResource("5_25cb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3670139, 14.149437, -3.2565503)
+visible = false
+
+[node name="Colt" parent="ColtBase" index="0" unique_id=1452321266]
+transform = Transform3D(-0.4, 0, -6.039832e-08, 0, 0.4, 0, 6.039832e-08, 0, -0.4, 0, 0, 0)
+
+[node name="Cube" parent="ColtBase/Colt" index="0" unique_id=2026019446]
+layers = 32
+
+[node name="Cube_001" parent="ColtBase/Colt" index="1" unique_id=347924907]
+layers = 32
+
+[node name="Cube_002" parent="ColtBase/Colt" index="2" unique_id=742148905]
+layers = 32
+
+[node name="Cube_003" parent="ColtBase/Colt" index="3" unique_id=1975612007]
+layers = 32
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=750621706]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19, 0)
@@ -380,8 +421,16 @@ cull_mask = 1048479
 current = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Camera3D" unique_id=332799326]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -512.0
+offset_right = 256.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="SubViewport" type="SubViewport" parent="Camera3D/SubViewportContainer" unique_id=1800946035]
 transparent_bg = true
@@ -433,10 +482,15 @@ playback_default_blend_time = 0.1
 [node name="StepTimer" type="Timer" parent="." unique_id=1780314310]
 one_shot = true
 
+[connection signal="holstered" from="Camera3D/SubViewportContainer/SubViewport/ViewModel" to="." method="_on_view_model_holstered"]
 [connection signal="reload_finished" from="Camera3D/SubViewportContainer/SubViewport/ViewModel" to="." method="_on_view_model_reload_finished"]
 [connection signal="timeout" from="StepTimer" to="." method="_on_step_timer_timeout"]
 
 [editable path="Bagman"]
-[editable path="Lupara"]
-[editable path="Lupara/Lupara"]
+[editable path="LuparaBase"]
+[editable path="LuparaBase/Lupara"]
+[editable path="TommyBase"]
+[editable path="TommyBase/Tommy"]
+[editable path="ColtBase"]
+[editable path="ColtBase/Colt"]
 [editable path="Camera3D/PlayerInteractor"]

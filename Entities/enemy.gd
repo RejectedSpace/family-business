@@ -12,16 +12,16 @@ enum {
 @onready var agent: NavigationAgent3D = $NavigationAgent3D
 @onready var animator: AnimationPlayer = $Infected/AnimationPlayer
 @onready var ray_cast: RayCast3D = $RayCast3D
-@onready var hitscan: RayCast3D = $RayCast3D
+@onready var hitscan: RayCast3D = $HitScan
 @onready var groan_sound: AudioStreamPlayer3D = $GroanSound
 @onready var scream_sound: AudioStreamPlayer3D = $ScreamSound
 @onready var chase_sound: AudioStreamPlayer3D = $ChaseSound
 @onready var step_sound: AudioStreamPlayer3D = $StepSound
 @onready var groan_timer: Timer = $GroanTimer
 @onready var chase_timer: Timer = $ChaseTimer
-@onready var attack_timer: Timer = $AttackTimer
 @onready var step_timer: Timer = $StepTimer
 @onready var aware_timer: Timer = $AwareTimer
+@onready var attack_timer: Timer = $AttackTimer
 
 var state: int = IDLE
 var player: Node3D
@@ -33,14 +33,20 @@ const FOV: float = 190.0
 const SMOOTHING_FACTOR = 0.2
 
 func _ready() -> void:
-	Global.enemies += 1
 	step_sound.set_volume_db(5)
 	
-	agent.set_target_position(global_transform.origin)
+	agent.set_target_position(Vector3.ZERO)
 
 func die() -> void:
 	Global.enemies -= 1
 	dead = true
+	
+	var cash = preload("res://cash.tscn").instantiate()
+	cash.position = ray_cast.global_position
+	cash.rotation = rotation
+	cash.linear_velocity = velocity
+	get_parent().add_child(cash)
+	
 	queue_free()
 
 func _physics_process(delta: float) -> void:
@@ -56,9 +62,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	if state == CHASE:
-		animator.play("ArmatureAction")
-	else:
-		animator.play("ArmatureAction_001")
+		animator.play("Run")
+	elif state == IDLE or state == AWARE:
+		animator.play("Idle")
 
 func looking() -> void:
 	if not player:
@@ -73,10 +79,10 @@ func looking() -> void:
 	ray_cast.look_at(ray_cast.global_transform.origin + to_player, Vector3.UP)
 
 func handle_state(delta: float) -> void:
-	if agent.is_navigation_finished():
+	if agent.get_target_position().is_zero_approx() or agent.is_target_reached():
 		if not player or not is_target_current():
 			idle(delta)
-		elif hitscan.get_collider() == player:
+		elif player and hitscan.get_collider() == player:
 			attack()
 		else:
 			chase(delta)
@@ -87,17 +93,30 @@ func handle_state(delta: float) -> void:
 			else:
 				awake()
 		elif state == CHASE:
-			chase(delta)
+			if player and hitscan.get_collider() == player:
+				attack()
+			else:
+				chase(delta)
 
 func is_target_current() -> bool:
 	return agent.get_target_position().is_equal_approx(player.get_floor_position())
 
 func attack() -> void:
+	if player and state != ATTACK:
+		attack_timer.start()
+		animator.play("Attack")
+		end_chase()
 	state = ATTACK
-	#animator.play("Attack")
-	end_chase()
-	if player:
+	velocity.x = 0
+	velocity.z = 0
+
+func hit() -> void:
+	if player and hitscan.get_collider() == player:
 		player.hurt(10)
+
+func hurt(damage: float) -> void:
+	super.hurt(damage)
+	update_target_location()
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
@@ -105,12 +124,12 @@ func apply_gravity(delta: float) -> void:
 
 func scream() -> void:
 	state = SCREAM
-	#animator.play("ScreamStart")
+	animator.play("ScreamStart")
 	scream_sound.play()
 
 func awake() -> void:
 	state = AWAKE
-	#animator.play("Awake")
+	animator.play("Awake")
 	chase_sound.play()
 
 func chase(delta: float) -> void:
@@ -190,4 +209,7 @@ func _on_aware_timer_timeout() -> void:
 		state = IDLE
 
 func _on_scream_sound_finished() -> void:
-	pass #animator.play("ScreamEnd")
+	animator.play("ScreamEnd")
+
+func _on_attack_timer_timeout() -> void:
+	hit()

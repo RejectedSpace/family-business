@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://difrg7sym4kqa"]
+
+[ext_resource type="Script" uid="uid://d12si82i4i2ia" path="res://Guns/gun.gd" id="1_bjobq"]
+[ext_resource type="PackedScene" uid="uid://drar3wppfwnsc" path="res://Blender/Colt.glb" id="2_82l4t"]
+[ext_resource type="PackedScene" uid="uid://e31s868e443d" path="res://colt_view_model.tscn" id="2_n4xbl"]
+
+[node name="Colt" type="Node3D" unique_id=1795829639]
+script = ExtResource("1_bjobq")
+base_damage = 30.0
+base_ammo_cappacity = 50
+base_clip_size = 10
+price = 100
+view_model = ExtResource("2_n4xbl")
+rarity = 1
+metadata/_custom_type_script = "uid://d12si82i4i2ia"
+
+[node name="Colt" parent="." unique_id=1452321266 instance=ExtResource("2_82l4t")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Hitscan" type="Node3D" parent="." unique_id=744363057]
+
+[node name="RayCast3D" type="RayCast3D" parent="Hitscan" unique_id=1965005096]
+target_position = Vector3(0, 0, -150)
+collision_mask = 4
