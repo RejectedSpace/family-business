@@ -139,7 +139,7 @@ func shoot() -> void:
 		ray.force_raycast_update()
 		var hit = ray.get_collider()
 		if hit is Entity:
-			hit.hurt(gun.get_damage())
+			hit.hurt_from(gun.get_damage(), self)
 	
 	remove_child(hitscan_dupe)
 	
@@ -248,10 +248,11 @@ func handle_movement() -> void:
 		velocity.x = move_toward(velocity.x, 0, move_speed)
 		velocity.z = move_toward(velocity.z, 0, move_speed)
 	
-	if(direction):
-		modelAnimator.play("ArmatureAction")
+	var suffix = "Colt" if gun.rarity == 1 else ""
+	if direction:
+		modelAnimator.play("Run" + suffix)
 	else:
-		modelAnimator.play("RESET")
+		modelAnimator.play("Idle" + suffix)
 	move_and_slide()
 
 func handle_step_sound() -> void:
@@ -276,7 +277,7 @@ func get_floor_position() -> Vector3:
 	return floor_cast.get_collision_point()
 
 func get_data() -> Array:
-	return [global_position, rotation, velocity, air_jumps, gun.get_data(), null if not holstered_gun else holstered_gun.get_data(), mults]
+	return [global_position, rotation, velocity, air_jumps, gun.get_data(), null if not holstered_gun else holstered_gun.get_data(), mults]#, health]
 
 func load_data(data: Array) -> void:
 	if data.is_empty():
@@ -293,6 +294,7 @@ func load_data(data: Array) -> void:
 		give_item(data[5][0])
 		holstered_gun.load_data(data[5])
 	mults = data[6]
+	#health = data[7]
 	
 	hud.update_health(health)
 	hud.update_clip(gun.get_clip())

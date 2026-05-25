@@ -372,6 +372,12 @@ _surfaces = [{
 "vertex_data": PackedByteArray("/P9/vwAAKEIAAMjB+f9/vwAAKEIAAODBAACAvwAAKEIAAODB/P9/vwAAKEIAAMjBAACAvwAAKEIAAODBAACAvwAAKEIAAMhBAACAvwAAKEIAAODBAACAvwAAMEIAAODBAACAvwAAMEIAAOBBAACAvwAAMEIAAODBAACAPwAAMEIAAODBAACAvwAAMEIAAOBBAACAvwAAKEIAAMhBAACAvwAAKEIAAODBAACAvwAAMEIAAOBBAACAvwAAKEIAAOBBAACAvwAAKEIAAMhBAACAvwAAMEIAAOBBAACAvwAAKEIAAMhB7P9/PwAAKEIAAMhB/P9/vwAAKEIAAMjB7P9/PwAAKEIAAMhBAACAPwAAKEIAAMjB/P9/vwAAKEIAAMjBAACAPwAAKEIAAMjBAACAPwAAMEIAAODBAACAPwAAKEIAAODBAACAPwAAKEIAAMjBAACAPwAAKEIAAOBBAACAPwAAMEIAAODBAACAPwAAMEIAAODBAACAPwAAMEIAAOBBAACAvwAAMEIAAOBB7P9/PwAAKEIAAMhBAACAPwAAKEIAAOBBAACAPwAAKEIAAMjBAACAPwAAKEIAAOBBAACAPwAAMEIAAOBBAACAPwAAMEIAAODB7P9/PwAAKEIAAMhB6v9/PwAAKEIAAOBBAACAPwAAKEIAAOBB/v9/v/z/f0CTJLHBAACAv/v/f0AAAODB+f9/v/v/f0AAAODBAACAv/b//z8AAODBAACAv/v/f0AAAODBAACAvwIAgED//8dB/v9/v/z/f0CTJLHBAACAvwIAgED//8dBAACAv/v/f0AAAODB/v9/v/z/f0CTJLHBAACAP/z/f0CTJLHBAACAvwIAgED//8dBAACAvwAAgEAAAMhBAACAv/b//z8AAODBAACAvwIAgED//8dBAACAvwUAAEAAAOBBAACAv/b//z8AAODBAACAvwAAgEAAAOBBAACAvwAAgEAAAMhBAACAvwAAgEAAAOBBAACAv/b//z8AAODBAACAvwUAAEAAAOBBAACAvwAAgEAAAOBB8P9/vwAAgEAAAOBBAACAvwUAAEAAAOBB9f9/PwUAAEAAAOBBAACAv/b//z8AAODBAACAvwUAAEAAAOBB8P9/vwAAgEAAAOBB9f9/PwgAAEAAAOBBAACAv/b//z8AAODBAACAPwUAAEAAAOBBAACAP/b//z8AAODBAACAPwAAAEAAAMjBAACAPwAAAEAAAODBAACAP/b//z8AAODBAACAPwAAAEAAAMjBAACAP/b//z8AAODBAACAPwUAAEAAAOBBAACAPwAAAEAAAMjBAACAPwUAAEAAAOBBAACAP/z/f0CTJLHBAACAPwUAAEAAAOBBAACAv/b//z8AAODB9f9/PwUAAEAAAOBB7P9/PwIAgED//8dBAACAvwIAgED//8dBAACAP/z/f0CTJLHBAACAvwUAAEAAAOBB9f9/PwgAAEAAAOBB9f9/PwUAAEAAAOBB7P9/PwIAgED//8dBAACAP/z/f0CTJLHBAACAPwIAgEAAAOBBAACAPwUAAEAAAOBBAACAPwIAgEAAAOBBAACAP/z/f0CTJLHB7P9/PwIAgED//8dBAACAPwIAgEAAAOBB6v9/PwIAgEAAAOBB/38AAAAAiRn/fwAAAAD/P/9/AAAAAP8//38AAAAAiRn/fwAAAAD/P/9/AAAAAP8/AAD/f/9//z8AAP9//3//PwAA/3//f/8//3///wAA/z//f///AAD/P/9///8AAP8/AAD/f/9//z8AAP9//3//PwAA/3//f/8/AAD/f/9//z8AAP9//3//PwAA/3//f/8//38AAAAA/z//fwAAAAAlOP9/AAAAAIkZ/38AAAAAJTj/fwAAAAD/P/9/AAAAAIkZ////f/9//z////9//3//P////3//f/8/////f/9//z////9//3//P////3//f/8//3///wAA/z//f///AAD/P/9///8AAP8//38AAAAAJTj/fwAAAAD/P/9/AAAAAP8/////f/9//z////9//3//P////3//f/8//38AAAAAJTj/fwAAAAD/P/9/AAAAAP8//3///wAAAID/f///AAD/P/9///8AAP8/AAD/f/9//z8AAP9//3//PwAA/3//f09AoX6h/kMAx3OhfqH+AAAAgKF+of4AAACA/3///wAA/z//f///AAD/P/9///8AAP8/AAD/f/9/C0AAAP9//3//PwAA/3//f09AAAD/f/9//z8AAP9//3//PwAA/3//f/8/AAD/f/9/C0AAAP9//3//PwAA/3//f/8//3//f/9//n//f/9//3/+f/9//3//f/5//38AAAAA/z//fwAAAAD/P/9/AAAAAP8//3//f/9//n//f/9//3/+f/9//3//f/5//38AAAAA/z//fwAAAAD/P/9/AAAAAP8/////f/9//z////9//3//P////3//f/8/////f/9//z////9//3//P////3//f/8/////f/9//z////9//3//P////3//f/8//38AAAAA/z//fwAAAAD/P/9/AAAAAP8//3///wAA/z//f///AAD/P/9///8AAP8//3//f/9//n//f/9//3/+f/9//3//f/5/LovQ9C4LaDoui9D0AAAAgC6L0PQAAACA////f/9//z////9//3//P////3//f/8//3///wAAAID/f///AAD/P/9///8AAP8/")
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_2ikqb"]
+font_size = 60
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_6dxj1"]
+viewport_path = NodePath("SubViewport")
+
 [node name="Elevator" type="Node3D" unique_id=1449266849]
 script = ExtResource("1_c53wp")
 
@@ -562,6 +568,30 @@ bus = &"Sounds"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33, 5, 34)
 volume_db = 20.0
 bus = &"Sounds"
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1780093993]
+transparent_bg = true
+
+[node name="Label" type="Label" parent="SubViewport" unique_id=2011227771]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quota:
+$0 / $150"
+label_settings = SubResource("LabelSettings_2ikqb")
+horizontal_alignment = 1
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=17826300]
+transform = Transform3D(2.79, 0, 0, 0, 2.38, 0, 0, 0, 1, 64, 29, 2.5)
+texture = SubResource("ViewportTexture_6dxj1")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="animation_finished" from="ElevatorDoors/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

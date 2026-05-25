@@ -24,7 +24,7 @@ enum {
 @onready var attack_timer: Timer = $AttackTimer
 
 var state: int = IDLE
-var player: Node3D
+var players: Array
 
 const SPEED: float = 60
 const EPSILON: float = 0.75
@@ -38,7 +38,6 @@ func _ready() -> void:
 	agent.set_target_position(Vector3.ZERO)
 
 func die() -> void:
-	Global.enemies -= 1
 	dead = true
 	
 	var cash = preload("res://cash.tscn").instantiate()
@@ -50,10 +49,19 @@ func die() -> void:
 	queue_free()
 
 func _physics_process(delta: float) -> void:
-	if player:
-		looking()
-		if ray_cast.get_collider() == player:
-			update_target_location()
+	if players:
+		var closest_distance
+		var closest_player
+		for player in players:
+			looking(player)
+			if ray_cast.get_collider() == player:
+				var distance = global_transform.origin.distance_squared_to(player.global_transform.origin)
+				if not closest_distance or distance < closest_distance:
+					closest_distance = distance
+					closest_player = player
+			
+		if closest_player:
+			update_target_location(closest_player)
 	
 	handle_state(delta)
 	
@@ -66,23 +74,24 @@ func _physics_process(delta: float) -> void:
 	elif state == IDLE or state == AWARE:
 		animator.play("Idle")
 
-func looking() -> void:
-	if not player:
-		return
- 
+func looking(player: Node3D) -> void:
 	var to_player = (player.global_transform.origin - global_transform.origin).normalized()
 	var forward = global_transform.basis.x
 	var angle_deg = rad_to_deg(acos(clamp(forward.dot(to_player), -1.0, 1.0)))
 	var squared_distance = global_transform.origin.distance_squared_to(player.global_transform.origin)
+	
 	if angle_deg > FOV * 0.5 and squared_distance > 200 and state != AWARE:
 		return
 	ray_cast.look_at(ray_cast.global_transform.origin + to_player, Vector3.UP)
 
+func in_hitscan(player: Node3D) -> bool:
+	return hitscan.get_collider() == player
+
 func handle_state(delta: float) -> void:
 	if agent.get_target_position().is_zero_approx() or agent.is_target_reached():
-		if not player or not is_target_current():
+		if not players or not is_target_current():
 			idle(delta)
-		elif player and hitscan.get_collider() == player:
+		elif players and players.any(in_hitscan):
 			attack()
 		else:
 			chase(delta)
@@ -93,16 +102,19 @@ func handle_state(delta: float) -> void:
 			else:
 				awake()
 		elif state == CHASE:
-			if player and hitscan.get_collider() == player:
+			if players and players.any(in_hitscan):
 				attack()
 			else:
 				chase(delta)
 
 func is_target_current() -> bool:
-	return agent.get_target_position().is_equal_approx(player.get_floor_position())
+	for player in players:
+		if agent.get_target_position().is_equal_approx(player.get_floor_position()):
+			return true
+	return false
 
 func attack() -> void:
-	if player and state != ATTACK:
+	if players and state != ATTACK:
 		attack_timer.start()
 		animator.play("Attack")
 		end_chase()
@@ -111,12 +123,14 @@ func attack() -> void:
 	velocity.z = 0
 
 func hit() -> void:
-	if player and hitscan.get_collider() == player:
-		player.hurt(10)
+	if players:
+		for player in players:
+			if in_hitscan(player):
+				player.hurt(10)
 
-func hurt(damage: float) -> void:
-	super.hurt(damage)
-	update_target_location()
+func hurt_from(damage: float, player: Node3D) -> void:
+	hurt(damage)
+	update_target_location(player)
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
@@ -167,12 +181,12 @@ func idle(delta: float) -> void:
 	velocity.x = move_toward(velocity.x, 0, 100000 * delta)
 	velocity.z = move_toward(velocity.z, 0, 100000 * delta)
 
-func update_target_location() -> void:
+func update_target_location(player: Node3D) -> void:
 	if player:
 		agent.set_target_position(player.get_floor_position())
 
-func set_target(target: Node3D) -> void:
-	player = target
+func set_target(targets: Array) -> void:
+	players = targets
 
 func randomize_timer(timer: Timer) -> void:
 	var rand_val = randf() + 0.5

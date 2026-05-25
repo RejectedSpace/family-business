@@ -44,6 +44,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer" unique_id=1578589766]
 handle_input_locally = false
+audio_listener_enable_3d = true
 size = Vector2i(638, 800)
 render_target_update_mode = 4
 
