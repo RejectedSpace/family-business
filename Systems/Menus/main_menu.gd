@@ -1,18 +1,12 @@
 extends Control
 
-@onready var start: Button = $Start
-@onready var quit: Button = $Quit
-@onready var solo: Button = $Solo
-@onready var coop: Button = $Coop
-@onready var back: Button = $Back
+@onready var main: Control = $Main
+@onready var start: Control = $Start
+@onready var options: Control = $Options
 
 func _on_start_pressed() -> void:
-	solo.visible = true
-	coop.visible = true
-	back.visible = true
-	start.visible = false
-	quit.visible = false
-
+	main.visible = false
+	start.visible = true
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
@@ -26,8 +20,23 @@ func _on_coop_pressed() -> void:
 	get_tree().change_scene_to_packed(Global.loading_scene)
 
 func _on_back_pressed() -> void:
-	solo.visible = false
-	coop.visible = false
-	back.visible = false
-	start.visible = true
-	quit.visible = true
+	main.visible = true
+	start.visible = false
+
+
+func _on_options_pressed() -> void:
+	main.visible = false
+	options.visible = true
+
+
+func _on_ms_1_value_changed(value: float) -> void:
+	Global.mouse_sens_1 = value
+
+
+func _on_ms_2_value_changed(value: float) -> void:
+	Global.mouse_sens_2 = value
+
+
+func _on_options_back_pressed() -> void:
+	main.visible = true
+	options.visible = false

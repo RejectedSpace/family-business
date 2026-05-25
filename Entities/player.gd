@@ -6,6 +6,7 @@ class_name Player
 @export var player_id: int = 1
 
 @onready var camera: Camera3D = $Camera3D
+@onready var bagman: Node3D = $Bagman
 @onready var modelAnimator: AnimationPlayer = $Bagman/AnimationPlayer
 @onready var playerAnimator: AnimationPlayer = $AnimationPlayer
 @onready var viewport_container: SubViewportContainer = $Camera3D/SubViewportContainer
@@ -24,7 +25,7 @@ class_name Player
 var air_jumps: int
 var crouched: bool
 var running: bool
-var input_id: String = str(player_id)
+var input_id: String
 var holstered_gun: Gun
 enum Mult {
 	HEALTH,
@@ -46,6 +47,11 @@ const MAX_AIR_JUMPS: int = 0
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	viewport.size = DisplayServer.window_get_size()
+	input_id = str(player_id)
+	camera.set_cull_mask_value(player_id * 2 + 4, false)
+	view_model.set_cull_mask_value(player_id * 2 + 5, true)
+	view_model.player_id = player_id
+	adjust_model_layer()
 	
 	speed = base_speed
 	
@@ -60,6 +66,12 @@ func _ready() -> void:
 	hud.update_reserve(gun.get_ammo())
 	
 	view_model.set_model(gun.get_view_model())
+
+func adjust_model_layer() -> void:
+	var all_descendants = bagman.find_children("*", "MeshInstance3D", true, false)
+	for descendant in all_descendants:
+		descendant.set_layer_mask(0)
+		descendant.set_layer_mask_value(player_id * 2 + 4, true)
 
 func apply_mults() -> void:
 	health *= ceil(mults[Mult.HEALTH])
@@ -139,6 +151,7 @@ func reload() -> void:
 	view_model.play("Reload")
 
 func handle_input(delta: float) -> void:
+	handle_look()
 	handle_jump()
 	handle_pause()
 	handle_crouch()
@@ -147,7 +160,17 @@ func handle_input(delta: float) -> void:
 	handle_reload()
 	if Input.is_action_just_pressed("switch_" + input_id) and not view_model.is_busy() and holstered_gun:
 		view_model.play("Holster")
+
+func handle_look() -> void:
+	var look_vec = Input.get_vector("look_left_" + input_id, "look_right_" + input_id, "look_up_" + input_id, "look_down_" + input_id)
 	
+	rotate_y(-look_vec.x * Global.get_sensitivity(player_id))
+	
+	camera.rotate_x(-look_vec.y * Global.get_sensitivity(player_id))
+	camera.rotation.x = clamp(camera.rotation.x, deg_to_rad(-80), deg_to_rad(80))
+	
+	view_model.sway(Vector2(-look_vec.x * Global.get_sensitivity(player_id) * 100, look_vec.y * Global.get_sensitivity(player_id) * 100))
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

@@ -3,6 +3,7 @@ extends Camera3D
 @onready var rig: Node3D = $Rig
 
 var model: Node3D
+var player_id: int
 
 const SMOOTHING_FACTOR = 5
 const SWAY_FACTOR = 5e-3
@@ -16,6 +17,7 @@ func set_model(view_model: PackedScene):
 	
 	model = view_model.instantiate()
 	rig.add_child(model)
+	model.for_player(player_id)
 
 func is_busy() -> bool:
 	return model.is_busy()

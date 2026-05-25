@@ -469,7 +469,7 @@ bus = &"Sounds"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=194151567]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48, 39, 32)
-layers = 65
+layers = 481
 light_energy = 3.162
 shadow_enabled = true
 shadow_reverse_cull_face = true
@@ -478,7 +478,7 @@ omni_attenuation = 0.8
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="." unique_id=1642148922]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 80, 39, 32)
-layers = 65
+layers = 481
 light_energy = 3.162
 shadow_enabled = true
 shadow_reverse_cull_face = true

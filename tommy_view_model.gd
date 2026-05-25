@@ -19,6 +19,12 @@ func _ready() -> void:
 	reticle.scale.y = DisplayServer.window_get_size().y / 1200.0 * .3
 	play("Deploy")
 
+func for_player(player_id: int) -> void:
+	var all_descendants = find_children("*", "MeshInstance3D", true, false)
+	for descendant in all_descendants:
+		descendant.set_layer_mask(0)
+		descendant.set_layer_mask_value(player_id * 2 + 5, true)
+
 func play(anim_name: StringName) -> void:
 	if anim_name == "Reload":
 		if animator.is_playing():

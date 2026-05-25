@@ -19,23 +19,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_06t4h")
 
-[node name="Start" type="Button" parent="." unique_id=101669424]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 647.0
-offset_right = 633.0
-offset_bottom = 783.0
-text = "Start"
-
-[node name="Quit" type="Button" parent="." unique_id=1321619393]
-layout_mode = 0
-offset_left = 648.0
-offset_top = 645.0
-offset_right = 1260.0
-offset_bottom = 781.0
-text = "Quit
-"
-
 [node name="Label" type="Label" parent="." unique_id=1799659642]
 layout_mode = 0
 offset_left = 474.0
@@ -46,8 +29,44 @@ text = "Family Business"
 label_settings = SubResource("LabelSettings_pd4dc")
 horizontal_alignment = 1
 
-[node name="Solo" type="Button" parent="." unique_id=1548817434]
+[node name="Main" type="Control" parent="." unique_id=2072107908]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="Button" parent="Main" unique_id=101669424]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 647.0
+offset_right = 431.0
+offset_bottom = 783.0
+text = "Start"
+
+[node name="Options" type="Button" parent="Main" unique_id=1018892233]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 647.0
+offset_right = 857.0
+offset_bottom = 783.0
+text = "Options
+"
+
+[node name="Quit" type="Button" parent="Main" unique_id=1321619393]
+layout_mode = 0
+offset_left = 883.0
+offset_top = 650.0
+offset_right = 1259.0
+offset_bottom = 786.0
+text = "Quit
+"
+
+[node name="Start" type="Control" parent="." unique_id=1577639061]
 visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Solo" type="Button" parent="Start" unique_id=1548817434]
 layout_mode = 0
 offset_left = 334.0
 offset_top = 248.0
@@ -56,8 +75,7 @@ offset_bottom = 384.0
 text = "Solo
 "
 
-[node name="Coop" type="Button" parent="." unique_id=594592563]
-visible = false
+[node name="Coop" type="Button" parent="Start" unique_id=594592563]
 layout_mode = 0
 offset_left = 335.0
 offset_top = 403.0
@@ -66,8 +84,7 @@ offset_bottom = 539.0
 text = "Co-op
 "
 
-[node name="Back" type="Button" parent="." unique_id=1178423021]
-visible = false
+[node name="Back" type="Button" parent="Start" unique_id=1178423021]
 layout_mode = 0
 offset_left = 339.0
 offset_top = 566.0
@@ -76,8 +93,66 @@ offset_bottom = 702.0
 text = "Back
 "
 
-[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Solo" to="." method="_on_solo_pressed"]
-[connection signal="pressed" from="Coop" to="." method="_on_coop_pressed"]
-[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
+[node name="Options" type="Control" parent="." unique_id=891829639]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MS1" type="HSlider" parent="Options" unique_id=2128523837]
+layout_mode = 0
+offset_left = 478.0
+offset_top = 445.0
+offset_right = 808.0
+offset_bottom = 481.0
+min_value = 0.01
+max_value = 0.2
+step = 0.01
+value = 0.01
+
+[node name="Label" type="Label" parent="Options/MS1" unique_id=321461179]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 205.0
+offset_bottom = 8.0
+text = "Mouse Sensitivity Player 1"
+
+[node name="MS2" type="HSlider" parent="Options" unique_id=1368102845]
+layout_mode = 0
+offset_left = 476.0
+offset_top = 529.0
+offset_right = 806.0
+offset_bottom = 565.0
+min_value = 0.01
+max_value = 0.2
+step = 0.01
+value = 0.01
+
+[node name="Label" type="Label" parent="Options/MS2" unique_id=1017575998]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -15.0
+offset_right = 205.0
+offset_bottom = 8.0
+text = "Mouse Sensitivity Player 2
+"
+
+[node name="OptionsBack" type="Button" parent="Options" unique_id=130261908]
+layout_mode = 0
+offset_left = 322.0
+offset_top = 599.0
+offset_right = 934.0
+offset_bottom = 735.0
+text = "Back
+"
+
+[connection signal="pressed" from="Main/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Main/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="Main/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Start/Solo" to="." method="_on_solo_pressed"]
+[connection signal="pressed" from="Start/Coop" to="." method="_on_coop_pressed"]
+[connection signal="pressed" from="Start/Back" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Options/MS1" to="." method="_on_ms_1_value_changed"]
+[connection signal="value_changed" from="Options/MS2" to="." method="_on_ms_2_value_changed"]
+[connection signal="pressed" from="Options/OptionsBack" to="." method="_on_options_back_pressed"]
