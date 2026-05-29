@@ -262,7 +262,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer" unique_id=664904227]
 handle_input_locally = false
-size = Vector2i(638, 800)
+size = Vector2i(1438, 1800)
 render_target_update_mode = 4
 
 [node name="Player" parent="GridContainer/SubViewportContainer/SubViewport" unique_id=1819948495 instance=ExtResource("11_rmtcx")]
@@ -276,9 +276,11 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer2" unique_id=1543053849]
 handle_input_locally = false
-size = Vector2i(638, 800)
+size = Vector2i(1438, 1800)
 render_target_update_mode = 4
 
-[node name="Player2" parent="GridContainer/SubViewportContainer2/SubViewport" unique_id=625377487 instance=ExtResource("11_rmtcx")]
+[node name="Player2" parent="GridContainer/SubViewportContainer2/SubViewport" unique_id=1741047716 instance=ExtResource("11_rmtcx")]
 transform = Transform3D(-0.9881267, 0, -0.15364122, 0, 1, 0, 0.15364122, 0, -0.9881267, 19.669388, 2.3550453, -44.982872)
 player_id = 2
+
+[connection signal="closed" from="Elevator" to="." method="_on_elevator_closed"]

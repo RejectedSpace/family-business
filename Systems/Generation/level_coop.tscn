@@ -45,7 +45,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer" unique_id=1578589766]
 handle_input_locally = false
 audio_listener_enable_3d = true
-size = Vector2i(638, 800)
+size = Vector2i(1438, 1800)
 render_target_update_mode = 4
 
 [node name="Player" parent="GridContainer/SubViewportContainer/SubViewport" unique_id=1819948495 instance=ExtResource("1_slogv")]
@@ -59,7 +59,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer2" unique_id=242073848]
 handle_input_locally = false
-size = Vector2i(638, 800)
+size = Vector2i(1438, 1800)
 render_target_update_mode = 4
 
 [node name="Player2" parent="GridContainer/SubViewportContainer2/SubViewport" unique_id=1474016302 instance=ExtResource("1_slogv")]
@@ -80,3 +80,5 @@ environment = SubResource("Environment_wpbb7")
 
 [node name="Elevator" parent="." unique_id=1449266849 instance=ExtResource("3_hw0ev")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64, 0, -64)
+
+[connection signal="closed" from="Elevator" to="." method="_on_elevator_closed"]

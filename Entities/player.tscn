@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://ccaieqjl6nqg7" path="res://Sounds/Step/step-wood-5.mp3" id="12_ffc7a"]
 [ext_resource type="AudioStream" uid="uid://bxdfh752llrk8" path="res://Sounds/Step/step-wood-6.mp3" id="13_irn06"]
 [ext_resource type="AudioStream" uid="uid://cd3bl50bobyy" path="res://Sounds/Step/step-wood-7.mp3" id="14_v3fwn"]
+[ext_resource type="AudioStream" uid="uid://cwv3f7yi0abth" path="res://Sounds/money.wav" id="17_uck12"]
 
 [sub_resource type="Animation" id="Animation_i3pqv"]
 length = 0.001
@@ -188,6 +189,11 @@ _data = {
 &"Uncrouch": SubResource("Animation_j25qi")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_25cb4"]
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("17_uck12")
+
 [node name="Player" type="CharacterBody3D" unique_id=1819948495]
 collision_mask = 2
 script = ExtResource("1_2j1hn")
@@ -195,68 +201,8 @@ script = ExtResource("1_2j1hn")
 [node name="Bagman" parent="." unique_id=823762267 instance=ExtResource("2_25cb4")]
 transform = Transform3D(-5.4639237e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.4639237e-08, 0, 0, 0)
 
-[node name="Bone_004" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="0" unique_id=1843012313]
-transform = Transform3D(0.9930774, 0.11746079, 3.762698e-07, -0.11746082, 0.99307734, -1.410028e-07, -3.9022726e-07, 9.582969e-08, 1.0000001, 0.10009771, 6.1785445, 6.9785744e-07)
-
-[node name="Bone_003" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="1" unique_id=76739793]
-transform = Transform3D(0.9113706, 0.4115865, 1.6329463e-07, -0.4115865, 0.9113706, -2.3783875e-07, -2.46713e-07, 1.4954941e-07, 1.0000001, -0.100096755, 5.735257, 6.252808e-07)
-
-[node name="Bone_008" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="2" unique_id=1728081557]
-transform = Transform3D(0.9902108, 0.13962036, -0.0012031458, 0.13271922, -0.94388473, -0.30243716, -0.043361977, 0.29931536, -0.9531698, 0.3190065, -0.16507828, -1.5095987)
-
-[node name="Bone_009" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="3" unique_id=815267447]
-transform = Transform3D(0.9993013, 0.037538998, -3.0174851e-06, 0.036516696, -0.97215086, -0.23149537, -0.008693159, 0.23133244, -0.9728373, 0.050303258, -0.16504353, -1.8077241)
-
-[node name="Bone_007" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="4" unique_id=1968414777]
-transform = Transform3D(0.9880272, 0.14715193, 0.046485957, 0.15430334, -0.94610506, -0.2847395, 0.0020804396, 0.2885019, -0.9574785, -0.05089426, 0.49057794, -1.7483102)
-
-[node name="Bone_006" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="5" unique_id=793041863]
-transform = Transform3D(0.96585476, 0.25910822, -2.1866922e-06, 0.25781947, -0.9610565, 0.09950172, 0.025779271, -0.09610415, -0.99503887, -0.7062931, 2.9215117, -1.5052192)
-
-[node name="Bone_005" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="6" unique_id=903826806]
-transform = Transform3D(0.989658, -0.14349107, -2.960536e-06, -0.14279407, -0.9848411, 0.09848424, -0.014134593, -0.097464584, -0.9951402, -0.39050847, 5.0888786, -1.290727)
-
-[node name="Bone_016" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="7" unique_id=1161252959]
-transform = Transform3D(0.9862265, 0.13961978, -0.08870505, 0.15963091, -0.9438845, 0.28913715, -0.043358006, -0.2993144, -0.9531698, 0.31900662, -0.16508383, 1.5256687)
-
-[node name="Bone_017" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="8" unique_id=1945405244]
-transform = Transform3D(0.99913824, 0.03753865, -0.017850127, 0.040647544, -0.9721505, 0.23080562, -0.008688904, -0.23133191, -0.97283715, 0.050304055, -0.16504902, 1.8237936)
-
-[node name="Bone_012" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="9" unique_id=1288327516]
-transform = Transform3D(0.98821646, 0.1471514, -0.04218721, 0.15306419, -0.94610476, 0.28540736, 0.0020845383, -0.2885012, -0.9574782, -0.050893605, 0.4905715, 1.7643788)
-
-[node name="Bone_011" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="10" unique_id=2112908203]
-transform = Transform3D(0.964555, 0.259108, 0.05001927, 0.26262796, -0.9610557, -0.08601774, 0.025783356, 0.09610499, -0.99503815, -0.70629215, 2.9215086, 1.5212868)
-
-[node name="Bone_010" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="11" unique_id=708309351]
-transform = Transform3D(0.98925525, -0.14349066, -0.028100384, -0.14553224, -0.9848408, -0.094389774, -0.0141303865, 0.0974648, -0.9951395, -0.3905084, 5.0888767, 1.3067929)
-
-[node name="Bone_002" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="12" unique_id=1448492521]
-transform = Transform3D(0.9982386, -0.059326816, 2.2914928e-07, 0.059326828, 0.9982386, -1.06618394e-07, -2.2242021e-07, 1.2002528e-07, 1.0000001, 0.06434821, 2.9682794, 2.9123663e-07)
-
-[node name="Bone_001" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="13" unique_id=1656889651]
-transform = Transform3D(1, 2.607703e-08, 2.3678396e-07, -1.4901175e-08, 1, -1.06549294e-07, -2.3678385e-07, 1.0654927e-07, 1.0000001, 0.06434822, 1.4453684, 1.2899275e-07)
-
-[node name="Bone_015" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="14" unique_id=1523994173]
-transform = Transform3D(0.47391397, 0.8805704, 0.001344367, 0.8804916, -0.47385, -0.014165796, -0.011836972, 0.007897085, -0.999899, -0.32745472, -6.796606, -0.7488556)
-
-[node name="Bone_014" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="15" unique_id=1893943208]
-transform = Transform3D(0.99709034, -0.07623061, -2.8521656e-05, -0.07622469, -0.99701744, 0.01207362, -0.00094881514, -0.0120363, -0.9999274, -0.055762116, -3.2431493, -0.70595706)
-
-[node name="Bone_013" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="16" unique_id=968539937]
-transform = Transform3D(0.9999115, -0.013311931, 4.841643e-07, -0.013307083, -0.9995464, 0.027011422, -0.0003590903, -0.027009027, -0.99963546, -0.012863167, -0.022020869, -0.618918)
-
-[node name="Bone_020" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="17" unique_id=1820285311]
-transform = Transform3D(0.473749, 0.88057053, -0.012563307, 0.8805805, -0.47384965, -0.006682675, -0.011837672, -0.0078970995, -0.9998991, -0.32745504, -6.796608, 0.7649199)
-
-[node name="Bone_019" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="18" unique_id=1325865310]
-transform = Transform3D(0.99708873, -0.07623068, -0.0018649485, -0.07624756, -0.9970176, -0.011928872, -0.00095004146, 0.012036327, -0.99992746, -0.055762187, -3.2431512, 0.72202146)
-
-[node name="Bone_018" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="19" unique_id=208171427]
-transform = Transform3D(0.9999115, -0.013311918, -0.00072015997, -0.013326511, -0.99954665, -0.027001677, -0.00036038936, 0.027008869, -0.9996356, -0.012863249, -0.022019751, 0.634983)
-
-[node name="Bone" parent="Bagman/Armature/Skeleton3D" parent_id_path=PackedInt32Array(823762267, 773300226) index="20" unique_id=516704414]
-transform = Transform3D(0.9990641, 0.0432541, 3.67082e-07, -0.043254096, 0.9990642, -1.0956253e-07, -3.7147743e-07, 9.3582194e-08, 1.0000001, 0.007149808, 0.12422448, 5.385709e-09)
+[node name="Armature" parent="Bagman" index="0" unique_id=189651662]
+transform = Transform3D(1, 8.742278e-08, 0, -8.742278e-08, 1, 0, 0, 0, -1, -0.37528256, 7.7397785, -0.009217)
 
 [node name="LuparaBase" parent="." unique_id=1637088801 instance=ExtResource("3_i3pqv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3472149, 14.566803, -4.0096064)
@@ -265,31 +211,31 @@ visible = false
 [node name="Lupara" parent="LuparaBase" index="0" unique_id=395541190]
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0, 0, 0)
 
-[node name="Cube_009" parent="LuparaBase/Lupara" index="0" unique_id=1994077245]
+[node name="Cube_009" parent="LuparaBase/Lupara" index="0" unique_id=1426925414]
 layers = 32
 
-[node name="Cube_010" parent="LuparaBase/Lupara" index="1" unique_id=665752943]
+[node name="Cube_010" parent="LuparaBase/Lupara" index="1" unique_id=1374295649]
 layers = 32
 
-[node name="Cube_011" parent="LuparaBase/Lupara" index="2" unique_id=1743432673]
+[node name="Cube_011" parent="LuparaBase/Lupara" index="2" unique_id=373200082]
 layers = 32
 
-[node name="Cube_012" parent="LuparaBase/Lupara" index="3" unique_id=86319655]
+[node name="Cube_012" parent="LuparaBase/Lupara" index="3" unique_id=1945906966]
 layers = 32
 
-[node name="Cube_013" parent="LuparaBase/Lupara" index="4" unique_id=44002387]
+[node name="Cube_013" parent="LuparaBase/Lupara" index="4" unique_id=352056962]
 layers = 32
 
-[node name="Cube_014" parent="LuparaBase/Lupara" index="5" unique_id=1451220722]
+[node name="Cube_014" parent="LuparaBase/Lupara" index="5" unique_id=519397151]
 layers = 32
 
-[node name="Cube_015" parent="LuparaBase/Lupara" index="6" unique_id=1414293159]
+[node name="Cube_015" parent="LuparaBase/Lupara" index="6" unique_id=1503937650]
 layers = 32
 
-[node name="Cube_016" parent="LuparaBase/Lupara" index="7" unique_id=2038044707]
+[node name="Cube_016" parent="LuparaBase/Lupara" index="7" unique_id=319918298]
 layers = 32
 
-[node name="Cube_017" parent="LuparaBase/Lupara" index="8" unique_id=378193523]
+[node name="Cube_017" parent="LuparaBase/Lupara" index="8" unique_id=1595561853]
 layers = 32
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LuparaBase" unique_id=2027855847]
@@ -299,16 +245,16 @@ libraries/ = SubResource("AnimationLibrary_sweqy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3419609, 13.229449, -3.4654565)
 visible = false
 
-[node name="Cube" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="0" unique_id=676687181]
+[node name="Cube" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="0" unique_id=1071802999]
 layers = 32
 
-[node name="Cube_001" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="1" unique_id=1202491158]
+[node name="Cube_001" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="1" unique_id=865106673]
 layers = 32
 
-[node name="Cube_002" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="2" unique_id=1784004415]
+[node name="Cube_002" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="2" unique_id=1808077302]
 layers = 32
 
-[node name="Cube_003" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="3" unique_id=44307779]
+[node name="Cube_003" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="3" unique_id=704994715]
 layers = 32
 
 [node name="ColtBase" parent="." unique_id=1795829639 instance=ExtResource("5_25cb4")]
@@ -317,16 +263,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7892535, 12.684641, -5.2405
 [node name="Colt" parent="ColtBase" index="0" unique_id=1452321266]
 transform = Transform3D(-0.4, 0, -6.039832e-08, 0, 0.4, 0, 6.039832e-08, 0, -0.4, 0, 0, 0)
 
-[node name="Cube" parent="ColtBase/Colt" index="0" unique_id=2026019446]
+[node name="Cube" parent="ColtBase/Colt" index="0" unique_id=1061778113]
 layers = 32
 
-[node name="Cube_001" parent="ColtBase/Colt" index="1" unique_id=347924907]
+[node name="Cube_001" parent="ColtBase/Colt" index="1" unique_id=627827405]
 layers = 32
 
-[node name="Cube_002" parent="ColtBase/Colt" index="2" unique_id=742148905]
+[node name="Cube_002" parent="ColtBase/Colt" index="2" unique_id=1101418115]
 layers = 32
 
-[node name="Cube_003" parent="ColtBase/Colt" index="3" unique_id=1975612007]
+[node name="Cube_003" parent="ColtBase/Colt" index="3" unique_id=961048745]
 layers = 32
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=750621706]
@@ -396,6 +342,10 @@ playback_default_blend_time = 0.1
 
 [node name="StepTimer" type="Timer" parent="." unique_id=1780314310]
 one_shot = true
+
+[node name="MoneySound" type="AudioStreamPlayer3D" parent="." unique_id=851159863]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 18.440714, 0)
+stream = SubResource("AudioStreamRandomizer_25cb4")
 
 [connection signal="holstered" from="Camera3D/SubViewportContainer/SubViewport/ViewModel" to="." method="_on_view_model_holstered"]
 [connection signal="reload_finished" from="Camera3D/SubViewportContainer/SubViewport/ViewModel" to="." method="_on_view_model_reload_finished"]

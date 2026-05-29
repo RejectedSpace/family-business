@@ -11,7 +11,7 @@ func _ready() -> void:
 		kill = true
 
 func _process(delta: float) -> void:
-	elevator.set_label("Quota:\n$" + str(Global.cash) + " / $" + str(Global.get_quota()) + "\n" + ("Quota Passed!" if not kill else "Quota Failed!"))
+	elevator.set_label(str("Quota:\n$", Global.cash, " / $", Global.get_quota(), "\n", "Quota Passed!" if not kill else "Quota Failed!"))
 	if kill and elevator.open:
 		get_tree().quit()
 	

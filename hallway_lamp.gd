@@ -7,14 +7,14 @@ extends StaticBody3D
 
 func _ready() -> void:
 	var ramdom: int = randi() % 16
-	if ramdom < 8:
+	if ramdom < 2:
 		visible = false
 	else:
 		visible = true
-		var left_visible: bool = ramdom % 4 == 0
+		var left_visible: bool = ramdom % 4 != 0
 		spot_down_left.visible = left_visible
 		spot_up_left.visible = left_visible
 		
-		var right_visible: bool = ramdom / 2 % 4 == 0
+		var right_visible: bool = ramdom / 2 % 4 != 0
 		spot_down_right.visible = right_visible
 		spot_up_right.visible = right_visible

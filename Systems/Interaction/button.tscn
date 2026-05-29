@@ -139,6 +139,7 @@ _data = {
 }
 
 [node name="Button" type="StaticBody3D" unique_id=1086304943]
+collision_layer = 3
 script = ExtResource("1_86c0l")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=1897411054]

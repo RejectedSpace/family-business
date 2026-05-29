@@ -41,7 +41,7 @@ func generate(time: float = 0.0) -> void:
 		timer.start(time)
 
 func spawn_enemy(pos: Vector3) -> void:
-	if randi() % 2 != 0:
+	if randi() % 4 != 0:
 		spawn_money(pos)
 		return
 	var new_enemy = enemy.instantiate()

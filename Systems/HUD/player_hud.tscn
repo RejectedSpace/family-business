@@ -9,10 +9,11 @@ font_size = 10
 script = ExtResource("1_tvw2b")
 
 [node name="Health" type="MarginContainer" parent="." unique_id=480550682]
-offset_top = 700.0
-offset_right = 40.0
-offset_bottom = 725.0
-scale = Vector2(4, 4)
+offset_left = -14.0
+offset_top = 1592.0
+offset_right = 26.0
+offset_bottom = 1617.0
+scale = Vector2(8, 8)
 
 [node name="Panel" type="Panel" parent="Health" unique_id=178084247]
 layout_mode = 2
@@ -34,11 +35,11 @@ text = "100"
 horizontal_alignment = 1
 
 [node name="Ammo" type="MarginContainer" parent="." unique_id=1267057201]
-offset_left = 1120.0
-offset_top = 700.0
-offset_right = 1160.0
-offset_bottom = 725.0
-scale = Vector2(4, 4)
+offset_left = 2565.0
+offset_top = 1607.0
+offset_right = 2605.0
+offset_bottom = 1632.0
+scale = Vector2(8, 8)
 
 [node name="Panel" type="Panel" parent="Ammo" unique_id=1552435566]
 layout_mode = 2
@@ -70,10 +71,10 @@ text = "16"
 label_settings = SubResource("LabelSettings_5sskr")
 
 [node name="Cash" type="MarginContainer" parent="." unique_id=1840964730]
-offset_left = 1040.0
-offset_right = 1100.0
+offset_left = 2407.0
+offset_right = 2467.0
 offset_bottom = 25.0
-scale = Vector2(4, 4)
+scale = Vector2(8, 8)
 
 [node name="Panel" type="Panel" parent="Cash" unique_id=335316995]
 layout_mode = 2
@@ -93,3 +94,38 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "$50000"
 horizontal_alignment = 1
+
+[node name="TimeLeft" type="MarginContainer" parent="." unique_id=1863459669]
+offset_left = 10.0
+offset_top = 16.0
+offset_right = 70.0
+offset_bottom = 41.0
+scale = Vector2(8, 8)
+
+[node name="Panel" type="Panel" parent="TimeLeft" unique_id=639901414]
+layout_mode = 2
+
+[node name="Time" type="Label" parent="TimeLeft/Panel" unique_id=302662773]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -27.5
+offset_top = -11.75
+offset_right = 27.5
+offset_bottom = 11.25
+grow_horizontal = 2
+grow_vertical = 2
+text = "SHOP"
+horizontal_alignment = 1
+
+[node name="MoneyToolTip" type="Label" parent="." unique_id=596254122]
+visible = false
+offset_left = 1083.0
+offset_top = 1518.0
+offset_right = 1266.0
+offset_bottom = 1541.0
+scale = Vector2(4, 4)
+text = "Press 'B' to Grab Money"

@@ -21,10 +21,11 @@ script = ExtResource("1_06t4h")
 
 [node name="Label" type="Label" parent="." unique_id=1799659642]
 layout_mode = 0
-offset_left = 474.0
-offset_top = 22.0
-offset_right = 1241.0
-offset_bottom = 159.0
+offset_left = 1112.0
+offset_top = 208.0
+offset_right = 1879.0
+offset_bottom = 345.0
+scale = Vector2(2, 2)
 text = "Family Business"
 label_settings = SubResource("LabelSettings_pd4dc")
 horizontal_alignment = 1
@@ -36,27 +37,30 @@ offset_bottom = 40.0
 
 [node name="Start" type="Button" parent="Main" unique_id=101669424]
 layout_mode = 0
-offset_left = 21.0
-offset_top = 647.0
-offset_right = 431.0
-offset_bottom = 783.0
+offset_left = 113.0
+offset_top = 1448.0
+offset_right = 523.0
+offset_bottom = 1584.0
+scale = Vector2(2, 2)
 text = "Start"
 
 [node name="Options" type="Button" parent="Main" unique_id=1018892233]
 layout_mode = 0
-offset_left = 476.0
-offset_top = 647.0
-offset_right = 857.0
-offset_bottom = 783.0
+offset_left = 1057.0
+offset_top = 1447.0
+offset_right = 1438.0
+offset_bottom = 1583.0
+scale = Vector2(2, 2)
 text = "Options
 "
 
 [node name="Quit" type="Button" parent="Main" unique_id=1321619393]
 layout_mode = 0
-offset_left = 883.0
-offset_top = 650.0
-offset_right = 1259.0
-offset_bottom = 786.0
+offset_left = 1977.0
+offset_top = 1440.0
+offset_right = 2353.0
+offset_bottom = 1576.0
+scale = Vector2(2, 2)
 text = "Quit
 "
 
@@ -68,28 +72,31 @@ offset_bottom = 40.0
 
 [node name="Solo" type="Button" parent="Start" unique_id=1548817434]
 layout_mode = 0
-offset_left = 334.0
-offset_top = 248.0
-offset_right = 946.0
-offset_bottom = 384.0
+offset_left = 835.0
+offset_top = 558.0
+offset_right = 1447.0
+offset_bottom = 694.0
+scale = Vector2(2, 2)
 text = "Solo
 "
 
 [node name="Coop" type="Button" parent="Start" unique_id=594592563]
 layout_mode = 0
-offset_left = 335.0
-offset_top = 403.0
-offset_right = 947.0
-offset_bottom = 539.0
+offset_left = 820.0
+offset_top = 908.0
+offset_right = 1432.0
+offset_bottom = 1044.0
+scale = Vector2(2, 2)
 text = "Co-op
 "
 
 [node name="Back" type="Button" parent="Start" unique_id=1178423021]
 layout_mode = 0
-offset_left = 339.0
-offset_top = 566.0
-offset_right = 951.0
-offset_bottom = 702.0
+offset_left = 830.0
+offset_top = 1290.0
+offset_right = 1442.0
+offset_bottom = 1426.0
+scale = Vector2(2, 2)
 text = "Back
 "
 
@@ -101,10 +108,11 @@ offset_bottom = 40.0
 
 [node name="MS1" type="HSlider" parent="Options" unique_id=2128523837]
 layout_mode = 0
-offset_left = 478.0
-offset_top = 445.0
-offset_right = 808.0
-offset_bottom = 481.0
+offset_left = 1187.0
+offset_top = 1282.0
+offset_right = 1517.0
+offset_bottom = 1318.0
+scale = Vector2(2, 2)
 min_value = 0.01
 max_value = 0.2
 step = 0.01
@@ -119,6 +127,7 @@ offset_bottom = 8.0
 text = "Mouse Sensitivity Player 1"
 
 [node name="MS2" type="HSlider" parent="Options" unique_id=1368102845]
+visible = false
 layout_mode = 0
 offset_left = 476.0
 offset_top = 529.0
@@ -140,10 +149,11 @@ text = "Mouse Sensitivity Player 2
 
 [node name="OptionsBack" type="Button" parent="Options" unique_id=130261908]
 layout_mode = 0
-offset_left = 322.0
-offset_top = 599.0
-offset_right = 934.0
-offset_bottom = 735.0
+offset_left = 839.0
+offset_top = 1424.0
+offset_right = 1451.0
+offset_bottom = 1560.0
+scale = Vector2(2, 2)
 text = "Back
 "
 

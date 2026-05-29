@@ -12,7 +12,7 @@ func _ready() -> void:
 func _process(delta) -> void:
 	elevator.set_label("Quota:\n$" + str(Global.cash) + " / $" + str(Global.get_quota()) + "\n" + ("Quota Passed!" if not kill else "Quota Failed!"))
 	if kill and elevator.open:
-		get_tree().quit()
+		player.die()
 
 func _on_elevator_closed() -> void:
 	Global.next_scene = "res://Systems/Generation/level.tscn"

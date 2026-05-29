@@ -21,6 +21,7 @@ class_name Player
 @onready var step_sound: AudioStreamPlayer3D = $StepSound
 @onready var step_timer: Timer = $StepTimer
 @onready var floor_cast: RayCast3D = $FloorCast
+@onready var money_sound: AudioStreamPlayer3D = $MoneySound
 
 var air_jumps: int
 var crouched: bool
@@ -37,6 +38,7 @@ enum Mult {
 var mults: Array[float] = [1.0, 1.0, 1.0, 1.0, 1.0]
 
 var base_speed: float = 80.0
+var base_health = 100
 var speed: float
 const STEP_FREQUENCY: float = 40.0
 const BACKWARD_MULTIPLIER: float = 0.9
@@ -55,9 +57,10 @@ func _ready() -> void:
 	
 	speed = base_speed
 	
-	load_data(Global.player_1_data)
+	load_data(Global.get_player_data(player_id))
 	
 	apply_mults()
+	regen()
 	
 	hitscan.global_transform = camera.global_transform
 	
@@ -74,16 +77,24 @@ func adjust_model_layer() -> void:
 		descendant.set_layer_mask_value(player_id * 2 + 4, true)
 
 func apply_mults() -> void:
-	health *= ceil(mults[Mult.HEALTH])
+	health = ceil(base_health * mults[Mult.HEALTH])
 	speed = base_speed * mults[Mult.SPEED]
 	gun.damage = gun.base_damage * mults[Mult.DAMAGE]
-	gun.clip_size = gun.base_clip_size * ceil(mults[Mult.CLIP])
-	gun.ammo_cappacity = gun.base_ammo_cappacity * ceil(mults[Mult.CAPPACITY])
-	
+	gun.clip_size = ceil(gun.base_clip_size * mults[Mult.CLIP])
+	gun.ammo_cappacity = ceil(gun.base_ammo_cappacity * mults[Mult.CAPPACITY])
+
 	if holstered_gun:
 		holstered_gun.damage = holstered_gun.base_damage * mults[Mult.DAMAGE]
-		holstered_gun.clip_size = holstered_gun.base_clip_size * ceil(mults[Mult.CLIP])
-		holstered_gun.ammo_cappacity = holstered_gun.base_ammo_cappacity * ceil(mults[Mult.CAPPACITY])
+		holstered_gun.clip_size = ceil(holstered_gun.base_clip_size * mults[Mult.CLIP])
+		holstered_gun.ammo_cappacity = ceil(holstered_gun.base_ammo_cappacity * mults[Mult.CAPPACITY])
+
+func regen() -> void:
+	health = base_health
+	
+	gun.ammo = min(gun.ammo + ceil(gun.ammo_cappacity / 2.0), gun.ammo_cappacity)
+	
+	if holstered_gun:
+		holstered_gun.ammo = min(holstered_gun.ammo + ceil(holstered_gun.ammo_cappacity / 2.0), holstered_gun.ammo_cappacity)
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
@@ -98,15 +109,16 @@ func apply_gravity(delta: float) -> void:
 
 func get_cash(money: int = 10):
 	Global.cash += money
+	money_sound.play()
 
 func give_item(item):
 	if item is Gun:
 		if not holstered_gun:
 			holstered_gun = gun
 		
-		if item.name == "Lupara":
+		if item.base_clip_size == 2:
 			gun = lupara_base.duplicate()
-		elif item.name == "Tommy":
+		elif item.base_clip_size == 30:
 			gun = tommy_base.duplicate()
 		else:
 			gun = colt_base.duplicate()
@@ -129,6 +141,30 @@ func refill_ammo(proportion_filled: float) -> void:
 	
 	hud.update_clip(gun.get_clip())
 	hud.update_reserve(gun.get_ammo())
+
+func increase_cappacity(value: float) -> void:
+	mults[Mult.CAPPACITY] += value
+	var missing = gun.ammo_cappacity - gun.ammo
+	gun.ammo_cappacity = ceil(gun.base_ammo_cappacity * mults[Mult.CAPPACITY])
+	gun.ammo = gun.ammo_cappacity - missing
+	if holstered_gun:
+		missing = holstered_gun.ammo_cappacity - holstered_gun.ammo
+		holstered_gun.ammo_cappacity = ceil(holstered_gun.base_ammo_cappacity * mults[Mult.CAPPACITY])
+		holstered_gun.ammo = holstered_gun.ammo_cappacity - missing
+	
+	hud.update_reserve(gun.get_ammo())
+
+func increase_clip(value: float) -> void:
+	mults[Mult.CLIP] += value
+	var missing = gun.clip_size - gun.clip
+	gun.clip_size = ceil(gun.base_clip_size * mults[Mult.CLIP])
+	gun.clip = gun.clip_size - missing
+	if holstered_gun:
+		missing = holstered_gun.clip_size - holstered_gun.clip
+		holstered_gun.clip_size = ceil(holstered_gun.base_clip_size * mults[Mult.CLIP])
+		holstered_gun.clip = holstered_gun.clip_size - missing
+	
+	hud.update_clip(gun.get_clip())
 
 func shoot() -> void:
 	var hitscan_dupe = gun.get_hitscan().duplicate()
@@ -225,8 +261,7 @@ func hurt(damage: float) -> void:
 
 #Override
 func die() -> void:
-	Global.reset()
-	Global.next_scene = "res://Systems/Menus/main.tscn"
+	Global.next_scene = "res://game_over.tscn"
 	get_tree().change_scene_to_packed(Global.loading_scene)
 
 func handle_movement() -> void:
@@ -277,7 +312,7 @@ func get_floor_position() -> Vector3:
 	return floor_cast.get_collision_point()
 
 func get_data() -> Array:
-	return [global_position, rotation, velocity, air_jumps, gun.get_data(), null if not holstered_gun else holstered_gun.get_data(), mults]#, health]
+	return [global_position, rotation, velocity, air_jumps, gun.get_data(), null if not holstered_gun else holstered_gun.get_data(), mults, health]
 
 func load_data(data: Array) -> void:
 	if data.is_empty():
@@ -294,7 +329,7 @@ func load_data(data: Array) -> void:
 		give_item(data[5][0])
 		holstered_gun.load_data(data[5])
 	mults = data[6]
-	#health = data[7]
+	health = data[7]
 	
 	hud.update_health(health)
 	hud.update_clip(gun.get_clip())

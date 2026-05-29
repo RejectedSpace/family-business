@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://c5ur6q0tb1nr"]
+
+[ext_resource type="Script" uid="uid://d0t8vyfvty8q6" path="res://game_over.gd" id="1_y26ei"]
+
+[node name="GameOver" type="Node2D" unique_id=1738659066]
+script = ExtResource("1_y26ei")
+
+[node name="Label" type="Label" parent="." unique_id=1043842542]
+offset_left = 605.0
+offset_top = 268.0
+offset_right = 681.0
+offset_bottom = 291.0
+scale = Vector2(20, 20)
+text = "YOU DIED"
+
+[node name="Button" type="Button" parent="." unique_id=472685487]
+offset_left = 1078.0
+offset_top = 1360.0
+offset_right = 1174.0
+offset_bottom = 1391.0
+scale = Vector2(6, 6)
+text = "Main Menu"
+
+[node name="StatsLabels" type="Label" parent="." unique_id=1989791238]
+offset_left = 875.0
+offset_top = 822.0
+offset_right = 998.0
+offset_bottom = 871.0
+scale = Vector2(5, 5)
+text = "Quotas Passed:
+Money Left:"
+horizontal_alignment = 2
+
+[node name="Stats" type="Label" parent="." unique_id=583729004]
+offset_left = 1529.9999
+offset_top = 822.0
+offset_right = 1648.3999
+offset_bottom = 871.0
+scale = Vector2(5, 5)
+text = "  1
+$2"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

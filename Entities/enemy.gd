@@ -33,7 +33,7 @@ const FOV: float = 190.0
 const SMOOTHING_FACTOR = 0.2
 
 func _ready() -> void:
-	step_sound.set_volume_db(5)
+	step_sound.set_volume_db(15)
 	
 	agent.set_target_position(Vector3.ZERO)
 
