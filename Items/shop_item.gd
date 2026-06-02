@@ -1,0 +1,86 @@
+extends Node3D
+
+var item: Item
+var rarity: int
+
+@onready var name_label: Label = $SubViewport/Control/Name
+@onready var price_label: Label = $SubViewport/Control/Price
+@onready var rarity_label: Label = $SubViewport/Control/Rarity
+@onready var items: Node3D = $Items
+@onready var animator: AnimationPlayer = $AnimationPlayer
+
+func _ready() -> void:
+	if name_label.label_settings.get_reference_count() > 1:
+		name_label.label_settings = name_label.label_settings.duplicate()
+	
+	if price_label.label_settings.get_reference_count() > 1:
+		price_label.label_settings = price_label.label_settings.duplicate()
+	
+	if rarity_label.label_settings.get_reference_count() > 1:
+		rarity_label.label_settings = rarity_label.label_settings.duplicate()
+	
+	determine_rarity()
+	
+	var rarity_matches: Array = []
+	for i in items.get_children():
+		if i.rarity == rarity:
+			rarity_matches.append(i)
+			
+	item = rarity_matches.pick_random()
+	
+	item.visible = true
+	animator.play("Spin")
+	label_sign()
+
+func label_sign() -> void:
+	var item_name: StringName = item.get_item_name()
+	item_name = item_name.replace("_", "\n")
+	
+	var color: Color = rarity_color()
+	
+	name_label.text = item_name
+	name_label.label_settings.font_color = color
+	
+	price_label.text = str("$", item.price)
+	price_label.label_settings.font_color = color
+	
+	rarity_label.text = rarity_tag()
+	rarity_label.label_settings.font_color = color
+
+func determine_rarity() -> void:
+	var rarity_roll = randf()
+	
+	if rarity_roll < 0.50:
+		rarity = 0
+	elif rarity_roll < 0.83:
+		rarity = 1
+	elif rarity_roll < 0.95:
+		rarity = 2
+	else:
+		rarity = 3
+
+func rarity_tag() -> String:
+	match rarity:
+		0: return "Common"
+		1: return "Uncommon"
+		2: return "Rare"
+		3: return "Legendary"
+	return "?"
+
+func rarity_color() -> Color:
+	match rarity:
+		0: return "White"
+		1: return "Green"
+		2: return "Red"
+		3: return "Yellow"
+	return "Brown"
+
+func _on_interactable_interacted(interactor: Interactor) -> void:
+	if item and Global.cash >= item.price:
+		Global.cash -= item.price
+		interactor.player.give_item(item)
+		item.visible = false
+		item = null
+		name_label.text = "SOLD"
+		price_label.text = ""
+		rarity_label.text = ""

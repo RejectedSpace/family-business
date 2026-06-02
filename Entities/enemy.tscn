@@ -28,10 +28,6 @@
 radius = 2.0
 height = 24.0
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g4c7x"]
-radius = 3.9350586
-height = 22.927734
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nsi34"]
 random_pitch = 1.122462
 streams_count = 5
@@ -77,83 +73,80 @@ script = ExtResource("1_4gyqm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 shape = SubResource("CapsuleShape3D_iifgy")
 
-[node name="AreaHitscan" type="Area3D" parent="." unique_id=1107396469]
-collision_layer = 4
-
-[node name="CollisionHitscan" type="CollisionShape3D" parent="AreaHitscan" unique_id=1873557897]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.545683, 11.463867, 0)
-shape = SubResource("CapsuleShape3D_g4c7x")
-
 [node name="Infected" parent="." unique_id=848959910 instance=ExtResource("2_5bdg5")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 
-[node name="Bone_004" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="0" unique_id=2011333358]
+[node name="Bone_004" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="0" unique_id=1454552210]
 transform = Transform3D(0.9997614, 0.021828903, -8.539609e-05, -0.02182892, 0.99976146, 1.8466217e-06, 8.541605e-05, 1.764056e-08, 0.9999999, 0.020992845, 6.6394825, -0.0568283)
 
-[node name="Bone_003" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="1" unique_id=1871543456]
+[node name="Bone_003" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="1" unique_id=1812090371]
 transform = Transform3D(0.9611872, 0.2758962, -8.238074e-05, -0.27589622, 0.96118724, 2.3627881e-05, 8.570225e-05, 1.7447746e-08, 0.9999999, -0.28655803, 5.568014, -0.05682832)
 
-[node name="Bone_008" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="2" unique_id=1340236445]
+[node name="Bone_008" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="2" unique_id=967502839]
 transform = Transform3D(-0.99982655, -0.01806052, 0.0044978037, 0.018610537, -0.97329915, 0.22878441, 0.00024575368, 0.22882819, 0.9734661, -0.4502551, -0.1929025, -1.7257968)
 
-[node name="Bone_009" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="3" unique_id=754200655]
+[node name="Bone_009" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="3" unique_id=376107906]
 transform = Transform3D(0.9996348, 0.026368022, 0.0058683828, 0.026836544, -0.94458354, -0.32717183, -0.0030836891, 0.3272096, -0.944946, -0.15844649, -0.17005599, -1.4485139)
 
-[node name="Bone_007" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="4" unique_id=1244333607]
+[node name="Bone_007" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="4" unique_id=1224415947]
 transform = Transform3D(6.92904e-07, 0.23523676, -0.9719378, -0.11684126, -0.9652807, -0.23362562, -0.9931498, 0.11356243, 0.027484655, -0.61395174, 0.43473482, -1.6673661)
 
-[node name="Bone_006" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="5" unique_id=351739863]
+[node name="Bone_006" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="5" unique_id=326114945]
 transform = Transform3D(0.0018197317, 0.10320052, -0.99465865, 0.038159642, -0.99394315, -0.10305644, -0.99926925, -0.037768405, -0.0057468107, -0.82214713, 2.4399035, -1.5911725)
 
-[node name="Bone_005" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="6" unique_id=154090535]
+[node name="Bone_005" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="6" unique_id=919599488]
 transform = Transform3D(0.001924186, -0.12495854, -0.9921598, 0.09093088, -0.9880295, 0.1246147, -0.9958545, -0.09045784, 0.009461454, -0.51474094, 4.87052, -1.3686402)
 
-[node name="Bone_013" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="7" unique_id=2035559635]
+[node name="Bone_013" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="7" unique_id=1787365807]
 transform = Transform3D(-0.99993205, -0.010019988, -0.0060042366, 0.011343271, -0.95565444, -0.294272, -0.0027894806, -0.29432106, 0.95570475, 0.36327016, -0.4273126, 2.0608044)
 
-[node name="Bone_014" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="8" unique_id=1586842287]
+[node name="Bone_014" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="8" unique_id=1196901249]
 transform = Transform3D(0.9879128, 0.15434891, -0.014332883, 0.14819361, -0.91328317, 0.37941074, 0.045471966, -0.3769498, -0.9251192, 0.63398683, -0.40446514, 1.4335082)
 
-[node name="Bone_012" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="9" unique_id=1961373108]
+[node name="Bone_012" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="9" unique_id=1181646960]
 transform = Transform3D(-0.055349387, 0.29741716, -0.95314217, 0.09170561, -0.949056, -0.30146754, -0.99424887, -0.10409503, 0.025254687, 0.15492904, 0.20746803, 1.9166557)
 
-[node name="Bone_011" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="10" unique_id=908940595]
+[node name="Bone_011" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="10" unique_id=748144959]
 transform = Transform3D(0.025074918, 0.38019294, -0.9245676, -0.16728063, -0.9102221, -0.3788308, -0.9855925, 0.16416137, 0.040775012, -0.7990701, 2.491443, 1.5047338)
 
-[node name="Bone_010" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="11" unique_id=1466608307]
+[node name="Bone_010" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="11" unique_id=402630696]
 transform = Transform3D(-0.02407746, -0.11953051, -0.9925387, -0.08828962, -0.9886927, 0.12120919, -0.9958059, 0.090549074, 0.013251871, -0.51474094, 4.8432617, 1.2893434)
 
-[node name="Bone_002" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="12" unique_id=751835154]
+[node name="Bone_002" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="12" unique_id=278496658]
 transform = Transform3D(0.98262787, -0.18558574, -8.4127605e-05, 0.18558574, 0.9826279, -1.5906428e-05, 8.5618114e-05, 1.6942067e-08, 0.9999999, 0.18468979, 3.0728793, -0.05682836)
 
-[node name="Bone_001" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="13" unique_id=138792799]
+[node name="Bone_001" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="13" unique_id=2042675778]
 transform = Transform3D(0.9977391, 0.0672052, -8.5300744e-05, -0.0672052, 0.99773914, 5.727634e-06, 8.549285e-05, 1.7695129e-08, 0.9999999, 0.1202033, 2.1155026, -0.05682838)
 
-[node name="Bone_017" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="14" unique_id=1237031522]
+[node name="Bone_017" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="14" unique_id=669074163]
 transform = Transform3D(0.219399, 0.97560465, -0.008402853, 0.97527146, -0.2190728, 0.029195022, 0.026641559, -0.014600323, -0.999542, -0.24910998, -7.523652, -0.8543938)
 
-[node name="Bone_016" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="15" unique_id=1152562458]
+[node name="Bone_016" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="15" unique_id=1269465894]
 transform = Transform3D(0.9965395, -0.08318084, -0.0009994122, -0.08317823, -0.99653226, 0.0021408126, -0.0011739938, -0.002049908, -1.0000008, 0.12233234, -3.0736578, -0.84523994)
 
-[node name="Bone_015" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="16" unique_id=1444026590]
+[node name="Bone_015" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="16" unique_id=937493751]
 transform = Transform3D(0.999958, -0.009754314, 9.964088e-05, -0.0097485455, -0.99888134, 0.046271756, -0.00035182037, -0.04627034, -0.99893266, 0.15804867, 0.58383703, -0.67581683)
 
-[node name="Bone_020" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="17" unique_id=107882065]
+[node name="Bone_020" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="17" unique_id=1279300293]
 transform = Transform3D(0.21939835, 0.9756027, -0.008407489, 0.9752716, -0.21907236, 0.029195597, 0.02664136, -0.014605003, -0.99953806, -0.2491105, -7.523651, 0.7913817)
 
-[node name="Bone_019" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="18" unique_id=1898723895]
+[node name="Bone_019" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="18" unique_id=1633457226]
 transform = Transform3D(0.99670655, -0.08112922, -0.0010089786, -0.08112765, -0.9967027, 0.0013344199, -0.0011139109, -0.0012481604, -0.9999984, 0.12233256, -2.9603343, 0.7970963)
 
-[node name="Bone_018" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="19" unique_id=1805242161]
+[node name="Bone_018" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="19" unique_id=521193580]
 transform = Transform3D(0.99995255, -0.010076697, -0.00045783108, -0.010079441, -0.99992895, -0.006364067, -0.00039367116, 0.0063683596, -0.99997944, 0.15804867, 0.58383703, 0.7745241)
 
-[node name="Bone" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 1592000790) index="20" unique_id=1411899627]
+[node name="Bone" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="20" unique_id=1620848561]
 transform = Transform3D(0.998712, -0.05073672, -0.00017140976, 0.05073701, 0.99870634, 0.0033780804, -2.0470905e-07, -0.0033824267, 0.9999942, 0.19461104, 0.6508554, -0.051867895)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=2093052051]
 target_desired_distance = 5.0
 simplify_path = true
 simplify_epsilon = 1.0
+avoidance_enabled = true
+height = 24.0
+radius = 2.0
+max_speed = 60.0
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=308171644]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23, 0)
@@ -206,6 +199,7 @@ target_position = Vector3(8, 0, 0)
 collide_with_areas = true
 
 [connection signal="animation_finished" from="Infected/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
 [connection signal="finished" from="GroanSound" to="." method="_on_groan_sound_finished"]
 [connection signal="finished" from="ScreamSound" to="." method="_on_scream_sound_finished"]
 [connection signal="finished" from="ChaseSound" to="." method="_on_chase_sound_finished"]

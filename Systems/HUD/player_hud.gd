@@ -1,23 +1,24 @@
 extends Node2D
 
-@onready var hp: Label = $Health/Panel/HP
-@onready var clip: Label = $Ammo/Panel/Clip
-@onready var reserve: Label = $Ammo/Panel/Reserve
-@onready var cash = $Cash/Panel/Cash
-@onready var time = $TimeLeft/Panel/Time
-@onready var money_tool_tip = $MoneyToolTip
+@onready var hp: Label = $Control/Health
+@onready var mag: Label = $Control/Mag
+@onready var reserve: Label = $Control/Reserve
+@onready var cash = $Control/Cash
+@onready var time = $Control/Time
+@onready var money_tool_tip = $Control/MoneyToolTip
 
 func _process(delta: float) -> void:
 	cash.set_text("$" + str(Global.cash))
 
 func update_health(value: int) -> void:
-	hp.set_text(str(value))
+	hp.set_text(str(value, " HP"))
 
 func update_time(value: float) -> void:
-	time.set_text(str(floor(value)))
+	var sec: int = int(value)
+	time.set_text(str(sec / 60, ":", "%02d" % (sec % 60)))
 
-func update_clip(value: int) -> void:
-	clip.set_text(str(value))
+func update_mag(value: int) -> void:
+	mag.set_text(str(value))
 
 func update_reserve(value: int) -> void:
 	reserve.set_text(str(value))

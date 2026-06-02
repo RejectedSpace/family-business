@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://dk2v2lnuturo3"]
 
 [ext_resource type="Script" uid="uid://f6fblahii04g" path="res://Systems/Generation/map.gd" id="1_c7s6e"]
-[ext_resource type="PackedScene" uid="uid://4shafjh2xo0f" path="res://Rooms/main_room.tscn" id="2_iw27f"]
-[ext_resource type="PackedScene" uid="uid://bnsafy2cbheew" path="res://Rooms/sewer.tscn" id="2_urblq"]
-[ext_resource type="PackedScene" uid="uid://cvpt4fbg30e4t" path="res://Rooms/four_way.tscn" id="3_iw27f"]
-[ext_resource type="PackedScene" uid="uid://d1af3mmwmds55" path="res://Rooms/sewer_reverse.tscn" id="4_71pa8"]
-[ext_resource type="PackedScene" uid="uid://dukfnixm8oxen" path="res://Rooms/four_way_long.tscn" id="5_05x41"]
-[ext_resource type="PackedScene" uid="uid://cechu1umtyn20" path="res://Rooms/two_way_long_inverse.tscn" id="7_hkut0"]
+[ext_resource type="PackedScene" uid="uid://4shafjh2xo0f" path="res://Rooms/Permanent/main_room.tscn" id="2_iw27f"]
+[ext_resource type="PackedScene" uid="uid://bnsafy2cbheew" path="res://Rooms/Generated/sewer.tscn" id="2_urblq"]
+[ext_resource type="PackedScene" uid="uid://cvpt4fbg30e4t" path="res://Rooms/Generated/four_way.tscn" id="3_iw27f"]
+[ext_resource type="PackedScene" uid="uid://d1af3mmwmds55" path="res://Rooms/Generated/sewer_reverse.tscn" id="4_71pa8"]
+[ext_resource type="PackedScene" uid="uid://dukfnixm8oxen" path="res://Rooms/Generated/four_way_long.tscn" id="5_05x41"]
+[ext_resource type="PackedScene" uid="uid://cechu1umtyn20" path="res://Rooms/Generated/two_way_long_inverse.tscn" id="7_hkut0"]
 
 [node name="Map" type="Node3D" unique_id=391048862]
 script = ExtResource("1_c7s6e")

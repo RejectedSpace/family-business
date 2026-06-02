@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b5ci14ryere5s"]
+
+[ext_resource type="Script" uid="uid://cqjg0yev66g6f" path="res://Items/Modifiers/modifier.gd" id="1_rb1is"]
+[ext_resource type="Texture2D" uid="uid://c21jdjxk7holn" path="res://Textures/mag_increase.png" id="2_sty7e"]
+
+[node name="MagModifier" type="Node3D" unique_id=605339470]
+script = ExtResource("1_rb1is")
+modification_value = 0.5
+function_name = &"increase_mag"
+item_name = &"+50%_Mag Size"
+price = 200
+rarity = 1
+metadata/_custom_type_script = "uid://cqjg0yev66g6f"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1873309699]
+texture_filter = 0
+texture = ExtResource("2_sty7e")

@@ -25,6 +25,7 @@ enum {
 
 var state: int = IDLE
 var players: Array
+var target: Entity
 
 const SPEED: float = 60
 const EPSILON: float = 0.75
@@ -40,11 +41,13 @@ func _ready() -> void:
 func die() -> void:
 	dead = true
 	
-	var cash = preload("res://cash.tscn").instantiate()
-	cash.position = ray_cast.global_position
-	cash.rotation = rotation
-	cash.linear_velocity = velocity
-	get_parent().add_child(cash)
+	for x in range(0, target.reward):
+		var cash = preload("res://Items/Consumable/cash.tscn").instantiate()
+		cash.position = ray_cast.global_position
+		cash.rotation = rotation
+		var rand_vel = Vector3(randf_range(-25, 25), 25, randf_range(-25, 25))
+		cash.linear_velocity = velocity + rand_vel
+		get_parent().add_child(cash)
 	
 	queue_free()
 
@@ -119,8 +122,8 @@ func attack() -> void:
 		animator.play("Attack")
 		end_chase()
 	state = ATTACK
-	velocity.x = 0
-	velocity.z = 0
+	
+	agent.set_velocity(Vector3(0, velocity.y, 0))
 
 func hit() -> void:
 	if players:
@@ -129,8 +132,8 @@ func hit() -> void:
 				player.hurt(10)
 
 func hurt_from(damage: float, player: Node3D) -> void:
-	hurt(damage)
 	update_target_location(player)
+	hurt(damage)
 
 func apply_gravity(delta: float) -> void:
 	if not is_on_floor():
@@ -158,7 +161,7 @@ func chase(delta: float) -> void:
 	
 	var new_velocity: Vector3 = Vector3(desired_direction.x * SPEED, velocity.y, desired_direction.z * SPEED)
 	
-	velocity = velocity.move_toward(new_velocity, 100000 * delta)
+	agent.set_velocity(new_velocity)
 
 func start_chase() -> void:
 	state = CHASE
@@ -178,11 +181,11 @@ func idle(delta: float) -> void:
 		aware_timer.start()
 		end_chase()
 	
-	velocity.x = move_toward(velocity.x, 0, 100000 * delta)
-	velocity.z = move_toward(velocity.z, 0, 100000 * delta)
+	agent.set_velocity(Vector3(0, velocity.y, 0))
 
 func update_target_location(player: Node3D) -> void:
 	if player:
+		target = player
 		agent.set_target_position(player.get_floor_position())
 
 func set_target(targets: Array) -> void:
@@ -227,3 +230,6 @@ func _on_scream_sound_finished() -> void:
 
 func _on_attack_timer_timeout() -> void:
 	hit()
+
+func _on_navigation_agent_3d_velocity_computed(safe_velocity: Vector3) -> void:
+	velocity = velocity.move_toward(safe_velocity, 100000 * 0.016)

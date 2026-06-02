@@ -13,7 +13,7 @@ var door_dict: Dictionary = {}
 var enemies: int = 0
 
 var enemy: PackedScene = preload("res://Entities/enemy.tscn")
-var cash: PackedScene = preload("res://cash.tscn")
+var cash: PackedScene = preload("res://Items/Consumable/cash.tscn")
 
 func generate(time: float = 0.0) -> void:
 	for x: int in range(0, MAPSIZE.x):
@@ -53,7 +53,7 @@ func spawn_enemy(pos: Vector3) -> void:
 func spawn_money(pos: Vector3) -> void:
 	if randi() % 4 != 0:
 		return
-	var new_cash = preload("res://cash.tscn").instantiate()
+	var new_cash = cash.instantiate()
 	new_cash.position = pos
 	new_cash.position.y += 1
 	add_child(new_cash)
@@ -70,6 +70,7 @@ func connect_room(room_origin: Vector3, room_rotation: float, door: Door, room_c
 		
 		var d_origin: Vector3 = rotate_vector(d.get_map_origin(), new_room_rotation)
 		var new_room_origin: Vector3 = door_origin - d_origin + room_origin
+		
 		if map_malloc(room_candidate, new_room_origin, new_room_rotation):
 			
 			var new_room: Room = room_candidate.duplicate()
@@ -86,7 +87,7 @@ func map_malloc(room, origin, rot) -> bool:
 	
 	var size: Vector3 = rotate_vector(room.size, rot)
 	
-	if origin.x + size.x < 0 or origin.x + size.x > MAPSIZE.x or origin.z + size.z < 0 or origin.z + size.z > MAPSIZE.z:
+	if origin.x + size.x < -1 or origin.x + size.x > MAPSIZE.x or origin.z + size.z < -1 or origin.z + size.z > MAPSIZE.z:
 		return false
 	
 	for i: int in range(origin.x, origin.x + size.x, 1 if size.x > 0 else -1):
@@ -106,8 +107,11 @@ func expand_map() -> void:
 	var room: Room = room_queue.get(0)
 	var origin: Vector3 = game_to_map_coords(room.position, room.rotation.y)
 	
-	for door: Door in room.get_doors():
-		
+	var doors = room.get_doors()
+	
+	doors.shuffle()
+	
+	for door: Door in doors:
 		if door.is_enabled():
 			continue
 		

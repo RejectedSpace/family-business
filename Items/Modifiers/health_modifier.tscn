@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cgcoyqpqd5e5d"]
+
+[ext_resource type="Script" uid="uid://cqjg0yev66g6f" path="res://Items/Modifiers/modifier.gd" id="1_18l2w"]
+[ext_resource type="Texture2D" uid="uid://bf43udrax0ha1" path="res://Textures/health_increase.png" id="2_0e3f7"]
+
+[node name="HealthModifier" type="Node3D" unique_id=1069870531]
+script = ExtResource("1_18l2w")
+modification_value = 0.25
+function_name = &"increase_health"
+item_name = &"+25%_Max Health"
+price = 75
+rarity = 1
+metadata/_custom_type_script = "uid://cqjg0yev66g6f"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=311701515]
+texture_filter = 0
+texture = ExtResource("2_0e3f7")

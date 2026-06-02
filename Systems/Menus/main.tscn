@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dsf8xafinsd6t"]
 
 [ext_resource type="PackedScene" uid="uid://b3vultmp88md5" path="res://Entities/enemy.tscn" id="3_1u7t4"]
-[ext_resource type="PackedScene" uid="uid://bnsafy2cbheew" path="res://Rooms/sewer.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bnsafy2cbheew" path="res://Rooms/Generated/sewer.tscn" id="3_h2yge"]
 [ext_resource type="PackedScene" uid="uid://b1n5gccjsbbtf" path="res://Systems/Menus/main_menu.tscn" id="4_lquwl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wg1m3"]

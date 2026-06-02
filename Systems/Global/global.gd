@@ -11,7 +11,7 @@ var mouse_sens_2 = 0.05
 
 var level_count: int = 0
 var quota_count: int = 0
-var cash: int = 100
+var cash: int = 0
 var map_size: int = 0
 
 func reset() -> void:
@@ -24,6 +24,9 @@ func reset() -> void:
 func get_sensitivity(player_id: int) -> float:
 	assert(player_id == 1 or player_id == 2, "Can't get mouse sensitivity (Invalid Player ID: " + str(player_id) + ")")
 	return mouse_sens_1 if player_id == 1 else mouse_sens_2
+
+func get_quota_count() -> int:
+	return quota_count
 
 func get_quota() -> int:
 	return (1 + quota_count * (quota_count + 1)) * 100

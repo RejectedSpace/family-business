@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bk8uy8argl2to" path="res://Entities/player.gd" id="1_2j1hn"]
 [ext_resource type="PackedScene" uid="uid://ddv80gpw6a1dr" path="res://Blender/Bagman.glb" id="2_25cb4"]
-[ext_resource type="PackedScene" uid="uid://cgjhkrgeaxkes" path="res://Systems/ViewModel/view_model.tscn" id="2_hqtel"]
-[ext_resource type="PackedScene" uid="uid://d3njrv8mlryaa" path="res://Guns/lupara.tscn" id="3_i3pqv"]
+[ext_resource type="PackedScene" uid="uid://cgjhkrgeaxkes" path="res://Systems/ViewModel/view_model_camera.tscn" id="2_hqtel"]
+[ext_resource type="PackedScene" uid="uid://d3njrv8mlryaa" path="res://Items/Guns/lupara.tscn" id="3_i3pqv"]
 [ext_resource type="PackedScene" uid="uid://ctpbuawalq55t" path="res://Systems/Interaction/player_interactor.tscn" id="3_kee72"]
-[ext_resource type="PackedScene" uid="uid://0j8i8ku5ff6d" path="res://Guns/tommy.tscn" id="4_pg4qw"]
-[ext_resource type="PackedScene" uid="uid://difrg7sym4kqa" path="res://colt.tscn" id="5_25cb4"]
+[ext_resource type="PackedScene" uid="uid://0j8i8ku5ff6d" path="res://Items/Guns/tommy.tscn" id="4_pg4qw"]
+[ext_resource type="PackedScene" uid="uid://difrg7sym4kqa" path="res://Items/Guns/colt.tscn" id="5_25cb4"]
 [ext_resource type="PackedScene" uid="uid://d27koothypfp5" path="res://Systems/HUD/player_hud.tscn" id="6_prmdv"]
 [ext_resource type="AudioStream" uid="uid://bj242j0gfw4ln" path="res://Sounds/Step/step-wood-0.mp3" id="7_eyssl"]
 [ext_resource type="AudioStream" uid="uid://gs5aj5gxaa6y" path="res://Sounds/Step/step-wood-1.mp3" id="8_pg4qw"]
@@ -195,13 +195,13 @@ streams_count = 1
 stream_0/stream = ExtResource("17_uck12")
 
 [node name="Player" type="CharacterBody3D" unique_id=1819948495]
-collision_mask = 2
+collision_mask = 6
 script = ExtResource("1_2j1hn")
 
 [node name="Bagman" parent="." unique_id=823762267 instance=ExtResource("2_25cb4")]
 transform = Transform3D(-5.4639237e-08, 0, 1.25, 0, 1.25, 0, -1.25, 0, -5.4639237e-08, 0, 0, 0)
 
-[node name="Armature" parent="Bagman" index="0" unique_id=189651662]
+[node name="Armature" parent="Bagman" index="0" unique_id=1983630368]
 transform = Transform3D(1, 8.742278e-08, 0, -8.742278e-08, 1, 0, 0, 0, -1, -0.37528256, 7.7397785, -0.009217)
 
 [node name="LuparaBase" parent="." unique_id=1637088801 instance=ExtResource("3_i3pqv")]
@@ -211,31 +211,31 @@ visible = false
 [node name="Lupara" parent="LuparaBase" index="0" unique_id=395541190]
 transform = Transform3D(-2.1855694e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.1855694e-08, 0, 0, 0)
 
-[node name="Cube_009" parent="LuparaBase/Lupara" index="0" unique_id=1426925414]
+[node name="Cube_009" parent="LuparaBase/Lupara" index="0" unique_id=1994077245]
 layers = 32
 
-[node name="Cube_010" parent="LuparaBase/Lupara" index="1" unique_id=1374295649]
+[node name="Cube_010" parent="LuparaBase/Lupara" index="1" unique_id=665752943]
 layers = 32
 
-[node name="Cube_011" parent="LuparaBase/Lupara" index="2" unique_id=373200082]
+[node name="Cube_011" parent="LuparaBase/Lupara" index="2" unique_id=1743432673]
 layers = 32
 
-[node name="Cube_012" parent="LuparaBase/Lupara" index="3" unique_id=1945906966]
+[node name="Cube_012" parent="LuparaBase/Lupara" index="3" unique_id=86319655]
 layers = 32
 
-[node name="Cube_013" parent="LuparaBase/Lupara" index="4" unique_id=352056962]
+[node name="Cube_013" parent="LuparaBase/Lupara" index="4" unique_id=44002387]
 layers = 32
 
-[node name="Cube_014" parent="LuparaBase/Lupara" index="5" unique_id=519397151]
+[node name="Cube_014" parent="LuparaBase/Lupara" index="5" unique_id=1451220722]
 layers = 32
 
-[node name="Cube_015" parent="LuparaBase/Lupara" index="6" unique_id=1503937650]
+[node name="Cube_015" parent="LuparaBase/Lupara" index="6" unique_id=1414293159]
 layers = 32
 
-[node name="Cube_016" parent="LuparaBase/Lupara" index="7" unique_id=319918298]
+[node name="Cube_016" parent="LuparaBase/Lupara" index="7" unique_id=2038044707]
 layers = 32
 
-[node name="Cube_017" parent="LuparaBase/Lupara" index="8" unique_id=1595561853]
+[node name="Cube_017" parent="LuparaBase/Lupara" index="8" unique_id=378193523]
 layers = 32
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LuparaBase" unique_id=2027855847]
@@ -245,16 +245,16 @@ libraries/ = SubResource("AnimationLibrary_sweqy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3419609, 13.229449, -3.4654565)
 visible = false
 
-[node name="Cube" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="0" unique_id=1071802999]
+[node name="Cube" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="0" unique_id=676687181]
 layers = 32
 
-[node name="Cube_001" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="1" unique_id=865106673]
+[node name="Cube_001" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="1" unique_id=1202491158]
 layers = 32
 
-[node name="Cube_002" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="2" unique_id=1808077302]
+[node name="Cube_002" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="2" unique_id=1784004415]
 layers = 32
 
-[node name="Cube_003" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="3" unique_id=704994715]
+[node name="Cube_003" parent="TommyBase/Tommy" parent_id_path=PackedInt32Array(2137234930, 1180845167) index="3" unique_id=44307779]
 layers = 32
 
 [node name="ColtBase" parent="." unique_id=1795829639 instance=ExtResource("5_25cb4")]
@@ -263,16 +263,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7892535, 12.684641, -5.2405
 [node name="Colt" parent="ColtBase" index="0" unique_id=1452321266]
 transform = Transform3D(-0.4, 0, -6.039832e-08, 0, 0.4, 0, 6.039832e-08, 0, -0.4, 0, 0, 0)
 
-[node name="Cube" parent="ColtBase/Colt" index="0" unique_id=1061778113]
+[node name="Cube" parent="ColtBase/Colt" index="0" unique_id=2026019446]
 layers = 32
 
-[node name="Cube_001" parent="ColtBase/Colt" index="1" unique_id=627827405]
+[node name="Cube_001" parent="ColtBase/Colt" index="1" unique_id=347924907]
 layers = 32
 
-[node name="Cube_002" parent="ColtBase/Colt" index="2" unique_id=1101418115]
+[node name="Cube_002" parent="ColtBase/Colt" index="2" unique_id=742148905]
 layers = 32
 
-[node name="Cube_003" parent="ColtBase/Colt" index="3" unique_id=961048745]
+[node name="Cube_003" parent="ColtBase/Colt" index="3" unique_id=1975612007]
 layers = 32
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=750621706]
@@ -281,20 +281,23 @@ cull_mask = 1048255
 current = true
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Camera3D" unique_id=332799326]
-anchors_preset = 7
+anchors_preset = 8
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -256.0
-offset_top = -512.0
-offset_right = 256.0
+anchor_bottom = 0.5
+offset_left = -1440.0
+offset_top = -900.0
+offset_right = 1440.0
+offset_bottom = 900.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="SubViewport" type="SubViewport" parent="Camera3D/SubViewportContainer" unique_id=1800946035]
 transparent_bg = true
 handle_input_locally = false
+size = Vector2i(2880, 1800)
 render_target_update_mode = 4
 
 [node name="ViewModel" parent="Camera3D/SubViewportContainer/SubViewport" unique_id=475721493 instance=ExtResource("2_hqtel")]

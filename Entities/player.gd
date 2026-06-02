@@ -9,8 +9,6 @@ class_name Player
 @onready var bagman: Node3D = $Bagman
 @onready var modelAnimator: AnimationPlayer = $Bagman/AnimationPlayer
 @onready var playerAnimator: AnimationPlayer = $AnimationPlayer
-@onready var viewport_container: SubViewportContainer = $Camera3D/SubViewportContainer
-@onready var viewport: SubViewport = $Camera3D/SubViewportContainer/SubViewport
 @onready var view_model: Camera3D = $Camera3D/SubViewportContainer/SubViewport/ViewModel
 @onready var hud: Node2D = $PlayerHUD
 @onready var lupara_base: Gun = $LuparaBase
@@ -23,6 +21,7 @@ class_name Player
 @onready var floor_cast: RayCast3D = $FloorCast
 @onready var money_sound: AudioStreamPlayer3D = $MoneySound
 
+var blood = preload("res://Particles/blood.tscn")
 var air_jumps: int
 var crouched: bool
 var running: bool
@@ -32,32 +31,33 @@ enum Mult {
 	HEALTH,
 	SPEED,
 	DAMAGE,
-	CLIP,
-	CAPPACITY
+	MAG,
+	RESERVE,
+	CASH
 }
-var mults: Array[float] = [1.0, 1.0, 1.0, 1.0, 1.0]
+var mults: Array[float] = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
 
-var base_speed: float = 80.0
-var base_health = 100
+var max_air_jumps: int = 0
+var base_speed: float = 75.0
+var max_health = base_health
 var speed: float
+var reward: int = 1
 const STEP_FREQUENCY: float = 40.0
 const BACKWARD_MULTIPLIER: float = 0.9
 const POSTURE_MULTIPLIER: float = 0.6
 const JUMP_VELOCITY: float = 85.0
-const MAX_AIR_JUMPS: int = 0
 
 func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	viewport.size = DisplayServer.window_get_size()
 	input_id = str(player_id)
 	camera.set_cull_mask_value(player_id * 2 + 4, false)
 	view_model.set_cull_mask_value(player_id * 2 + 5, true)
 	view_model.player_id = player_id
 	adjust_model_layer()
 	
-	speed = base_speed
-	
 	load_data(Global.get_player_data(player_id))
+	
+	speed = base_speed
 	
 	apply_mults()
 	regen()
@@ -65,8 +65,8 @@ func _ready() -> void:
 	hitscan.global_transform = camera.global_transform
 	
 	hud.update_health(health)
-	hud.update_clip(gun.get_clip())
-	hud.update_reserve(gun.get_ammo())
+	hud.update_mag(gun.get_mag())
+	hud.update_reserve(gun.get_reserve())
 	
 	view_model.set_model(gun.get_view_model())
 
@@ -77,24 +77,24 @@ func adjust_model_layer() -> void:
 		descendant.set_layer_mask_value(player_id * 2 + 4, true)
 
 func apply_mults() -> void:
-	health = ceil(base_health * mults[Mult.HEALTH])
+	max_health = ceil(base_health * mults[Mult.HEALTH])
 	speed = base_speed * mults[Mult.SPEED]
 	gun.damage = gun.base_damage * mults[Mult.DAMAGE]
-	gun.clip_size = ceil(gun.base_clip_size * mults[Mult.CLIP])
-	gun.ammo_cappacity = ceil(gun.base_ammo_cappacity * mults[Mult.CAPPACITY])
+	gun.mag_size = ceil(gun.base_mag_size * mults[Mult.MAG])
+	gun.reserve_size = ceil(gun.base_reserve_size * mults[Mult.RESERVE])
 
 	if holstered_gun:
 		holstered_gun.damage = holstered_gun.base_damage * mults[Mult.DAMAGE]
-		holstered_gun.clip_size = ceil(holstered_gun.base_clip_size * mults[Mult.CLIP])
-		holstered_gun.ammo_cappacity = ceil(holstered_gun.base_ammo_cappacity * mults[Mult.CAPPACITY])
+		holstered_gun.mag_size = ceil(holstered_gun.base_mag_size * mults[Mult.MAG])
+		holstered_gun.reserve_size = ceil(holstered_gun.base_reserve_size * mults[Mult.RESERVE])
 
 func regen() -> void:
-	health = base_health
+	health = min(health + ceil(max_health * .5), max_health)
 	
-	gun.ammo = min(gun.ammo + ceil(gun.ammo_cappacity / 2.0), gun.ammo_cappacity)
+	gun.reserve = min(gun.reserve + ceil(gun.reserve_size * .25), gun.reserve_size)
 	
 	if holstered_gun:
-		holstered_gun.ammo = min(holstered_gun.ammo + ceil(holstered_gun.ammo_cappacity / 2.0), holstered_gun.ammo_cappacity)
+		holstered_gun.reserve = min(holstered_gun.reserve + ceil(holstered_gun.reserve_size * .25), holstered_gun.reserve_size)
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
@@ -108,63 +108,115 @@ func apply_gravity(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 func get_cash(money: int = 10):
-	Global.cash += money
+	Global.cash += ceil(money * mults[Mult.CASH])
 	money_sound.play()
 
-func give_item(item):
+func give_item(item: Item):
+	var arg
 	if item is Gun:
-		if not holstered_gun:
-			holstered_gun = gun
-		
-		if item.base_clip_size == 2:
-			gun = lupara_base.duplicate()
-		elif item.base_clip_size == 30:
-			gun = tommy_base.duplicate()
-		else:
-			gun = colt_base.duplicate()
-		
-		add_child(gun)
-		
-		gun.for_player(player_id)
-		
-		switch_to_current_gun()
+		arg = item
 	elif item is Modifier:
-		call(item.get_modifier_function(), item.get_modifier_value())
+		arg = item.get_modification_value()
+	else:
+		assert(false, "Given item of invalid type")
+	
+	call(item.get_function_name(), arg)
+
+func equip_gun(new_gun: Gun):
+	if not holstered_gun:
+		holstered_gun = gun
+		
+	if new_gun.item_name == &"Lupara":
+		gun = lupara_base.duplicate()
+	elif new_gun.item_name == &"Tommy":
+		gun = tommy_base.duplicate()
+	elif new_gun.item_name == &"Colt":
+		gun = colt_base.duplicate()
+	else:
+		assert(false, str("Equipped gun with invalid name (Name: ", new_gun.get_item_name(), ")"))
+	
+	add_child(gun)
+	
+	gun.for_player(player_id)
+	
+	switch_to_current_gun()
 
 func refill_ammo(proportion_filled: float) -> void:
-	gun.clip = gun.clip_size
-	gun.ammo = gun.ammo_cappacity
+	gun.mag = gun.mag_size
+	gun.reserve = gun.reserve_size
 	
 	if holstered_gun:
-		holstered_gun.clip = holstered_gun.clip_size
-		holstered_gun.ammo = holstered_gun.ammo_cappacity
+		holstered_gun.mag = holstered_gun.mag_size
+		holstered_gun.reserve = holstered_gun.reserve_size
 	
-	hud.update_clip(gun.get_clip())
-	hud.update_reserve(gun.get_ammo())
+	hud.update_mag(gun.get_mag())
+	hud.update_reserve(gun.get_reserve())
 
-func increase_cappacity(value: float) -> void:
-	mults[Mult.CAPPACITY] += value
-	var missing = gun.ammo_cappacity - gun.ammo
-	gun.ammo_cappacity = ceil(gun.base_ammo_cappacity * mults[Mult.CAPPACITY])
-	gun.ammo = gun.ammo_cappacity - missing
-	if holstered_gun:
-		missing = holstered_gun.ammo_cappacity - holstered_gun.ammo
-		holstered_gun.ammo_cappacity = ceil(holstered_gun.base_ammo_cappacity * mults[Mult.CAPPACITY])
-		holstered_gun.ammo = holstered_gun.ammo_cappacity - missing
+func heal_health(proportion_filled: float) -> void:
+	health = max_health
 	
-	hud.update_reserve(gun.get_ammo())
+	hud.update_health(health)
 
-func increase_clip(value: float) -> void:
-	mults[Mult.CLIP] += value
-	var missing = gun.clip_size - gun.clip
-	gun.clip_size = ceil(gun.base_clip_size * mults[Mult.CLIP])
-	gun.clip = gun.clip_size - missing
-	if holstered_gun:
-		missing = holstered_gun.clip_size - holstered_gun.clip
-		holstered_gun.clip_size = ceil(holstered_gun.base_clip_size * mults[Mult.CLIP])
-		holstered_gun.clip = holstered_gun.clip_size - missing
+func increase_reserve(value: float) -> void:
+	mults[Mult.RESERVE] += value
 	
-	hud.update_clip(gun.get_clip())
+	var missing = gun.reserve_size - gun.reserve
+	gun.reserve_size = ceil(gun.base_reserve_size * mults[Mult.RESERVE])
+	gun.reserve = gun.reserve_size - missing
+	
+	if holstered_gun:
+		missing = holstered_gun.reserve_size - holstered_gun.reserve
+		holstered_gun.reserve_size = ceil(holstered_gun.base_reserve_size * mults[Mult.RESERVE])
+		holstered_gun.reserve = holstered_gun.reserve_size - missing
+	
+	hud.update_reserve(gun.get_reserve())
+
+func increase_mag(value: float) -> void:
+	mults[Mult.MAG] += value
+	
+	var missing = gun.mag_size - gun.mag
+	gun.mag_size = ceil(gun.base_mag_size * mults[Mult.MAG])
+	gun.mag = gun.mag_size - missing
+	
+	if holstered_gun:
+		missing = holstered_gun.mag_size - holstered_gun.mag
+		holstered_gun.mag_size = ceil(holstered_gun.base_mag_size * mults[Mult.MAG])
+		holstered_gun.mag = holstered_gun.mag_size - missing
+	
+	hud.update_mag(gun.get_mag())
+
+func increase_health(value: float) -> void:
+	mults[Mult.HEALTH] += value
+	
+	var missing = max_health - health
+	max_health = ceil(base_health * mults[Mult.HEALTH])
+	health = max_health - missing
+	
+	hud.update_health(health)
+
+func increase_damage(value: float) -> void:
+	mults[Mult.DAMAGE] += value
+	
+	gun.damage = ceil(gun.base_damage * mults[Mult.DAMAGE])
+	
+	if holstered_gun:
+		holstered_gun.damage = ceil(holstered_gun.base_damage * mults[Mult.DAMAGE])
+
+func increase_jumps(value: float) -> void:
+	max_air_jumps += ceil(value)
+	
+	air_jumps = max_air_jumps
+
+func increase_speed(value: float) -> void:
+	mults[Mult.SPEED] += value
+	
+	speed = ceil(base_speed * mults[Mult.SPEED])
+
+func increase_cash(value: float) -> void:
+	mults[Mult.CASH] += value
+
+func increase_reward(value: float) -> void:
+	reward += ceil(value)
 
 func shoot() -> void:
 	var hitscan_dupe = gun.get_hitscan().duplicate()
@@ -176,12 +228,19 @@ func shoot() -> void:
 		var hit = ray.get_collider()
 		if hit is Entity:
 			hit.hurt_from(gun.get_damage(), self)
+			spawn_blood(ray.get_collision_point())
 	
 	remove_child(hitscan_dupe)
 	
 	view_model.play("Fire")
 	gun.shoot()
-	hud.update_clip(gun.get_clip())
+	hud.update_mag(gun.get_mag())
+
+func spawn_blood(point: Vector3) -> void:
+	var new_blood: GPUParticles3D = blood.instantiate()
+	get_parent().add_child(new_blood)
+	new_blood.global_position = point
+	new_blood.restart()
 
 func reload() -> void:
 	view_model.play("Reload")
@@ -194,8 +253,7 @@ func handle_input(delta: float) -> void:
 	handle_sprint()
 	handle_shoot()
 	handle_reload()
-	if Input.is_action_just_pressed("switch_" + input_id) and not view_model.is_busy() and holstered_gun:
-		view_model.play("Holster")
+	handle_switch()
 
 func handle_look() -> void:
 	var look_vec = Input.get_vector("look_left_" + input_id, "look_right_" + input_id, "look_up_" + input_id, "look_down_" + input_id)
@@ -220,7 +278,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func handle_jump() -> void:
 	if is_on_floor():
-		air_jumps = MAX_AIR_JUMPS
+		air_jumps = max_air_jumps
 	if Input.is_action_just_pressed("jump_" + input_id): 
 		if is_on_floor():
 			velocity.y = JUMP_VELOCITY
@@ -247,12 +305,16 @@ func handle_sprint() -> void:
 		running = false
 
 func handle_shoot() -> void:
-	if Input.is_action_pressed("attack_" + input_id) and not gun.clip_empty() and not view_model.is_busy():
+	if Input.is_action_pressed("attack_" + input_id) and not gun.mag_empty() and not view_model.is_busy():
 		shoot()
 
 func handle_reload() -> void:
-	if Input.is_action_just_pressed("reload_" + input_id) and not gun.clip_full() and not gun.no_ammo() and not view_model.is_busy():
+	if Input.is_action_just_pressed("reload_" + input_id) and not gun.mag_full() and not gun.reserve_empty() and not view_model.is_busy():
 		reload()
+
+func handle_switch() -> void:
+	if Input.is_action_just_pressed("switch_" + input_id) and not view_model.is_busy() and holstered_gun:
+		view_model.play("Holster")
 
 #Override
 func hurt(damage: float) -> void:
@@ -261,7 +323,7 @@ func hurt(damage: float) -> void:
 
 #Override
 func die() -> void:
-	Global.next_scene = "res://game_over.tscn"
+	Global.next_scene = "res://Systems/Menus/game_over.tscn"
 	get_tree().change_scene_to_packed(Global.loading_scene)
 
 func handle_movement() -> void:
@@ -294,13 +356,13 @@ func handle_step_sound() -> void:
 	if not is_on_floor():
 		step_timer.stop()
 		return
-	var speed = get_real_velocity().length()
-	if is_zero_approx(speed):
+	var step_speed = get_real_velocity().length()
+	if is_zero_approx(step_speed):
 		if not step_timer.is_stopped():
 			step_timer.timeout.emit()
 		step_timer.stop()
 		return
-	var time_to_step = STEP_FREQUENCY / speed
+	var time_to_step = STEP_FREQUENCY / step_speed
 	step_sound.set_volume_db(2 / time_to_step)
 	if step_timer.is_stopped() or time_to_step < step_timer.get_time_left():
 		step_timer.start(time_to_step)
@@ -312,7 +374,7 @@ func get_floor_position() -> Vector3:
 	return floor_cast.get_collision_point()
 
 func get_data() -> Array:
-	return [global_position, rotation, velocity, air_jumps, gun.get_data(), null if not holstered_gun else holstered_gun.get_data(), mults, health]
+	return [global_position, rotation, velocity, air_jumps, max_air_jumps, gun.get_data(), [] if not holstered_gun else holstered_gun.get_data(), mults, health, reward]
 
 func load_data(data: Array) -> void:
 	if data.is_empty():
@@ -323,22 +385,27 @@ func load_data(data: Array) -> void:
 	rotation = data[1]
 	velocity = data[2]
 	air_jumps = data[3]
-	give_item(data[4][0])
-	gun.load_data(data[4])
-	if data[5]:
-		give_item(data[5][0])
-		holstered_gun.load_data(data[5])
-	mults = data[6]
-	health = data[7]
+	max_air_jumps = data[4]
+	
+	if not data[6].is_empty():
+		give_item(data[6][0])
+		gun.load_data(data[6])
+	
+	give_item(data[5][0])
+	gun.load_data(data[5])
+	
+	mults = data[7]
+	health = data[8]
+	reward = data[9]
 	
 	hud.update_health(health)
-	hud.update_clip(gun.get_clip())
-	hud.update_reserve(gun.get_ammo())
+	hud.update_mag(gun.get_mag())
+	hud.update_reserve(gun.get_reserve())
 
 func _on_view_model_reload_finished() -> void:
 	gun.reload()
-	hud.update_clip(gun.get_clip())
-	hud.update_reserve(gun.get_ammo())
+	hud.update_mag(gun.get_mag())
+	hud.update_reserve(gun.get_reserve())
 
 func _on_step_timer_timeout() -> void:
 	step_sound.play()
@@ -353,11 +420,10 @@ func _on_view_model_holstered() -> void:
 	switch_to_current_gun()
 
 func switch_to_current_gun() -> void:
-	hud.update_clip(gun.get_clip())
-	hud.update_reserve(gun.get_ammo())
+	hud.update_mag(gun.get_mag())
+	hud.update_reserve(gun.get_reserve())
 	
 	hitscan = gun.get_hitscan()
 	hitscan.global_transform = camera.global_transform
 	
-	gun.visible = true
 	view_model.set_model(gun.get_view_model())

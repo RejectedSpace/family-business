@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d3uqg1v052hel"]
+
+[ext_resource type="Script" uid="uid://cqjg0yev66g6f" path="res://Items/Modifiers/modifier.gd" id="1_43wg7"]
+[ext_resource type="Texture2D" uid="uid://prfq58x4k2lo" path="res://Textures/speed_increase.png" id="2_turrj"]
+
+[node name="SpeedModifier" type="Node3D" unique_id=656302985]
+script = ExtResource("1_43wg7")
+modification_value = 0.3
+function_name = &"increase_speed"
+item_name = &"+30% Speed"
+price = 300
+rarity = 2
+metadata/_custom_type_script = "uid://cqjg0yev66g6f"
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1303981197]
+texture_filter = 0
+texture = ExtResource("2_turrj")

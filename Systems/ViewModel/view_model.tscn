@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://cgjhkrgeaxkes"]
-
-[ext_resource type="Script" uid="uid://c1mb1n6cfa4la" path="res://Systems/ViewModel/view_model.gd" id="1_xh7t1"]
-
-[node name="ViewModel" type="Camera3D" unique_id=475721493]
-cull_mask = 1047616
-script = ExtResource("1_xh7t1")
-
-[node name="Rig" type="Node3D" parent="." unique_id=132144506]

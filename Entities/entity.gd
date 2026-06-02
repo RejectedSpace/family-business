@@ -2,7 +2,9 @@
 
 class_name Entity
 
-@export var health: float = 100.0
+@export var base_health: float = 100.0
+
+var health = base_health
 
 var dead = false
 

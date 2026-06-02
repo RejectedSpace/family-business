@@ -1,0 +1,209 @@
+[gd_scene format=3 uid="uid://b3vultmp88md5"]
+
+[ext_resource type="Script" uid="uid://bfho2ilg72hxq" path="res://Entities/enemy.gd" id="1_4gyqm"]
+[ext_resource type="PackedScene" uid="uid://c0xn1sl3sxd0u" path="res://Blender/Infected.glb" id="2_5bdg5"]
+[ext_resource type="AudioStream" uid="uid://vf6pdh7yiry8" path="res://Sounds/Infected/Groan/zombie-groan-0.mp3" id="3_2ubkw"]
+[ext_resource type="AudioStream" uid="uid://x22nrylylaab" path="res://Sounds/Infected/Groan/zombie-groan-1.mp3" id="4_4ak3v"]
+[ext_resource type="AudioStream" uid="uid://b0w5c5ti7mcqh" path="res://Sounds/Infected/Groan/zombie-groan-2.mp3" id="5_vxpyy"]
+[ext_resource type="AudioStream" uid="uid://y7wixrkhhbeo" path="res://Sounds/Infected/Groan/zombie-groan-3.mp3" id="6_2k43f"]
+[ext_resource type="AudioStream" uid="uid://blyethdjh3ero" path="res://Sounds/Infected/Groan/zombie-groan-4.mp3" id="7_ex22h"]
+[ext_resource type="AudioStream" uid="uid://drccfr1lejjjp" path="res://Sounds/Infected/Chase/zombie-chase-0.mp3" id="8_c1vgr"]
+[ext_resource type="AudioStream" uid="uid://dhgepqt8d08er" path="res://Sounds/Infected/Scream/zombie-scream-0.mp3" id="8_g4c7x"]
+[ext_resource type="AudioStream" uid="uid://bksmc1ngxjtsv" path="res://Sounds/Infected/Chase/zombie-chase-1.mp3" id="9_1lcnq"]
+[ext_resource type="AudioStream" uid="uid://c2i5atge87v3v" path="res://Sounds/Infected/Scream/zombie-scream-1.mp3" id="9_l8t22"]
+[ext_resource type="AudioStream" uid="uid://clc346xtlsbc8" path="res://Sounds/Infected/Chase/zombie-chase-2.mp3" id="10_4w73m"]
+[ext_resource type="AudioStream" uid="uid://dl1y0pbr64lhf" path="res://Sounds/Infected/Scream/zombie-scream-2.mp3" id="10_act14"]
+[ext_resource type="AudioStream" uid="uid://y4xnqvew8m7u" path="res://Sounds/Infected/Chase/zombie-chase-3.mp3" id="11_yih3f"]
+[ext_resource type="AudioStream" uid="uid://cafuvs4vcv5mh" path="res://Sounds/Infected/Chase/zombie-chase-4.mp3" id="12_upace"]
+[ext_resource type="AudioStream" uid="uid://bj242j0gfw4ln" path="res://Sounds/Step/step-wood-0.mp3" id="13_yih3f"]
+[ext_resource type="AudioStream" uid="uid://gs5aj5gxaa6y" path="res://Sounds/Step/step-wood-1.mp3" id="14_upace"]
+[ext_resource type="AudioStream" uid="uid://dvxaick0ng15n" path="res://Sounds/Step/step-wood-2.mp3" id="15_nsi34"]
+[ext_resource type="AudioStream" uid="uid://butw4u8fui1we" path="res://Sounds/Step/step-wood-3.mp3" id="16_g4c7x"]
+[ext_resource type="AudioStream" uid="uid://cfitkhknue7b3" path="res://Sounds/Step/step-wood-4.mp3" id="17_l8t22"]
+[ext_resource type="AudioStream" uid="uid://ccaieqjl6nqg7" path="res://Sounds/Step/step-wood-5.mp3" id="18_act14"]
+[ext_resource type="AudioStream" uid="uid://bxdfh752llrk8" path="res://Sounds/Step/step-wood-6.mp3" id="19_pykwy"]
+[ext_resource type="AudioStream" uid="uid://cd3bl50bobyy" path="res://Sounds/Step/step-wood-7.mp3" id="20_gvnw7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_iifgy"]
+radius = 2.0
+height = 24.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nsi34"]
+random_pitch = 1.122462
+streams_count = 5
+stream_0/stream = ExtResource("3_2ubkw")
+stream_1/stream = ExtResource("4_4ak3v")
+stream_2/stream = ExtResource("5_vxpyy")
+stream_3/stream = ExtResource("6_2k43f")
+stream_4/stream = ExtResource("7_ex22h")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pykwy"]
+random_pitch = 1.122462
+streams_count = 3
+stream_0/stream = ExtResource("8_g4c7x")
+stream_1/stream = ExtResource("9_l8t22")
+stream_2/stream = ExtResource("10_act14")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g4c7x"]
+random_pitch = 1.122462
+streams_count = 5
+stream_0/stream = ExtResource("8_c1vgr")
+stream_1/stream = ExtResource("9_1lcnq")
+stream_2/stream = ExtResource("10_4w73m")
+stream_3/stream = ExtResource("11_yih3f")
+stream_4/stream = ExtResource("12_upace")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_g2w2s"]
+random_pitch = 1.122462
+streams_count = 8
+stream_0/stream = ExtResource("13_yih3f")
+stream_1/stream = ExtResource("14_upace")
+stream_2/stream = ExtResource("15_nsi34")
+stream_3/stream = ExtResource("16_g4c7x")
+stream_4/stream = ExtResource("17_l8t22")
+stream_5/stream = ExtResource("18_act14")
+stream_6/stream = ExtResource("19_pykwy")
+stream_7/stream = ExtResource("20_gvnw7")
+
+[node name="Enemy" type="CharacterBody3D" unique_id=1627701688 groups=["enemies"]]
+collision_layer = 4
+script = ExtResource("1_4gyqm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1882648040]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
+shape = SubResource("CapsuleShape3D_iifgy")
+
+[node name="Infected" parent="." unique_id=848959910 instance=ExtResource("2_5bdg5")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Bone_004" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="0" unique_id=1454552210]
+transform = Transform3D(0.9997614, 0.021828903, -8.539609e-05, -0.02182892, 0.99976146, 1.8466217e-06, 8.541605e-05, 1.764056e-08, 0.9999999, 0.020992845, 6.6394825, -0.0568283)
+
+[node name="Bone_003" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="1" unique_id=1812090371]
+transform = Transform3D(0.9611872, 0.2758962, -8.238074e-05, -0.27589622, 0.96118724, 2.3627881e-05, 8.570225e-05, 1.7447746e-08, 0.9999999, -0.28655803, 5.568014, -0.05682832)
+
+[node name="Bone_008" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="2" unique_id=967502839]
+transform = Transform3D(-0.99982655, -0.01806052, 0.0044978037, 0.018610537, -0.97329915, 0.22878441, 0.00024575368, 0.22882819, 0.9734661, -0.4502551, -0.1929025, -1.7257968)
+
+[node name="Bone_009" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="3" unique_id=376107906]
+transform = Transform3D(0.9996348, 0.026368022, 0.0058683828, 0.026836544, -0.94458354, -0.32717183, -0.0030836891, 0.3272096, -0.944946, -0.15844649, -0.17005599, -1.4485139)
+
+[node name="Bone_007" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="4" unique_id=1224415947]
+transform = Transform3D(6.92904e-07, 0.23523676, -0.9719378, -0.11684126, -0.9652807, -0.23362562, -0.9931498, 0.11356243, 0.027484655, -0.61395174, 0.43473482, -1.6673661)
+
+[node name="Bone_006" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="5" unique_id=326114945]
+transform = Transform3D(0.0018197317, 0.10320052, -0.99465865, 0.038159642, -0.99394315, -0.10305644, -0.99926925, -0.037768405, -0.0057468107, -0.82214713, 2.4399035, -1.5911725)
+
+[node name="Bone_005" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="6" unique_id=919599488]
+transform = Transform3D(0.001924186, -0.12495854, -0.9921598, 0.09093088, -0.9880295, 0.1246147, -0.9958545, -0.09045784, 0.009461454, -0.51474094, 4.87052, -1.3686402)
+
+[node name="Bone_013" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="7" unique_id=1787365807]
+transform = Transform3D(-0.99993205, -0.010019988, -0.0060042366, 0.011343271, -0.95565444, -0.294272, -0.0027894806, -0.29432106, 0.95570475, 0.36327016, -0.4273126, 2.0608044)
+
+[node name="Bone_014" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="8" unique_id=1196901249]
+transform = Transform3D(0.9879128, 0.15434891, -0.014332883, 0.14819361, -0.91328317, 0.37941074, 0.045471966, -0.3769498, -0.9251192, 0.63398683, -0.40446514, 1.4335082)
+
+[node name="Bone_012" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="9" unique_id=1181646960]
+transform = Transform3D(-0.055349387, 0.29741716, -0.95314217, 0.09170561, -0.949056, -0.30146754, -0.99424887, -0.10409503, 0.025254687, 0.15492904, 0.20746803, 1.9166557)
+
+[node name="Bone_011" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="10" unique_id=748144959]
+transform = Transform3D(0.025074918, 0.38019294, -0.9245676, -0.16728063, -0.9102221, -0.3788308, -0.9855925, 0.16416137, 0.040775012, -0.7990701, 2.491443, 1.5047338)
+
+[node name="Bone_010" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="11" unique_id=402630696]
+transform = Transform3D(-0.02407746, -0.11953051, -0.9925387, -0.08828962, -0.9886927, 0.12120919, -0.9958059, 0.090549074, 0.013251871, -0.51474094, 4.8432617, 1.2893434)
+
+[node name="Bone_002" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="12" unique_id=278496658]
+transform = Transform3D(0.98262787, -0.18558574, -8.4127605e-05, 0.18558574, 0.9826279, -1.5906428e-05, 8.5618114e-05, 1.6942067e-08, 0.9999999, 0.18468979, 3.0728793, -0.05682836)
+
+[node name="Bone_001" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="13" unique_id=2042675778]
+transform = Transform3D(0.9977391, 0.0672052, -8.5300744e-05, -0.0672052, 0.99773914, 5.727634e-06, 8.549285e-05, 1.7695129e-08, 0.9999999, 0.1202033, 2.1155026, -0.05682838)
+
+[node name="Bone_017" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="14" unique_id=669074163]
+transform = Transform3D(0.219399, 0.97560465, -0.008402853, 0.97527146, -0.2190728, 0.029195022, 0.026641559, -0.014600323, -0.999542, -0.24910998, -7.523652, -0.8543938)
+
+[node name="Bone_016" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="15" unique_id=1269465894]
+transform = Transform3D(0.9965395, -0.08318084, -0.0009994122, -0.08317823, -0.99653226, 0.0021408126, -0.0011739938, -0.002049908, -1.0000008, 0.12233234, -3.0736578, -0.84523994)
+
+[node name="Bone_015" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="16" unique_id=937493751]
+transform = Transform3D(0.999958, -0.009754314, 9.964088e-05, -0.0097485455, -0.99888134, 0.046271756, -0.00035182037, -0.04627034, -0.99893266, 0.15804867, 0.58383703, -0.67581683)
+
+[node name="Bone_020" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="17" unique_id=1279300293]
+transform = Transform3D(0.21939835, 0.9756027, -0.008407489, 0.9752716, -0.21907236, 0.029195597, 0.02664136, -0.014605003, -0.99953806, -0.2491105, -7.523651, 0.7913817)
+
+[node name="Bone_019" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="18" unique_id=1633457226]
+transform = Transform3D(0.99670655, -0.08112922, -0.0010089786, -0.08112765, -0.9967027, 0.0013344199, -0.0011139109, -0.0012481604, -0.9999984, 0.12233256, -2.9603343, 0.7970963)
+
+[node name="Bone_018" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="19" unique_id=521193580]
+transform = Transform3D(0.99995255, -0.010076697, -0.00045783108, -0.010079441, -0.99992895, -0.006364067, -0.00039367116, 0.0063683596, -0.99997944, 0.15804867, 0.58383703, 0.7745241)
+
+[node name="Bone" parent="Infected/Armature/Skeleton3D" parent_id_path=PackedInt32Array(848959910, 314872102) index="20" unique_id=1620848561]
+transform = Transform3D(0.998712, -0.05073672, -0.00017140976, 0.05073701, 0.99870634, 0.0033780804, -2.0470905e-07, -0.0033824267, 0.9999942, 0.19461104, 0.6508554, -0.051867895)
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=2093052051]
+target_desired_distance = 5.0
+simplify_path = true
+simplify_epsilon = 1.0
+avoidance_enabled = true
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=308171644]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 23, 0)
+target_position = Vector3(0, 0, -256)
+
+[node name="GroanSound" type="AudioStreamPlayer3D" parent="." unique_id=1042956251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.597919, 21.256044, 0)
+stream = SubResource("AudioStreamRandomizer_nsi34")
+bus = &"Sounds"
+
+[node name="ScreamSound" type="AudioStreamPlayer3D" parent="." unique_id=1697536716]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.597919, 21.256044, 0)
+stream = SubResource("AudioStreamRandomizer_pykwy")
+volume_db = 80.0
+max_db = 6.0
+
+[node name="ChaseSound" type="AudioStreamPlayer3D" parent="." unique_id=1577961208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.597919, 21.256044, 0)
+stream = SubResource("AudioStreamRandomizer_g4c7x")
+
+[node name="StepSound" type="AudioStreamPlayer3D" parent="." unique_id=1522145791]
+stream = SubResource("AudioStreamRandomizer_g2w2s")
+volume_db = 1.0
+max_polyphony = 2
+bus = &"Sounds"
+
+[node name="GroanTimer" type="Timer" parent="." unique_id=1380331543]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="ChaseTimer" type="Timer" parent="." unique_id=1336159697]
+one_shot = true
+autostart = true
+
+[node name="StepTimer" type="Timer" parent="." unique_id=1602445129]
+wait_time = 0.4
+one_shot = true
+
+[node name="AwareTimer" type="Timer" parent="." unique_id=1446732513]
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="." unique_id=1205596895]
+wait_time = 0.05
+one_shot = true
+
+[node name="HitScan" type="RayCast3D" parent="." unique_id=1015716211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.068789, 0)
+target_position = Vector3(8, 0, 0)
+collide_with_areas = true
+
+[connection signal="animation_finished" from="Infected/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="velocity_computed" from="NavigationAgent3D" to="." method="_on_navigation_agent_3d_velocity_computed"]
+[connection signal="finished" from="GroanSound" to="." method="_on_groan_sound_finished"]
+[connection signal="finished" from="ScreamSound" to="." method="_on_scream_sound_finished"]
+[connection signal="finished" from="ChaseSound" to="." method="_on_chase_sound_finished"]
+[connection signal="timeout" from="GroanTimer" to="." method="_on_groan_timer_timeout"]
+[connection signal="timeout" from="ChaseTimer" to="." method="_on_chase_timer_timeout"]
+[connection signal="timeout" from="StepTimer" to="." method="_on_step_timer_timeout"]
+[connection signal="timeout" from="AwareTimer" to="." method="_on_aware_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
+
+[editable path="Infected"]

@@ -1,40 +1,58 @@
-extends Camera3D
+extends Node3D
 
-@onready var rig: Node3D = $Rig
+class_name ViewModel
 
-var model: Node3D
-var player_id: int
+@onready var animator: AnimationPlayer = $ViewModel/AnimationPlayer
+@onready var flash: SpotLight3D = $ViewModel/Arms/SpotLight3D
+@onready var flash_timer: Timer = $FlashTimer
+@onready var sound_timers: Node = $SoundTimers
+@onready var close_timer: Timer = $SoundTimers/CloseTimer
+@onready var fire_sound: AudioStreamPlayer3D = $FireSound
+@onready var open_sound: AudioStreamPlayer3D = $OpenSound
+@onready var close_sound: AudioStreamPlayer3D = $CloseSound
 
-const SMOOTHING_FACTOR = 5
-const SWAY_FACTOR = 5e-3
+func _ready() -> void:
+	var view_model = get_parent().get_parent()
+	reload_finished.connect(view_model._on_model_reload_finished)
+	holstered.connect(view_model._on_model_holstered)
+	visible = true
+	play("Deploy")
+
+func for_player(player_id: int) -> void:
+	var all_descendants = find_children("*", "MeshInstance3D", true, false)
+	for descendant in all_descendants:
+		descendant.set_layer_mask(0)
+		descendant.set_layer_mask_value(player_id * 2 + 5, true)
 
 func play(anim_name: StringName) -> void:
-	model.play(anim_name)
-
-func set_model(view_model: PackedScene):
-	if model:
-		rig.remove_child(model)
+	if anim_name == "Reload":
+		if animator.is_playing():
+			return
+	else:
+		for timer: Timer in sound_timers.get_children():
+			timer.stop()
+	if anim_name == "Fire":
+		flash_timer.start()
+		fire_sound.play()
+		flash.visible = true
 	
-	model = view_model.instantiate()
-	rig.add_child(model)
-	model.for_player(player_id)
+	animator.play(anim_name)
 
 func is_busy() -> bool:
-	return model.is_busy()
+	return animator.get_current_animation() != "Reload" and animator.is_playing()
 
-func _process(delta: float) -> void:
-	rig.position.x = lerp(rig.position.x, 0.0, delta * SMOOTHING_FACTOR)
-	rig.position.y = lerp(rig.position.y, 0.0, delta * SMOOTHING_FACTOR)
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Holster":
+		visible = false
+		holstered.emit()
+	if anim_name == "Reload":
+		reload_finished.emit()
 
-func sway(amount: Vector2) -> void:
-	rig.position.x += amount.x * SWAY_FACTOR
-	rig.position.y += amount.y * SWAY_FACTOR
+func _on_flash_timer_timeout() -> void:
+	flash.visible = false
 
-func _on_model_reload_finished() -> void:
-	reload_finished.emit()
-
-func _on_model_holstered() -> void:
-	holstered.emit()
+func _on_close_timer_timeout() -> void:
+	close_sound.play()
 
 signal holstered
 signal reload_finished

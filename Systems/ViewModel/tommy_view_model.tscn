@@ -1,0 +1,190 @@
+[gd_scene format=3 uid="uid://c182nwbqx38xm"]
+
+[ext_resource type="Script" uid="uid://yhthxn4vrnte" path="res://Systems/ViewModel/tommy_view_model.gd" id="1_d6usy"]
+[ext_resource type="Texture2D" uid="uid://4j2n16kgeegi" path="res://Items/Guns/reticleTommy.png" id="1_jaesm"]
+[ext_resource type="PackedScene" uid="uid://cmvvf1i5rvit1" path="res://Blender/TommyViewModel.glb" id="2_d6usy"]
+[ext_resource type="AudioStream" uid="uid://canawwb47y6ct" path="res://Sounds/Shotgun/shotgun-fire.mp3" id="5_5tgis"]
+[ext_resource type="AudioStream" uid="uid://l4gu8o0cxrpi" path="res://Sounds/Shotgun/shotgun-open.mp3" id="6_pq67d"]
+[ext_resource type="AudioStream" uid="uid://ddieirc5b5wcu" path="res://Sounds/Shotgun/shotgun-close.mp3" id="14_ggnyb"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_636li"]
+playback_mode = 1
+random_pitch = 1.0594631
+streams_count = 1
+stream_0/stream = ExtResource("5_5tgis")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lks80"]
+playback_mode = 1
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("6_pq67d")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5elh6"]
+playback_mode = 1
+random_pitch = 1.122462
+streams_count = 1
+stream_0/stream = ExtResource("14_ggnyb")
+
+[node name="TommyViewModel" type="Node3D" unique_id=512598926]
+script = ExtResource("1_d6usy")
+
+[node name="ViewModel" parent="." unique_id=1242638988 instance=ExtResource("2_d6usy")]
+
+[node name="Bone_008" parent="ViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(1242638988, 781926304) index="0" unique_id=1180623451]
+transform = Transform3D(-0.14931068, 0.85217214, -0.5015067, -0.85354304, -0.36712474, -0.36970693, -0.49916974, 0.37285632, 0.7821812, -0.21172976, -0.3101238, 1.1225162)
+
+[node name="Thumb_R" parent="ViewModel/Arms/Skeleton3D/Bone_008" index="0" unique_id=1480520290]
+layers = 64
+
+[node name="Bone_009" parent="ViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(1242638988, 781926304) index="1" unique_id=1284659903]
+transform = Transform3D(-0.19330695, 0.34389043, -0.9188971, -0.95923865, 0.1305314, 0.25064385, 0.20613883, 0.92989284, 0.30464032, -0.48025423, -0.026583493, 1.0298953)
+
+[node name="Finger_R" parent="ViewModel/Arms/Skeleton3D/Bone_009" index="0" unique_id=1837289666]
+layers = 64
+
+[node name="Bone_007" parent="ViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(1242638988, 781926304) index="2" unique_id=763430875]
+transform = Transform3D(-0.10516636, 0.30122963, -0.9477348, -0.976304, 0.14997558, 0.15600502, 0.18913026, 0.94168365, 0.2783192, -0.43126553, -0.15927863, 0.3790499)
+
+[node name="Palm_R" parent="ViewModel/Arms/Skeleton3D/Bone_007" index="0" unique_id=1106327335]
+layers = 64
+
+[node name="Bone_006" parent="ViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(1242638988, 781926304) index="3" unique_id=957929150]
+transform = Transform3D(0.02578117, -0.09610714, -0.99503744, -0.7359588, -0.67545027, 0.04617078, -0.6765355, 0.7311159, -0.08814484, -0.18816775, 1.5492357, -1.4702678)
+
+[node name="Elbow_R" parent="ViewModel/Arms/Skeleton3D/Bone_006" index="0" unique_id=1282921791]
+layers = 64
+
+[node name="Forearm_R" parent="ViewModel/Arms/Skeleton3D/Bone_006" index="1" unique_id=1439489045]
+layers = 64
+
+[node name="Bicep_R" parent="ViewModel/Arms/Skeleton3D/Bone_005" parent_id_path=PackedInt32Array(1242638988, 1799428615) index="0" unique_id=1207711565]
+layers = 64
+
+[node name="Shoulder_R" parent="ViewModel/Arms/Skeleton3D/Bone_005" parent_id_path=PackedInt32Array(1242638988, 1799428615) index="1" unique_id=966248241]
+layers = 64
+
+[node name="Bone_016" parent="ViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(1242638988, 781926304) index="5" unique_id=689042364]
+transform = Transform3D(0.33410433, -0.93612075, 0.1097841, -0.94150627, -0.32602444, 0.08528709, -0.04404676, -0.13185716, -0.99028957, 0.13350886, -0.542271, 3.9711804)
+
+[node name="Thumb_L" parent="ViewModel/Arms/Skeleton3D/Bone_016" index="0" unique_id=2034265128]
+layers = 64
+
+[node name="Bone_017" parent="ViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(1242638988, 781926304) index="6" unique_id=1229027810]
+transform = Transform3D(0.02001433, -0.22387728, -0.9744117, -0.99012333, -0.13970354, 0.011760686, -0.13876177, 0.96455264, -0.22446212, 0.34937048, -0.24410544, 4.1311193)
+
+[node name="Fingers_L" parent="ViewModel/Arms/Skeleton3D/Bone_017" index="0" unique_id=327018206]
+layers = 64
+
+[node name="Bone_012" parent="ViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(1242638988, 781926304) index="7" unique_id=488976813]
+transform = Transform3D(0.21806529, -0.7042749, -0.6756068, -0.9636988, -0.26466686, -0.035155177, -0.15405184, 0.65874755, -0.7364235, 0.61694944, -0.089475214, 3.5411177)
+
+[node name="Palm_L" parent="ViewModel/Arms/Skeleton3D/Bone_012" index="0" unique_id=1837834846]
+layers = 64
+
+[node name="Bone_011" parent="ViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(1242638988, 781926304) index="8" unique_id=242227089]
+transform = Transform3D(0.23600656, -0.7621862, -0.6028044, -0.9645521, -0.25910872, -0.050018873, -0.11806821, 0.5932412, -0.7963194, 2.544858, 0.565926, 2.0405464)
+
+[node name="Elbow_L" parent="ViewModel/Arms/Skeleton3D/Bone_011" index="0" unique_id=1318473060]
+layers = 64
+
+[node name="Forearm_L" parent="ViewModel/Arms/Skeleton3D/Bone_011" index="1" unique_id=2000794134]
+layers = 64
+
+[node name="Bone_010" parent="ViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(1242638988, 781926304) index="9" unique_id=1784335790]
+transform = Transform3D(-0.014131308, 0.0974653, -0.9951386, -0.9892527, 0.14349024, 0.028101355, 0.1455316, 0.9848406, 0.094390154, 2.3303635, 0.25014263, -0.12682116)
+
+[node name="Bicep_L" parent="ViewModel/Arms/Skeleton3D/Bone_010" index="0" unique_id=2092910721]
+layers = 64
+
+[node name="Shoulder_L" parent="ViewModel/Arms/Skeleton3D/Bone_010" index="1" unique_id=921843668]
+layers = 64
+
+[node name="Bone" parent="ViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(1242638988, 781926304) index="10" unique_id=2102463161]
+transform = Transform3D(6.181658e-08, 1.1921438e-07, 0.99999994, -0.0032454235, 0.9999948, -5.9770656e-08, -0.9999948, -0.0032454832, 1.1912611e-07, -0.018954154, -1.0747895, 2.7074132)
+
+[node name="Cube_002" parent="ViewModel/Arms/Skeleton3D/Bone" index="0" unique_id=1024009467]
+layers = 64
+
+[node name="Bone_001" parent="ViewModel/Arms/Skeleton3D" parent_id_path=PackedInt32Array(1242638988, 781926304) index="11" unique_id=109339022]
+transform = Transform3D(1, -1.4210855e-14, 4.7683716e-07, 4.768367e-07, -0.0013933182, -0.99999905, 6.643859e-10, 0.99999905, -0.0013933182, -0.013157844, -0.9650682, 1.7278248)
+
+[node name="Cube" parent="ViewModel/Arms/Skeleton3D/Bone_001" index="0" unique_id=1535667803]
+layers = 64
+
+[node name="Cube_001" parent="ViewModel/Arms/Skeleton3D/Bone_001" index="1" unique_id=268697097]
+layers = 64
+
+[node name="Cube_003" parent="ViewModel/Arms/Skeleton3D/Bone_001" index="2" unique_id=2018331583]
+layers = 64
+
+[node name="SpotLight3D" type="SpotLight3D" parent="ViewModel/Arms" parent_id_path=PackedInt32Array(1242638988, 1161688576) index="1" unique_id=1416913546]
+transform = Transform3D(-0.8, 0, -1.2079664e-07, 0, 0.8, 0, 1.2079664e-07, 0, -0.8, 0.023418784, -1.1033177, 6.569406)
+visible = false
+light_color = Color(1.333, 1.147, 0.771, 1)
+light_energy = 30.0
+spot_range = 192.0
+spot_attenuation = 0.6
+spot_angle = 80.0
+spot_angle_attenuation = 0.2973023
+
+[node name="FlashTimer" type="Timer" parent="." unique_id=874242587]
+wait_time = 0.1
+
+[node name="FireSound" type="AudioStreamPlayer3D" parent="." unique_id=1050228295]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4641614, -1.2021669, -10.623272)
+stream = SubResource("AudioStreamRandomizer_636li")
+max_db = -3.0
+max_distance = 1000.0
+max_polyphony = 5
+bus = &"Sounds"
+
+[node name="OpenSound" type="AudioStreamPlayer3D" parent="." unique_id=1648408026]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6145847, -2.119921, -6.335663)
+stream = SubResource("AudioStreamRandomizer_lks80")
+max_distance = 100.0
+bus = &"Sounds"
+
+[node name="CloseSound" type="AudioStreamPlayer3D" parent="." unique_id=232339084]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06138611, -2.5585315, -6.0118046)
+stream = SubResource("AudioStreamRandomizer_5elh6")
+max_distance = 100.0
+bus = &"Sounds"
+
+[node name="SoundTimers" type="Node" parent="." unique_id=1529972643]
+
+[node name="CloseTimer" type="Timer" parent="SoundTimers" unique_id=942588829]
+wait_time = 0.75
+one_shot = true
+
+[node name="Control" type="Control" parent="." unique_id=562138989]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 2883.0
+offset_bottom = 1803.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1113099492]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.5
+offset_top = -72.0
+offset_right = 72.5
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Reticle" type="Sprite2D" parent="Control/HBoxContainer" unique_id=664532731]
+light_mask = 64
+visibility_layer = 64
+position = Vector2(72, 72)
+scale = Vector2(0.45, 0.45)
+texture = ExtResource("1_jaesm")
+
+[connection signal="animation_finished" from="ViewModel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="FlashTimer" to="." method="_on_flash_timer_timeout"]
+[connection signal="timeout" from="SoundTimers/CloseTimer" to="." method="_on_close_timer_timeout"]
+
+[editable path="ViewModel"]

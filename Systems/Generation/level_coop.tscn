@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://deimi6535r30q" path="res://Entities/player.tscn" id="1_slogv"]
 [ext_resource type="Script" uid="uid://ceph38xek5bwd" path="res://Systems/Generation/level_coop.gd" id="1_yvpkw"]
 [ext_resource type="PackedScene" uid="uid://dk2v2lnuturo3" path="res://Systems/Generation/map.tscn" id="2_yvpkw"]
-[ext_resource type="PackedScene" uid="uid://buw7122truyjv" path="res://Rooms/elevator.tscn" id="3_hw0ev"]
+[ext_resource type="PackedScene" uid="uid://buw7122truyjv" path="res://Rooms/Permanent/elevator.tscn" id="3_hw0ev"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i8jls"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -34,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 columns = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="GridContainer" unique_id=641045619]
@@ -45,7 +46,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer" unique_id=1578589766]
 handle_input_locally = false
 audio_listener_enable_3d = true
-size = Vector2i(1438, 1800)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="Player" parent="GridContainer/SubViewportContainer/SubViewport" unique_id=1819948495 instance=ExtResource("1_slogv")]
@@ -59,7 +60,7 @@ stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="GridContainer/SubViewportContainer2" unique_id=242073848]
 handle_input_locally = false
-size = Vector2i(1438, 1800)
+size = Vector2i(2, 2)
 render_target_update_mode = 4
 
 [node name="Player2" parent="GridContainer/SubViewportContainer2/SubViewport" unique_id=1474016302 instance=ExtResource("1_slogv")]

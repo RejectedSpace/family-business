@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://0j8i8ku5ff6d"]
+
+[ext_resource type="Script" uid="uid://d12si82i4i2ia" path="res://Items/Guns/gun.gd" id="1_rwq14"]
+[ext_resource type="PackedScene" uid="uid://b84ryqm1rnoxd" path="res://Blender/Tommy.glb" id="2_0fl44"]
+[ext_resource type="PackedScene" uid="uid://c182nwbqx38xm" path="res://Systems/ViewModel/tommy_view_model.tscn" id="2_5w0go"]
+
+[node name="Tommy" type="Node3D" unique_id=2137234930]
+script = ExtResource("1_rwq14")
+base_damage = 15.0
+base_mag_size = 30
+base_reserve_size = 150
+view_model = ExtResource("2_5w0go")
+function_name = &"equip_gun"
+item_name = &"Tommy"
+price = 1000
+rarity = 3
+metadata/_custom_type_script = "uid://d12si82i4i2ia"
+
+[node name="Tommy" parent="." unique_id=1180845167 instance=ExtResource("2_0fl44")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Hitscan" type="Node3D" parent="." unique_id=425163693]
+
+[node name="RayCast3D" type="RayCast3D" parent="Hitscan" unique_id=1799242911]
+target_position = Vector3(0, 0, -200)
+collision_mask = 4
